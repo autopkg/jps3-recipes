@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest OpenSCAD.</string>
+	<key>Identifier</key>
+	<string>com.github.lu-mac-admins.download.OpenSCAD</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>OpenSCAD</string>
+		<key>APPCAST_URL</key>
+		<string>http://openscad.org/appcast.xml</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>Process</key>
+	<array>
+	    <dict>
+	        <key>Processor</key>
+	        <string>SparkleUpdateInfoProvider</string>
+	        <key>Arguments</key>
+	        <dict>
+	            <key>appcast_url</key>
+	            <string>%APPCAST_URL%</string>
+	        </dict>
+	    </dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>AppDmgVersioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_path</key>
+				<string>%pathname%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
