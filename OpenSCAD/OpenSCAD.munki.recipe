@@ -12,8 +12,6 @@
 		<string>OpenSCAD</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/OpenSCAD</string>
-		<key>APPCAST_URL</key>
-		<string>http://openscad.org/appcast.xml</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
