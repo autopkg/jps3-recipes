@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest VueScan.</string>
+	<key>Identifier</key>
+	<string>com.github.lu-mac-admins.download.VueScan</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>VueScan</string>
+        <key>DOWNLOAD_URL_STUB</key>
+        <string>http://www.hamrick.com</string>
+		<key>ARCH</key>
+		<string>64</string> <!-- 64(bit) or 32(bit) -->
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>Process</key>
+	<array>
+	    <dict>
+	        <key>Processor</key>
+	        <string>URLTextSearcher</string>
+	        <key>Arguments</key>
+	        <dict>
+	            <key>url</key>
+	            <string>http://www.hamrick.com/</string>
+	            <key>re_pattern</key>
+				<!-- Example: http://www.hamrick.com/files/vuex6494.dmg -->
+				<!-- TODO: Solve issue where URL in HTML page is only relative, not absolute and that breaks remainder of this recipe. -->
+				<string>"(files/vuex%ARCH%.+\.dmg)"</string>
+                <key>result_output_var_name</key>
+                <string>url</string>
+	        </dict>
+	    </dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_URL_STUB%/%url%</string>
+            </dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
