@@ -25,13 +25,9 @@
 	        <key>Arguments</key>
 	        <dict>
 	            <key>url</key>
-	            <string>http://www.hamrick.com/</string>
+	            <string>http://www.hamrick.com</string>
 	            <key>re_pattern</key>
-				<!-- Example: http://www.hamrick.com/files/vuex6494.dmg -->
-				<!-- TODO: Solve issue where URL in HTML page is only relative, not absolute and that breaks remainder of this recipe. -->
 				<string>"(files/vuex%ARCH%.+\.dmg)"</string>
-                <key>result_output_var_name</key>
-                <string>url</string>
 	        </dict>
 	    </dict>
 		<dict>
@@ -40,7 +36,7 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>%DOWNLOAD_URL_STUB%/%url%</string>
+                <string>%url%/%match%</string>
             </dict>
 		</dict>
 		<dict>
