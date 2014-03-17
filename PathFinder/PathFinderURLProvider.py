@@ -40,6 +40,11 @@ class PathFinderURLProvider(Processor):
 
 
 
+if __name__ == '__main__':
+    processor = PathFinderURLProvider()
+    processor.execute_shell()
+
+
 # Example returned data:
 # <?xml version="1.0" encoding="utf-8"?>
 # <item>
