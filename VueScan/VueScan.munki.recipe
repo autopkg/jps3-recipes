@@ -19,7 +19,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string></string>
+			<string>VueScan is a powerful, easy-to-use program that scans documents, photos and film; creates PDF, JPEG, TIFF and TXT files; supports nearly 2000 scanners; For more information go to http://www.hamrick.com.</string>
 			<key>display_name</key>
 			<string>%NAME%</string>
 			<key>name</key>
