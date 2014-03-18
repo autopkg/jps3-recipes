@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest PathFinder and imports into Munki.</string>
+	<string>Downloads (if necessary) and imports FreeCAD-%version%.dmg and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.munki.PathFinder</string>
+	<string>com.github.lu-mac-admins.munki.FreeCAD</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>PathFinder</string>
+		<string>FreeCAD</string>
         <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/PathFinder</string>
+        <string>apps/%NAME%</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -19,7 +19,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Path Finder offers the tools you need to access and manage your files quickly, accurately, and completely on OS X. A world-class operating system deserves a world-class file manager. Dive into a familiar interface packed with uncommonly powerful features and make your file system sing...</string>
+			<string>FreeCAD is a parametric 3D modeler. Parametric modeling allows you to easily modify your design by going back into your model history and changing its parameters. FreeCAD is open source (LGPL license) and completely modular, allowing for very advanced extension and customization. FreeCAD is multiplatfom, and reads and writes many open file formats such as STEP, IGES, STL and others. Read more... http://www.freecadweb.org/wiki/index.php?title=About_FreeCAD</string>
 			<key>display_name</key>
 			<string>%NAME%</string>
 			<key>name</key>
@@ -35,31 +35,55 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.lu-mac-admins.download.PathFinder</string>
+    <string>com.github.lu-mac-admins.download.FreeCAD</string>
 	<key>Process</key>
 	<array>
         <dict>
             <key>Processor</key>
             <string>Unarchiver</string>
-            <key>Arguments</key>
-            <dict>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%</string>
-                <key>purge_destination</key>
-                <true/>
-            </dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
         </dict>
-        <dict>
-            <key>Processor</key>
-            <string>DmgCreator</string>
-            <key>Arguments</key>
-            <dict>
-                <key>dmg_root</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%</string>
-                <key>dmg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
-            </dict>
-        </dict>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleVersion</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiInfoCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%dmg_path%</string>
+				<!-- TODO: use %plist_version_key% -->
+			</dict>
+		</dict>
+		<!--
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
@@ -71,6 +95,7 @@
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
 		</dict>
+		-->
 	</array>
 </dict>
 </plist>
