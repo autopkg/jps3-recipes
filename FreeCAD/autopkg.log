@@ -1,0 +1,136 @@
+Processing ./FreeCAD.download.recipe...
+{'AUTOPKG_VERSION': u'0.3.0',
+ u'DOWNLOAD_LATEST_URL': u'http://sourceforge.net/projects/free-cad/files/latest/download?source=files',
+ u'MUNKI_REPO': u'/Volumes/repo',
+ u'NAME': u'FreeCAD',
+ 'PARENT_RECIPES': [],
+ 'RECIPE_CACHE_DIR': u'/Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD',
+ 'RECIPE_DIR': '/Users/jps3/Developer/autopkg_recipes/FreeCAD',
+ 'RECIPE_PATH': '/Users/jps3/Developer/autopkg_recipes/FreeCAD/FreeCAD.download.recipe',
+ u'RECIPE_REPOS': {u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.Jaharmi.autopkg_recipes': {
+    URL = "https://github.com/Jaharmi/autopkg_recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.hansen-m-recipes': {
+    URL = "https://github.com/autopkg/hansen-m-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.hjuutilainen-recipes': {
+    URL = "https://github.com/autopkg/hjuutilainen-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jaharmi-recipes': {
+    URL = "https://github.com/autopkg/jaharmi-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jessepeterson-recipes': {
+    URL = "https://github.com/autopkg/jessepeterson-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jleggat-recipes': {
+    URL = "https://github.com/autopkg/jleggat-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.recipes': {
+    URL = "http://github.com/autopkg/recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.timsutton-recipes': {
+    URL = "https://github.com/autopkg/timsutton-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.keeleysam.recipes': {
+    URL = "https://github.com/keeleysam/recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.lu-mac-admins.autopkg_recipes': {
+    URL = "https://github.com/lu-mac-admins/autopkg_recipes.git";
+}},
+ u'RECIPE_SEARCH_DIRS': [u'.',
+                         u'~/Library/AutoPkg/Recipes',
+                         u'/Library/AutoPkg/Recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.keeleysam.recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.Jaharmi.autopkg_recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.hjuutilainen-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.timsutton-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jleggat-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jessepeterson-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jaharmi-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.hansen-m-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.lu-mac-admins.autopkg_recipes'],
+ 'verbose': 4}
+URLDownloader
+{'Input': {'filename': u'FreeCAD.zip',
+           'url': u'http://sourceforge.net/projects/free-cad/files/latest/download?source=files'}}
+URLDownloader: Item at URL is unchanged.
+URLDownloader: Using existing /Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD/downloads/FreeCAD.zip
+{'Output': {'pathname': u'/Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD/downloads/FreeCAD.zip'}}
+Unarchiver
+{'Input': {}}
+Unarchiver: Guessed archive format 'zip' from filename FreeCAD.zip
+Unarchiver: Unarchived /Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD/downloads/FreeCAD.zip to /Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD/FreeCAD
+{'Output': {}}
+Versioner
+{'Input': {'input_plist_path': u'/Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD/FreeCAD/FreeCAD.app/Contents/Info.plist',
+           'plist_version_key': u'CFBundleVersion'}}
+Versioner: Found version 0.14-dev in file /Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD/FreeCAD/FreeCAD.app/Contents/Info.plist
+{'Output': {'version': u'0.14-dev'}}
+EndOfCheckPhase
+{'Input': {}}
+{'Output': {}}
+{'AUTOPKG_VERSION': u'0.3.0',
+ u'DOWNLOAD_LATEST_URL': u'http://sourceforge.net/projects/free-cad/files/latest/download?source=files',
+ u'MUNKI_REPO': u'/Volumes/repo',
+ u'NAME': u'FreeCAD',
+ 'PARENT_RECIPES': [],
+ 'RECIPE_CACHE_DIR': u'/Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD',
+ 'RECIPE_DIR': '/Users/jps3/Developer/autopkg_recipes/FreeCAD',
+ 'RECIPE_PATH': '/Users/jps3/Developer/autopkg_recipes/FreeCAD/FreeCAD.download.recipe',
+ u'RECIPE_REPOS': {u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.Jaharmi.autopkg_recipes': {
+    URL = "https://github.com/Jaharmi/autopkg_recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.hansen-m-recipes': {
+    URL = "https://github.com/autopkg/hansen-m-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.hjuutilainen-recipes': {
+    URL = "https://github.com/autopkg/hjuutilainen-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jaharmi-recipes': {
+    URL = "https://github.com/autopkg/jaharmi-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jessepeterson-recipes': {
+    URL = "https://github.com/autopkg/jessepeterson-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jleggat-recipes': {
+    URL = "https://github.com/autopkg/jleggat-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.recipes': {
+    URL = "http://github.com/autopkg/recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.timsutton-recipes': {
+    URL = "https://github.com/autopkg/timsutton-recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.keeleysam.recipes': {
+    URL = "https://github.com/keeleysam/recipes.git";
+},
+                   u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.lu-mac-admins.autopkg_recipes': {
+    URL = "https://github.com/lu-mac-admins/autopkg_recipes.git";
+}},
+ u'RECIPE_SEARCH_DIRS': [u'.',
+                         u'~/Library/AutoPkg/Recipes',
+                         u'/Library/AutoPkg/Recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.keeleysam.recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.Jaharmi.autopkg_recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.hjuutilainen-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.timsutton-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jleggat-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jessepeterson-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.jaharmi-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.autopkg.hansen-m-recipes',
+                         u'/Users/jps3/Library/AutoPkg/RecipeRepos/com.github.lu-mac-admins.autopkg_recipes'],
+ 'download_changed': False,
+ 'etag': '',
+ u'filename': u'FreeCAD.zip',
+ u'input_plist_path': u'/Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD/FreeCAD/FreeCAD.app/Contents/Info.plist',
+ 'last_modified': '',
+ 'pathname': u'/Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD/downloads/FreeCAD.zip',
+ u'plist_version_key': u'CFBundleVersion',
+ u'url': u'http://sourceforge.net/projects/free-cad/files/latest/download?source=files',
+ 'verbose': 4,
+ 'version': u'0.14-dev'}
+Receipt written to /Users/jps3/Library/AutoPkg/Cache/com.github.lu-mac-admins.download.FreeCAD/receipts/FreeCAD.download-receipt-20140318-165759.plist
+
+Nothing downloaded, packaged or imported.

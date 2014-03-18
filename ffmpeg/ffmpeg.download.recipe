@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest ffmpeg binary.</string>
+	<key>Identifier</key>
+	<string>com.github.lu-mac-admins.download.ffmpeg</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>ffmpeg</string>
+		<key>FFMPEG_UPDATES_URL</key>
+		<string>http://www.osxexperts.net/ffmpeg/ffmpegexperts.html</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>Process</key>
+	<array>
+	    <dict>
+	        <key>Processor</key>
+	        <string>URLTextSearcher</string>
+	        <key>Arguments</key>
+	        <dict>
+	            <key>url</key>
+	            <string>%FFMPEG_UPDATES_URL%</string>
+	            <key>re_pattern</key>
+				<string>"(http://[^"]+/[^"]+osx[^"]+\.dmg)"</string>
+	        </dict>
+	    </dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%match%</string>
+			</dict>
+		</dict>
+		<!-- 
+			TODO: Parse out version from binary in *.dmg file.
+				Ex. /path/to/mounted/dmg/ffmpeg -version | head -1
+				ffmpeg version 2.1.1
+			TODO: Parse out what it was compiled with. Generally speaking if "GCC" then ≤10.7 and "LLVM" ≥ 10.8
+		-->
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>

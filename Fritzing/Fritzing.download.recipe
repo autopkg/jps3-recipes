@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest Fritzing binary.</string>
+	<key>Identifier</key>
+	<string>com.github.lu-mac-admins.download.Fritzing</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Fritzing</string>
+		<key>FRITZING_UPDATES_URL</key>
+		<string>http://fritzing.org/download/feed/atom/mac-os-x-105/</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>Process</key>
+	<array>
+	    <dict>
+	        <key>Processor</key>
+	        <string>FritzingUrlProvider</string>
+			<key>Arguments</key>
+			<dict>
+				<key>updates_url</key>
+				<string>%FRITZING_UPDATES_URL%</string>
+			</dict>
+	    </dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%match%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
