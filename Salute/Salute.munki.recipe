@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest PathFinder and imports into Munki.</string>
-	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.munki.PathFinder</string>
+	<string>Downloads the latest Salute and imports into Munki.</string>
 	<key>Input</key>
 	<dict>
+        <key>IDENTIFIER</key>
+	    <string>com.github.lu-mac-admins.munki.Salute</string>
 		<key>NAME</key>
-		<string>PathFinder</string>
+		<string>Salute</string>
         <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/PathFinder</string>
+        <string>apps/Twocanoes/Salute</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -19,13 +19,15 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Path Finder offers the tools you need to access and manage your files quickly, accurately, and completely on OS X. A world-class operating system deserves a world-class file manager. Dive into a familiar interface packed with uncommonly powerful features and make your file system sing...</string>
+			<string>Hot Key Three Finger Salute to lock screen in OS X. https://github.com/twocanoes/salute</string>
 			<key>display_name</key>
 			<string>%NAME%</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
+            <key>unattended_uninstall</key>
+            <true/>
 			<key>blocking_applications</key>
 			<array>
 				<string>%NAME%</string>
@@ -35,12 +37,10 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.lu-mac-admins.download.PathFinder</string>
+    <string>com.github.lu-mac-admins.download.Salute</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -48,6 +48,8 @@
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>

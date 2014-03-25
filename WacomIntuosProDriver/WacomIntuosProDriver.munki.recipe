@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current release version of Wacom Intuos Pro Driver and imports into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.lu-mac-admins.munki.WacomIntuosProTabletDriver</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>WacomIntuosProDriver</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>library/device_drivers</string>
+		<key>WACOM_PKG_NAME</key>
+		<string>Install Wacom Tablet.pkg</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Drivers and support software for the Wacom Intuos Pro tablets.</string>
+			<key>display_name</key>
+			<string>WacomIntuosProDriver</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>ParentRecipe</key>
+	<string>com.github.lu-mac-admins.download.WacomIntuosProTabletDriver</string>
+	<key>Process</key>
+	<array>
+        <!--
+ The Wacom software typically comes as a *.pkg enclosed in a *.dmg file. However the sub-pkgs often have items in their Resources folder symlinked to the *.dmg root folder (ex. different language license or "read me" files. This causes issues if the entire *.dmg is not taken as a while, such as if the *.pkg is removed to another *.dmg in the Munki import process.
+        -->
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+                <key>munkiimport_pkgname</key>
+                <string>%WACOM_PKG_NAME%</string>
+                <key>pkginfo</key>
+                <dict>
+                    <key>catalogs</key>
+                    <array>
+                        <string>%MUNKI_CATALOG%</string>
+                    </array>
+                    <key>description</key>
+                    <string>%MUNKI_DESCRIPTION%</string>
+                    <key>display_name</key>
+                    <string>%MUNKI_DISPLAYNAME%</string>
+                    <key>name</key>
+                    <string>%MUNKI_NAME%</string>
+                    <key>unattended_install</key>
+                    <false/>
+					<key>uninstall_method</key>
+					<string>uninstall_script</string>
+					<key>uninstall_script</key>
+					<string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+uninstall_script="/Applications/Wacom Tablet.localized/Wacom Table Utility.app/Contents/Resources/uninstall.pl"
+if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
+	"$uninstall_script"
+else
+	logger -is "ERROR: Could not locate uninstall_script: $uninstall_script"
+	exit 1
+fi</string>
+                </dict>
+            </dict>
+        </dict>
+	</array>
+</dict>
+</plist>
