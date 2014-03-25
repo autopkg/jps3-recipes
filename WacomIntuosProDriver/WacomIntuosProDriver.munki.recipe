@@ -12,6 +12,8 @@
 		<string>WacomIntuosProDriver</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>library/device_drivers</string>
+		<key>WACOM_PKG_NAME</key>
+		<string>Install Wacom Tablet.pkg</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -47,7 +49,7 @@
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
                 <key>munkiimport_pkgname</key>
-                <string>%_TODO:_WHAT_SHOULD_GO_HERE???_%</string>
+                <string>%WACOM_PKG_NAME%</string>
                 <key>pkginfo</key>
                 <dict>
                     <key>catalogs</key>
@@ -62,6 +64,18 @@
                     <string>%MUNKI_NAME%</string>
                     <key>unattended_install</key>
                     <false/>
+					<key>uninstall_method</key>
+					<string>uninstall_script</string>
+					<key>uninstall_script</key>
+					<string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+uninstall_script="/Applications/Wacom Tablet.localized/Wacom Table Utility.app/Contents/Resources/uninstall.pl"
+if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
+	"$uninstall_script"
+else
+	logger -is "ERROR: Could not locate uninstall_script: $uninstall_script"
+	exit 1
+fi</string>
                 </dict>
             </dict>
         </dict>
