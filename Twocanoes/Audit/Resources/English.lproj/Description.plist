@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IFPkgDescriptionDescription</key>
+	<string>Audit Preference Pane and Log Reader for OS X. OS X has a built in auditing system build into OS X based on OpenBSM. It is configured and setup via the command line, and has some esoteric syntax. To deal with this, I created a system preference pane to configure the options, and a log reader to read and search the binary logs. For more detailed information, see man audit on OS X.</string>
+	<key>IFPkgDescriptionTitle</key>
+	<string>Twocanoes Audit Reader.app and Audit.prefpane</string>
+</dict>
+</plist>

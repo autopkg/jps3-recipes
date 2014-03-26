@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest Audit.</string>
+	<key>Identifier</key>
+	<string>com.github.lu-mac-admins.download.Audit</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Audit</string>
+        <key>GITHUB_RAW_ZIP_URL</key>
+        <string>https://raw.githubusercontent.com/twocanoes/audit/master/binary/Audit.zip</string>
+        <key>NAME_APP</key>
+        <string>%NAME% Reader.app</string>
+        <key>NAME_PREFPANE</key>
+        <string>%NAME%.prefPane</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%GITHUB_RAW_ZIP_URL%</string>
+            </dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME_APP%/Contents/Info.plist</string>
+			</dict>
+		</dict>
+        <!--
+        <dict>
+            <key>Processor</key>
+            <string>DmgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_root</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>dmg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+            </dict>
+        </dict>
+        -->
+	</array>
+</dict>
+</plist>
