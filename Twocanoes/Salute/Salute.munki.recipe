@@ -19,7 +19,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Hot Key Three Finger Salute to lock screen in OS X. https://github.com/twocanoes/salute</string>
+			<string>[NOTE: May not be entirely or properly functional. It *is* freeware, so YMMV.]. Hot Key Three Finger Salute to lock screen in OS X. https://github.com/twocanoes/salute</string>
 			<key>display_name</key>
 			<string>%NAME%</string>
 			<key>name</key>
