@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest Audit.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.pkg.Audit</string>
+	<string>com.github.lu-mac-admins.Audit.pkg</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -18,7 +18,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.lu-mac-admins.download.Audit</string>
+    <string>com.github.lu-mac-admins.Audit.download</string>
 	<key>Process</key>
 	<array>
         <dict>

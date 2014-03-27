@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Cura 3D printer software as a dmg. From this it extracts Cura.app from the /Cura/ subfolder and copies to a new dmg file by itself.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.download.Cura</string>
+	<string>com.github.lu-mac-admins.Cura.download</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>

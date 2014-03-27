@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest Arduino and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.munki.Arduino</string>
+	<string>com.github.lu-mac-admins.Arduino.munki</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -37,7 +37,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.lu-mac-admins.download.Arduino</string>
+    <string>com.github.lu-mac-admins.Arduino.download</string>
 	<key>Process</key>
 	<array>
 		<dict>
