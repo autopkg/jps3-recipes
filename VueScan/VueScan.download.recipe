@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest VueScan.</string>
+	<string>Downloads the latest VueScan. This recipe downloads the 64-bit version by default. If you wish the 32-bit version, be sure to specify "-k ARCH=32" to your autopkg run command.</string>
 	<key>Identifier</key>
 	<string>com.github.lu-mac-admins.download.VueScan</string>
 	<key>Input</key>
@@ -13,7 +13,7 @@
         <key>DOWNLOAD_URL_STUB</key>
         <string>http://www.hamrick.com</string>
 		<key>ARCH</key>
-		<string>64</string> <!-- 64(bit) or 32(bit) -->
+		<string>64</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>

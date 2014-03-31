@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest VueScan and imports into Munki.</string>
+	<string>Downloads the latest VueScan and imports into Munki. This recipe relies upon the com.github.hansen-m.download.VueScan recipe, so be certain you have added his autopkg repo https://github.com/autopkg/hansen-m-recipes.git. (I have removed my VueScan.download recipe because of the naming conflict, regardless of different identifiers, and it's plist was nearly identical to hansen-m's.)</string>
 	<key>Identifier</key>
 	<string>com.github.lu-mac-admins.munki.VueScan</string>
 	<key>Input</key>
@@ -35,7 +35,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.lu-mac-admins.download.VueScan</string>
+    <string>com.github.hansen-m.download.VueScan</string>
 	<key>Process</key>
 	<array>
 		<dict>
