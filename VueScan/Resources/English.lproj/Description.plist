@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IFPkgDescriptionDescription</key>
+	<string>VueScan is a powerful, easy-to-use program that scans documents, photos and film; creates PDF, JPEG, TIFF and TXT files; supports nearly 2000 scanners; For more information go to http://www.hamrick.com.</string>
+	<key>IFPkgDescriptionTitle</key>
+	<string>VueScan</string>
+</dict>
+</plist>
