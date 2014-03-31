@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest stable Arduino and creates flat *.pkg installer.</string>
+	<string>Downloads the latest stable Cura and creates flat *.pkg installer.</string>
 	<key>Identifier</key>
-	<string>com.github.jps3.pkg.Arduino</string>
+	<string>com.github.jps3.pkg.Cura</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Arduino</string>
+		<string>Cura</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
 	<key>ParentRecipe</key>
-	<string>com.github.jps3.download.Arduino</string>
+	<string>com.github.jps3.download.Cura</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -65,7 +65,7 @@
 					<key>pkgname</key>
 					<string>%NAME%-%version%</string>
 					<key>id</key>
-					<string>cc.arduino.Arduino.pkg</string>
+					<string>com.ultimaker.Cura.pkg</string>
 					<key>resources</key>
 					<string>Resources</string>
 					<key>options</key>

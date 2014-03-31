@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest stable Arduino.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.download.Arduino</string>
+	<string>com.github.jps3.download.Arduino</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -45,17 +45,6 @@
 			<dict>
 				<key>input_plist_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app/Contents/Info.plist</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>DmgCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>dmg_root</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
-				<key>dmg_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
 			</dict>
 		</dict>
 	</array>

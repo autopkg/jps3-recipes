@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest OpenSCAD and imports into Munki</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.munki.OpenSCAD</string>
+	<string>com.github.jps3.munki.OpenSCAD</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -35,7 +35,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
 	<key>ParentRecipe</key>
-	<string>com.github.lu-mac-admins.download.OpenSCAD</string>
+	<string>com.github.jps3.download.OpenSCAD</string>
 	<key>Process</key>
 	<array>
 		<dict>

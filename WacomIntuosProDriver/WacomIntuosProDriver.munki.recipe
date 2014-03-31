@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the current release version of Wacom Intuos Pro Driver and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.munki.WacomIntuosProTabletDriver</string>
+	<string>com.github.jps3.munki.WacomIntuosProTabletDriver</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -42,7 +42,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
 	<key>ParentRecipe</key>
-	<string>com.github.lu-mac-admins.download.WacomIntuosProTabletDriver</string>
+	<string>com.github.jps3.download.WacomIntuosProTabletDriver</string>
 	<key>Process</key>
 	<array>
         <!--

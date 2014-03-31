@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest Rhinoceros and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.munki.Rhinoceros</string>
+	<string>com.github.jps3.munki.Rhinoceros</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -39,7 +39,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.hansen-m.download.Rhinoceros</string>
+    <string>com.github.hansen-m.Rhinoceros.download</string>
 	<key>Process</key>
 	<array>
 		<dict>

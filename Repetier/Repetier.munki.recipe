@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Repetier 3D printer software as a dmg. It then imports into the Munki repository.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.munki.Repetier</string>
+	<string>com.github.jps3.munki.Repetier</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -39,7 +39,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.lu-mac-admins.download.Repetier</string>
+    <string>com.github.jps3.download.Repetier</string>
 	<key>Process</key>
 	<array>
 		<dict>
