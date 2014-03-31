@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Rhinoceros and imports into Munki.</string>
+	<string>Downloads the latest Rhinoceros and imports into Munki. Please Note: This recipe relies upon com.github.hansen-m.download.Rhinoceros which can be found in the following repo: https://github.com/autopkg/hansen-m-recipes.git. Also Note: I am basing the Munki version off of the CFBundleVersion key in Rhinoceros.app's Info.plist, rather than CFBundleShortVersionString which seems fairly useless for versioning.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.Rhinoceros</string>
 	<key>Input</key>
@@ -39,7 +39,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.hansen-m.Rhinoceros.download</string>
+	<string>com.github.hansen-m.download.Rhinoceros</string>
 	<key>Process</key>
 	<array>
 		<dict>
