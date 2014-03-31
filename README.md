@@ -1,5 +1,8 @@
-LU AutoPkg Recipes
-====================
+AutoPkg Recipes 
+===============
 
-Recipes for AutoPkg not covered by others’ repos needed for support of Lehigh University client Macs.
+Lehigh University Managed Mac Support
+-------------------------------------
+
+Recipes for AutoPkg not covered by others’ repos needed for support of Lehigh University (public site) client Macs.
 
