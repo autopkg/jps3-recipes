@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>IFPkgDescriptionDescription</key>
-	<string>The open-source Arduino environment makes it easy to write code and upload it to the i/o board. It runs on Windows, Mac OS X, and Linux. The environment is written in Java and based on Processing, avr-gcc, and other open source software.</string>
+	<string>Cura is developed by Ultimaker to make 3D printing as easy and streamlined as possible. It includes everything you need to prepare a 3D file for printing and to print it. Cura is fully preconfigured to work on the Ultimaker. Cura comes with a friendly setup program that help you install the latest firmware as well as calibrate your printer.</string>
 	<key>IFPkgDescriptionTitle</key>
-	<string>Arduino</string>
+	<string>Cura</string>
 </dict>
 </plist>
