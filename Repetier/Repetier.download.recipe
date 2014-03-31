@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Repetier 3D printer software as a dmg.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.Repetier.download</string>
+	<string>com.github.lu-mac-admins.download.Repetier</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>

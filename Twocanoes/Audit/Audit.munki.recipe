@@ -7,7 +7,7 @@
 	<key>Input</key>
 	<dict>
         <key>IDENTIFIER</key>
-	    <string>com.github.lu-mac-admins.Audit.munki</string>
+	    <string>com.github.lu-mac-admins.munki.Audit</string>
 		<key>NAME</key>
 		<string>Audit</string>
         <key>MUNKI_REPO_SUBDIR</key>
@@ -66,7 +66,7 @@ fi
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.lu-mac-admins.Audit.pkg</string>
+    <string>com.github.lu-mac-admins.pkg.Audit</string>
 	<key>Process</key>
 	<array>
 		<dict>

@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest stable Arduino.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.Arduino.download</string>
+	<string>com.github.lu-mac-admins.download.Arduino</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>

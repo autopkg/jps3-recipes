@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Cura 3D printer software as a dmg. From this it extracts Cura.app from the /Cura/ subfolder and copies to a new dmg file by itself. This new Cura.app only dmg is then imported into the Munki repository.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.Cura.munki</string>
+	<string>com.github.lu-mac-admins.munki.Cura</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -37,7 +37,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.lu-mac-admins.Cura.download</string>
+    <string>com.github.lu-mac-admins.download.Cura</string>
 	<key>Process</key>
 	<array>
 		<dict>

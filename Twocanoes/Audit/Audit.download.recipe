@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest Audit.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.Audit.download</string>
+	<string>com.github.lu-mac-admins.download.Audit</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>

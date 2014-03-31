@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest Fritzing binary.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.Fritzing.download</string>
+	<string>com.github.lu-mac-admins.download.Fritzing</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>

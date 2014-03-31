@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest drivers for the Wacom Intuos Pro tablets.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.WacomIntuosProTabletDriver.download</string>
+	<string>com.github.lu-mac-admins.download.WacomIntuosProTabletDriver</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>

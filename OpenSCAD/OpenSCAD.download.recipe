@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest OpenSCAD.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.OpenSCAD.download</string>
+	<string>com.github.lu-mac-admins.download.OpenSCAD</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>

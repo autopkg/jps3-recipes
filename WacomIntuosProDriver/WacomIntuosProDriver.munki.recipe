@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the current release version of Wacom Intuos Pro Driver and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.WacomIntuosProTabletDriver.munki</string>
+	<string>com.github.lu-mac-admins.munki.WacomIntuosProTabletDriver</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -28,12 +28,21 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<false/>
+			<key>notes</key>
+			<string>
+				- Items staged to /tmp/ from pkg, later moved elsewhere (thus not represented in pkg bom)
+					+ /Library/Frameworks/WacomMultiTouch.framework/
+					+ /Library/Internet Plug-Ins/WacomTabletPlugin.plugin
+				- A binary in one of the support apps creates the following:
+					+ /Library/LaunchAgents/com.wacom.wacomtablet.plist
+				- By using Wacom's uninstall script (called by this pkginfo's uninstall_script) all should be cleaned up appropriately.
+			</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
 	<key>ParentRecipe</key>
-	<string>com.github.lu-mac-admins.WacomIntuosProTabletDriver.download</string>
+	<string>com.github.lu-mac-admins.download.WacomIntuosProTabletDriver</string>
 	<key>Process</key>
 	<array>
         <!--

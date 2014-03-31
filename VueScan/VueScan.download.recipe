@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest VueScan.</string>
 	<key>Identifier</key>
-	<string>com.github.lu-mac-admins.VueScan.download</string>
+	<string>com.github.lu-mac-admins.download.VueScan</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
