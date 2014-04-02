@@ -11,23 +11,43 @@
 		<key>NAME</key>
 		<string>WacomIntuosProDriver</string>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>library/device_drivers</string>
+		<string>drivers</string>
 		<key>WACOM_PKG_NAME</key>
 		<string>Install Wacom Tablet.pkg</string>
+		<key>MUNKI_DESCRIPTION</key>
+		<string>Drivers and support software for the Wacom Intuos Pro tablets.</string>
+		<key>MUNKI_DISPLAYNAME</key>
+		<string>WacomIntuosProDriver</string>
+		<key>MUNKI_NAME</key>
+		<string>%NAME%</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>name</key>
+			<string>%MUNKI_NAME%</string>
+			<key>displayname</key>
+			<string>%MUNKI_DISPLAYNAME%</string>
+			<key>description</key>
+			<string>%MUNKI_DESCRIPTION%</string>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
-			<key>description</key>
-			<string>Drivers and support software for the Wacom Intuos Pro tablets.</string>
-			<key>display_name</key>
-			<string>WacomIntuosProDriver</string>
-			<key>name</key>
-			<string>%NAME%</string>
+			<key>minimum_os_version</key>
+			<string>10.6</string>
 			<key>unattended_install</key>
-			<false/>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+uninstall_script="/Applications/Wacom Tablet.localized/Wacom Table Utility.app/Contents/Resources/uninstall.pl"
+if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
+	"$uninstall_script"
+else
+	logger -is "ERROR: Could not locate uninstall_script: $uninstall_script"
+	exit 1
+fi</string>
 			<key>notes</key>
 			<string>
 				- Items staged to /tmp/ from pkg, later moved elsewhere (thus not represented in pkg bom)
@@ -59,33 +79,6 @@
                 <string>%MUNKI_REPO_SUBDIR%</string>
                 <key>munkiimport_pkgname</key>
                 <string>%WACOM_PKG_NAME%</string>
-                <key>pkginfo</key>
-                <dict>
-                    <key>catalogs</key>
-                    <array>
-                        <string>%MUNKI_CATALOG%</string>
-                    </array>
-                    <key>description</key>
-                    <string>%MUNKI_DESCRIPTION%</string>
-                    <key>display_name</key>
-                    <string>%MUNKI_DISPLAYNAME%</string>
-                    <key>name</key>
-                    <string>%MUNKI_NAME%</string>
-                    <key>unattended_install</key>
-                    <false/>
-					<key>uninstall_method</key>
-					<string>uninstall_script</string>
-					<key>uninstall_script</key>
-					<string>#!/bin/bash
-PATH=/bin:/sbin:/usr/bin:/usr/sbin
-uninstall_script="/Applications/Wacom Tablet.localized/Wacom Table Utility.app/Contents/Resources/uninstall.pl"
-if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
-	"$uninstall_script"
-else
-	logger -is "ERROR: Could not locate uninstall_script: $uninstall_script"
-	exit 1
-fi</string>
-                </dict>
             </dict>
         </dict>
 	</array>
