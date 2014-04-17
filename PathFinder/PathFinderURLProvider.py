@@ -6,8 +6,6 @@ from autopkglib import Processor, ProcessorError
 
 __all__ = ["PathFinderURLProvider"]
 
-update_url = "http://sparkle.cocoatech.com/PF6_LION.xml"
-
 
 class PathFinderURLProvider(Processor):
 
@@ -27,17 +25,19 @@ class PathFinderURLProvider(Processor):
 
     def main(self):
         """Identify and return the download URL for the latest version of PathFinder 6"""
+        update_url = "%s/%s" % (self.env['UPDATE_XML_HOST'], self.env['UPDATE_XML_PATH'])
         try:
             f = urllib2.urlopen(update_url) 
             xml = f.read()
             doc = ET.fromstring(xml)
+        except BaseException as e:
+            raise ProcessorError("Unable to download %s: %s" (update_url, e))
+        else:
             self.env["url"] = doc.find('url').text
             self.output("Found URL for update download: %s" % self.env["url"])
             self.env["version"] = doc.find('version').text
             self.output("Found version for update download: %s" % self.env["version"])
-        except BaseException as e:
-            raise ProcessorError("Unable to download %s: %s" (update_url, e))
-
+            
 
 
 if __name__ == '__main__':

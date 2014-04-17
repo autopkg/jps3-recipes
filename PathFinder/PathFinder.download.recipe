@@ -10,6 +10,10 @@
 	<dict>
 		<key>NAME</key>
 		<string>PathFinder</string>
+		<key>UPDATE_XML_HOST</key>
+		<string>http://sparkle.cocoatech.com</string>
+		<key>UPDATE_XML_PATH</key>
+		<string>PF6_LION.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
