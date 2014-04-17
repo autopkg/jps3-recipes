@@ -14,27 +14,6 @@
         <string>%NAME%-Host Mac.app</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/%NAME%</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>catalogs</key>
-			<array>
-				<string>testing</string>
-			</array>
-	        <key>description</key>
-	        <string>http://www.repetier.com/documentation/repetier-host-mac/</string>
-			<key>display_name</key>
-			<string>%NAME%</string>
-			<key>name</key>
-			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
-			<key>unattended_uninstall</key>
-			<true/>
-			<key>blocking_applications</key>
-			<array>
-				<string>%APPNAME%</string>
-			</array>
-		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -49,6 +28,27 @@
 				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkginfo</key>
+				<dict>
+					<key>catalogs</key>
+					<array>
+						<string>testing</string>
+					</array>
+			        <key>description</key>
+			        <string>http://www.repetier.com/documentation/repetier-host-mac/</string>
+					<key>display_name</key>
+					<string>%NAME%</string>
+					<key>name</key>
+					<string>%NAME%</string>
+					<key>unattended_install</key>
+					<true/>
+					<key>unattended_uninstall</key>
+					<true/>
+					<key>blocking_applications</key>
+					<array>
+						<string>%APPNAME%</string>
+					</array>
+				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
