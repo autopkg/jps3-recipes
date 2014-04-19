@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>description_here</string>
+	<key>Identifier</key>
+	<string>identifier_Here</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>name_here</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+    <key>ParentRecipe</key>
+    <string>com.github.jps3.download.NAME</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>processor0_name</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>processor1_name</string>
+		</dict>
+	</array>
+</dict>
+</plist>
