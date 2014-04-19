@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the Pashua DMG from the developer's web site, and imports into Munki repository. It is assumed that the newest version is the only version on the web page for the application.
+
+http://www.bluem.net/en/mac/pashua/</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.munki.Pashua</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Pashua</string>
+        <key>url</key>
+        <string>http://www.bluem.net/files/Pashua.dmg</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+    <key>ParentRecipe</key>
+	<string>com.github.jps3.download.Pashua</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>munkiimport_appname</key>
+                <string>%NAME%.app</string>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>version_comparison_key</key>
+                <string>CFBundleVersion</string>
+                <key>additional_makepkginfo_options</key>
+                <array>
+                    <string>--destinationpath=/Applications/Utilities</string>
+                </array>
+                <key>repo_subdirectory</key>
+                <string>apps/Bluem</string>
+                <key>pkginfo</key>
+                <dict>
+                    <key>catalogs</key>
+                    <array>
+                        <string>testing</string>
+                    </array>
+                    <key>description</key>
+                    <string>Pashua is a tool for creating native Aqua dialog windows from programming languages that have none or only limi­ted support for graphic user inter­faces on Mac OS X. Currently, it supports Apple­Script, Perl, PHP, Python, Groovy, Rexx, Ruby, shell scripts and Tcl—and if your favourite language is not included in this list: writing the glue code for communicating with Pashua is pretty simple.
+
+The GUI elements which can be used for such dialogs include text in­put fields (single-line and multi-line), check­boxes, radio­buttons, combo boxes, popup menus, open panels or buttons. Moreover, it's possible to embed images or PDFs. Any data submitted from the dialog will be passed on to the calling script, which can (of course) use it for anything.
+
+http://www.bluem.net/en/mac/pashua/
+</string>
+                    <key>display_name</key>
+                    <string>%NAME%</string>
+                    <key>name</key>
+                    <string>%NAME%</string>
+                    <key>unattended_install</key>
+                    <true/>
+                    <key>unattended_uninstall</key>
+                    <true/>
+                    <key>blocking_applications</key>
+                    <array>
+                        <string>%NAME%</string>
+                    </array>
+                    <key>minimum_os_version</key>
+                    <string>10.6</string>
+                </dict>
+            </dict>
+		</dict>
+	</array>
+</dict>
+</plist>
