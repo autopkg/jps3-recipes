@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads SketchUp Pro 2014 by looking for the first match on the download page, and creates an installer package.
+
+You can specify LOCALE (default: en) for alternative languages. At last check locales were: en, de, es, fr, it, ja, ko.
+
+Note: It sppears that every major release is done annually and requires and updated license. You will want to keep that in mind if you are automating your deployments without testing!</string>
+    <key>Identifier</key>
+    <string>com.github.jps3.pkg.SketchUpPro</string>
+    <key>Input</key>
+    <dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.9</string>
+    <key>ParentRecipe</key>
+    <string>com.github.jps3.download.SketchUpPro</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                <key>pkgdirs</key>
+                <dict>
+                    <key>Applications</key>
+                    <string>0775</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_path</key>
+                <string>%pathname%/%SU_FOLDER%</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/pkgroot/Applications/%SU_FOLDER%</string>
+                <key>overwrite</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_plist_path</key>
+                <string>%RECIPE_CACHE_DIR%/pkgroot/Applications/%SU_FOLDER%/SketchUp.app/Contents/Info.plist</string>
+                <key>plist_version_key</key>
+                <string>CFBundleVersion</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgInfoCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>template_path</key>
+                <string>PackageInfoTemplate</string>
+                <key>infofile</key>
+                <string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+                <key>pkgtype</key>
+                <string>flat</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_request</key>
+                <dict>
+                    <key>pkgname</key>
+                    <string>%NAME%-%version%</string>
+                    <key>id</key>
+                    <string>com.sketchup.SketchUp.pkg</string>
+                    <key>resources</key>
+                    <string>Resources</string>
+                    <key>options</key>
+                    <string>purge_ds_store</string>
+                    <key>chown</key>
+                    <array>
+                        <dict>
+                            <key>path</key>
+                            <string>Applications</string>
+                            <key>user</key>
+                            <string>root</string>
+                            <key>group</key>
+                            <string>admin</string>
+                        </dict>
+                    </array>
+                </dict>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
