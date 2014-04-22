@@ -16,11 +16,13 @@ Note: It sppears that every major release is done annually and requires and upda
         <key>LOCALE</key>
         <string>en</string>
         <key>NAME</key>
-        <string>SketchUp</string>
+        <string>SketchUpPro</string>
         <key>RELEASE_YEAR</key>
         <string>2014</string>
         <key>APPNAME</key>
-        <string>%NAME%.app</string>
+        <string>SketchUp.app</string>
+        <key>SU_FOLDER</key>
+        <string>SketchUp %RELEASE_YEAR%</string>
         <key>SUP_DOWNLOAD_PAGE_URL</key>
         <string>http://www.sketchup.com/download/all</string>
     </dict>
@@ -38,7 +40,7 @@ Note: It sppears that every major release is done annually and requires and upda
                 <key>result_output_var_name</key>
                 <string>url</string>
                 <key>re_pattern</key>
-                <string>&quot;(http://.+/SketchUpPro-%LOCALE%.dmg)&quot;</string>
+                <string>&quot;(http://.+/%NAME%-%LOCALE%.dmg)&quot;</string>
                 <key>re_flags</key>
                 <array>
                     <string>IGNORECASE</string>
@@ -48,17 +50,6 @@ Note: It sppears that every major release is done annually and requires and upda
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>Versioner</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_plist_path</key>
-                <string>%pathname%/%NAME% %RELEASE_YEAR%/%APPNAME%/Contents/Info.plist</string>
-                <key>plist_version_key</key>
-                <string>CFBundleVersion</string>
-            </dict>
         </dict>
         <dict>
             <key>Processor</key>
