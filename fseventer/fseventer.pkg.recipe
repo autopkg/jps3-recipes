@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string></string>
+	<string>Downloads the latest version of fseventer, and packages into a flag pkg. Currently just copies fseventer.app into pkgroot/Applications, and ignores the other files in the downloaded *.zip file. For more information about this application, see: http://www.fernlightning.com/doku.php?id=software:fseventer:start</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.pkg.fseventer</string>
 	<key>Input</key>
