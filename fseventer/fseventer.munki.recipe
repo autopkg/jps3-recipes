@@ -94,17 +94,6 @@ exit 0
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
 		</dict>
-        <dict>
-            <!-- Temporarily disabling Munki Import until I can figure out why it keeps importing the same package adding __1 __2 etc... -->
-            <key>Processor</key>
-            <string>StopProcessingIf</string>
-            <key>Arguments</key>
-            <dict>
-                <key>predicate</key>
-                <string>TRUEPREDICATE</string>
-            </dict>
-        </dict>
-<!--
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
@@ -114,7 +103,6 @@ exit 0
 				<string>%MUNKI_REPO_SUBDIRECTORY%</string>
 			</dict>
 		</dict>
--->
 	</array>
 </dict>
 </plist>
