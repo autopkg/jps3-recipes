@@ -37,10 +37,6 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
 			<string>Unarchiver</string>
 		</dict>
 		<dict>
@@ -62,6 +58,10 @@
 				<key>plist_version_key</key>
 				<string>CFBundleVersion</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
 </dict>
