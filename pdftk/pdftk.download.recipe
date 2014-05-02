@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest installer pkg of pdftk-server.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.download.pdftk</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>pdftk</string>
+        <key>DOWNLOAD_URL</key>
+        <string>http://www.pdflabs.com/tools/pdftk-server/</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_URL%</string>
+                <key>result_output_var_name</key>
+                <string>url</string>
+                <key>re_pattern</key>
+                <string>href="([^"]*/pdftk.server[^"]*osx[^"]*\.pkg)"</string>
+                <key>re_flags</key>
+                <array>
+                    <string>IGNORECASE</string>
+                </array>
+            </dict>
+		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+	</array>
+</dict>
+</plist>
