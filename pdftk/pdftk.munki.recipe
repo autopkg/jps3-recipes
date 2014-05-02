@@ -22,6 +22,19 @@
             <true/>
             <key>unattended_uninstall</key>
             <true/>
+            <key>preuninstall_script</key>
+            <string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+# Remove items created by pkg postflight/postinstall scripts not in BOMs
+[[ -L /usr/local/bin/pdftk ]] &amp;&amp; rm -f /usr/local/bin/pdftk
+rm -f "/opt/pdflabs/pdftk/bin/pdftk_uninstall.sh"
+exit 0</string>
+            <key>postuninstall_script</key>
+            <string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+# Remove items created by pkg postflight/postinstall scripts not in BOMs
+rmdir -p "/opt/pdflabs/pdftk"
+exit 0</string>
         </dict>
 	</dict>
 	<key>MinimumVersion</key>
