@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>pdftk</string>
         <key>MUNKI_REPO_SUBDIRECTORY</key>
-        <string>apps/%NAME%</string>
+        <string>opt/%NAME%</string>
         <key>pkginfo</key>
         <dict>
             <key>name</key>
