@@ -1,0 +1,12 @@
+#!/bin/bash
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+console_uid="$(stat -f "%u" /dev/console)"
+
+if [[ -n "$console_uid" && $console_uid -ne 0 ]]; then
+    console_user="$(id -un $console_uid)"
+    sudo -u $console_user /usr/bin/qlmanage -r
+fi
+
+exit 0
