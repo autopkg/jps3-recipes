@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of the BetterZip Quicklook Generator and imports into Munki repository.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.munki.BetterZipQL</string>
+	<key>Input</key>
+	<dict>
+        <key>MUNKI_REPO_SUBDIRECTORY</key>
+        <string>plugins/%NAME%</string> 
+        <key>pkginfo</key>
+        <dict>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>description</key>
+            <string>Wouldn't it be great if Mac OS X's Quick Look would let you inspect the contents of compressed archives? With the help of the BetterZip Quick Look Generator, it can.
+The currently supported archive formats are: ZIP, TAR, GZip, BZip2, ARJ, LZH, ISO, CHM, CAB, CPIO, RAR, 7-Zip, DEB, RPM, StuffIt's SIT, DiskDoubler, BinHex, and MacBinary.</string>
+            <key>postuninstall_script</key>
+            <string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+console_uid="$(stat -f "%u" /dev/console)"
+if [[ -n "$console_uid" &amp;&amp; $console_uid -ne 0 ]]; then
+    console_user="$(id -un $console_uid)"
+    sudo -u $console_user /usr/bin/qlmanage -r
+fi
+exit 0
+</string>
+        </dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+    <key>ParentRecipe</key>
+	<string>com.github.jps3.download.BetterZipQL</string>
+	<key>Process</key>
+	<array>
+        <dict>
+            <key>Processor</key>
+            <string>DmgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_root</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>dmg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIRECTORY%</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+                <key>additional_makepkginfo_options</key>
+                <array>
+                    <string>--itemname=%NAME%.qlgenerator</string>
+                    <string>--destinationpath=/Library/QuickLook</string>
+                </array>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>version</key>
+                    <string>%version%</string>
+                    <key>display_name</key>
+                    <string>%NAME%</string>
+                    <key>unattended_install</key>
+                    <true/>
+                    <key>unattended_uninstall</key>
+                    <true/>
+                </dict>
+            </dict>
+        </dict>
+	</array>
+</dict>
+</plist>
