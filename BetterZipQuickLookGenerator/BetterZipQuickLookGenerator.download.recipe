@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string></string>
+	<key>Identifier</key>
+	<string></string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string></string>
+        <key>DOWNLOAD_PAGE_URL</key>
+        <string>http://macitbetter.com/BetterZip-Quick-Look-Generator/</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string></string>
+            <key>Arguments</key>
+            <dict>
+            </dict>
+		</dict>
+	</array>
+</dict>
+</plist>
