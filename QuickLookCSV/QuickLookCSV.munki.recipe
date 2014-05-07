@@ -17,27 +17,7 @@
             <key>display_name</key>
             <string>%NAME%</string>
             <key>description</key>
-            <string></string>
-            <key>postinstall_script</key>
-            <string>#!/bin/bash
-PATH=/bin:/sbin:/usr/bin:/usr/sbin
-console_uid="$(stat -f "%u" /dev/console)"
-if [[ -n "$console_uid" &amp;&amp; $console_uid -ne 0 ]]; then
-    console_user="$(id -un $console_uid)"
-    sudo -u $console_user /usr/bin/qlmanage -r
-fi
-exit 0
-            </string>
-            <key>postuninstall_script</key>
-            <string>#!/bin/bash
-PATH=/bin:/sbin:/usr/bin:/usr/sbin
-console_uid="$(stat -f "%u" /dev/console)"
-if [[ -n "$console_uid" &amp;&amp; $console_uid -ne 0 ]]; then
-    console_user="$(id -un $console_uid)"
-    sudo -u $console_user /usr/bin/qlmanage -r
-fi
-exit 0
-            </string>
+            <string>A QuickLook plugin to quick look CSV files for Mac OS X 10.5+</string>
         </dict>
 	</dict>
 	<key>MinimumVersion</key>
@@ -46,6 +26,42 @@ exit 0
 	<string>com.github.jps3.download.QuickLookCSV</string>
 	<key>Process</key>
 	<array>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>version</key>
+                    <string>%version%</string>
+		            <key>unattended_install</key>
+		            <true/>
+		            <key>unattended_uninstall</key>
+		            <true/>
+		            <key>postinstall_script</key>
+		            <string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+console_uid="$(stat -f "%u" /dev/console)"
+if [[ -n "$console_uid" &amp;&amp; $console_uid -ne 0 ]]; then
+    console_user="$(id -un $console_uid)"
+    sudo -u $console_user /usr/bin/qlmanage -r
+fi
+exit 0
+		            </string>
+		            <key>postuninstall_script</key>
+		            <string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+console_uid="$(stat -f "%u" /dev/console)"
+if [[ -n "$console_uid" &amp;&amp; $console_uid -ne 0 ]]; then
+    console_user="$(id -un $console_uid)"
+    sudo -u $console_user /usr/bin/qlmanage -r
+fi
+exit 0
+		            </string>
+                </dict>
+            </dict>
+        </dict>
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
@@ -60,15 +76,6 @@ exit 0
                     <string>--itemname=%NAME%.qlgenerator</string>
                     <string>--destinationpath=/Library/QuickLook</string>
                 </array>
-                <key>additional_pkginfo</key>
-                <dict>
-	                <key>version</key>
-	                <string>%version%</string>
-                    <key>unattended_install</key>
-                    <true/>
-                    <key>unattended_uninstall</key>
-                    <true/>
-                </dict>
             </dict>
         </dict>
 	</array>
