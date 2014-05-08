@@ -45,6 +45,7 @@
                     <array>
                         <string>%NAME%</string>
                         <string>Terminal</string>
+                        <string>TotalTerminalCrashWatcher</string>
                     </array>
                 </dict>
             </dict>
