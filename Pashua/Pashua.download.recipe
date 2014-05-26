@@ -23,6 +23,10 @@ http://www.bluem.net/en/mac/pashua/</string>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
 	</array>
 </dict>
 </plist>
