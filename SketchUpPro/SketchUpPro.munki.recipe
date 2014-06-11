@@ -64,7 +64,7 @@ Note: It sppears that every major release is done annually and requires and upda
             <key>Arguments</key>
             <dict>
                 <key>pkg_path</key>
-                <string>%pathname%</string>
+                <string>%pkg_path%</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
                 <key>pkginfo</key>
