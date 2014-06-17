@@ -11,19 +11,35 @@
 		<key>NAME</key>
 		<string>Cura</string>
         <key>updates_url</key>
-        <string>http://software.ultimaker.com/latest.xml</string>
+        <string>http://software.ultimaker.com</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
 	<key>Process</key>
 	<array>
-	    <dict>
-	        <key>Processor</key>
-	        <string>CuraUrlProvider</string>
-	    </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%updates_url%</string>
+                <key>re_pattern</key>
+                <string>href="(?P&lt;download_path&gt;[^"]+(/+current/+)?Cura-(\d+\.?)+-MacOS\.dmg)"</string>
+                <key>re_flags</key>
+                <array>
+                    <string>IGNORECASE</string>
+                </array>
+            </dict>
+        </dict>
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%updates_url%/%download_path%</string>
+            </dict>
 		</dict>
 		<dict>
 			<key>Processor</key>
