@@ -61,6 +61,7 @@ class MeshmixerUrlProvider(Processor):
 		  </application>
 		</autodesk>
 
+        Friday; June 20, 2014
         Notes: (1) The 'min_os_version' attribute is *only* defined here, not in the pkg nor 
                    any payload or in Meshmixer.app bundle (ie. no LSMinimumSystemVersion key 
                    either)
@@ -68,6 +69,11 @@ class MeshmixerUrlProvider(Processor):
                    Meshmixer.app Info.plist (at this time version[@build_number] reports
                    "10.4.60" yet Meshmixer.app's CFBundleShortVersionString is "10.4.62"
                    and from package downloaded from URL in @link from this XML file.
+               (3) One sub-pkg is the Meshmixer.app (no scripts, just payload). The other
+                   sub-pkg are some support/demo/template files, and this is the problem
+                   installer: it installs to /tmp, then has postinstall script which then
+                   copies to ~/Documents/. (So only works for user installing at console,
+                   and *only* them. This is stupid.)
         """
         request = urllib2.Request(url=url)
 

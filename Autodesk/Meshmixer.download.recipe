@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Meshmixer 3D modeler for output to additive manufacturing devices (ie "3D printers").</string>
+	<string>Downloads the latest version of Meshmixer 3D modelling software used for output to 3D printers.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.download.Meshmixer</string>
 	<key>Input</key>
@@ -14,7 +14,7 @@
         <string>http://www.meshmixer.com/current_version.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.3.0</string>
 	<key>Process</key>
 	<array>
 		<dict>

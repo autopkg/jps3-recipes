@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string></string>
+	<string>This will download the latest Meshmixer installer pkg (via *.download.* parent recipe). It will then extract ONLY the Meshmixer.app from one of the sub-packages, wrap it in a *.dmg file and then import that app-dmg into Munki. (This completely ignores the borked template/demo/supporting file package, which may cause minor warnings from Meshmixer.app when certain menu items selected, but does not break overall application functionality.)</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.Meshmixer</string>
 	<key>Input</key>
@@ -18,7 +18,7 @@
         <string></string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.3.0</string>
     <key>ParentRecipe</key>
     <string>com.github.jps3.download.Meshmixer</string>
 	<key>Process</key>
