@@ -14,7 +14,7 @@
         <string>apps/%NAME%</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.3.0</string>
     <key>ParentRecipe</key>
     <string>com.github.jps3.download.Arduino</string>
 	<key>Process</key>
@@ -28,6 +28,8 @@
 				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				<key>dmg_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+                <key>dmg_megabytes</key>
+                <string>250</string>
 			</dict>
 		</dict>
 		<dict>
