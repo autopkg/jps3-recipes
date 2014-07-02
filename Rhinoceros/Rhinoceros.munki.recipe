@@ -14,7 +14,7 @@
         <string>apps/Rhinoceros</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.3.1</string>
     <key>ParentRecipe</key>
 	<string>com.github.hansen-m.download.Rhinoceros</string>
 	<key>Process</key>
