@@ -27,7 +27,7 @@ Note: It sppears that every major release is done annually and requires and upda
         <string>http://www.sketchup.com/download/all</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.9</string>
+    <string>0.3.1</string>
     <key>Process</key>
     <array>
         <dict>
