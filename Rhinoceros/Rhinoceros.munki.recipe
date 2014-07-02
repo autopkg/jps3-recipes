@@ -21,6 +21,21 @@
 	<array>
 		<dict>
 			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg/%NAME%.app</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Application: Robert McNeel &amp; Associates</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>

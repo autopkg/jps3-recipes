@@ -67,6 +67,21 @@
                 <string>%found_filename%/Contents/Info.plist</string>
             </dict>
         </dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%found_filename%</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Application: Ben Slaney</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
