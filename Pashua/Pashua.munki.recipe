@@ -14,6 +14,34 @@ http://www.bluem.net/en/mac/pashua/</string>
 		<string>Pashua</string>
         <key>url</key>
         <string>http://www.bluem.net/files/Pashua.dmg</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>Pashua is a tool for creating native Aqua dialog windows from programming languages that have none or only limi­ted support for graphic user inter­faces on Mac OS X. Currently, it supports Apple­Script, Perl, PHP, Python, Groovy, Rexx, Ruby, shell scripts and Tcl—and if your favourite language is not included in this list: writing the glue code for communicating with Pashua is pretty simple.
+
+The GUI elements which can be used for such dialogs include text in­put fields (single-line and multi-line), check­boxes, radio­buttons, combo boxes, popup menus, open panels or buttons. Moreover, it's possible to embed images or PDFs. Any data submitted from the dialog will be passed on to the calling script, which can (of course) use it for anything.
+
+http://www.bluem.net/en/mac/pashua/
+</string>
+            <key>display_name</key>
+            <string>%NAME%</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+            <key>unattended_uninstall</key>
+            <true/>
+            <key>blocking_applications</key>
+            <array>
+                <string>%NAME%</string>
+            </array>
+            <key>minimum_os_version</key>
+            <string>10.6</string>
+        </dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -38,34 +66,6 @@ http://www.bluem.net/en/mac/pashua/</string>
                 </array>
                 <key>repo_subdirectory</key>
                 <string>apps/Bluem</string>
-                <key>pkginfo</key>
-                <dict>
-                    <key>catalogs</key>
-                    <array>
-                        <string>testing</string>
-                    </array>
-                    <key>description</key>
-                    <string>Pashua is a tool for creating native Aqua dialog windows from programming languages that have none or only limi­ted support for graphic user inter­faces on Mac OS X. Currently, it supports Apple­Script, Perl, PHP, Python, Groovy, Rexx, Ruby, shell scripts and Tcl—and if your favourite language is not included in this list: writing the glue code for communicating with Pashua is pretty simple.
-
-The GUI elements which can be used for such dialogs include text in­put fields (single-line and multi-line), check­boxes, radio­buttons, combo boxes, popup menus, open panels or buttons. Moreover, it's possible to embed images or PDFs. Any data submitted from the dialog will be passed on to the calling script, which can (of course) use it for anything.
-
-http://www.bluem.net/en/mac/pashua/
-</string>
-                    <key>display_name</key>
-                    <string>%NAME%</string>
-                    <key>name</key>
-                    <string>%NAME%</string>
-                    <key>unattended_install</key>
-                    <true/>
-                    <key>unattended_uninstall</key>
-                    <true/>
-                    <key>blocking_applications</key>
-                    <array>
-                        <string>%NAME%</string>
-                    </array>
-                    <key>minimum_os_version</key>
-                    <string>10.6</string>
-                </dict>
             </dict>
 		</dict>
 	</array>

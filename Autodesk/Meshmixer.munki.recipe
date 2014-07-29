@@ -16,6 +16,27 @@
         <string>%NAME%</string>
         <key>MUNKI_DESCRIPTION</key>
         <string></string>
+        <key>pkginfo</key>
+        <dict>
+            <key>autoremove</key>
+            <true/>
+            <key>name</key>
+            <string>%MUNKI_NAME%</string>
+            <key>display_name</key>
+            <string>%MUNKI_DISPLAYNAME%</string>
+            <key>description</key>
+            <string>%MUNKI_DESCRIPTION%</string>
+            <key>minimum_os_version</key>
+            <string>%minimum_os_version%</string>
+            <key>unattended_install</key>
+            <true/>
+            <key>unattended_uninstall</key>
+            <true/>
+            <key>blocking_applications</key>
+            <array>
+                <string>%NAME%</string>
+            </array>
+        </dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
@@ -106,27 +127,6 @@
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
-                <key>pkginfo</key>
-                <dict>
-                    <key>autoremove</key>
-                    <true/>
-                    <key>name</key>
-                    <string>%MUNKI_NAME%</string>
-                    <key>display_name</key>
-                    <string>%MUNKI_DISPLAYNAME%</string>
-                    <key>description</key>
-                    <string>%MUNKI_DESCRIPTION%</string>
-                    <key>minimum_os_version</key>
-                    <string>%minimum_os_version%</string>
-                    <key>unattended_install</key>
-                    <true/>
-                    <key>unattended_uninstall</key>
-                    <true/>
-                    <key>blocking_applications</key>
-                    <array>
-                        <string>%NAME%</string>
-                    </array>
-                </dict>
             </dict>
 		</dict>
         <dict>

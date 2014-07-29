@@ -12,6 +12,25 @@
 		<string>PathFinder</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/PathFinder</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Path Finder offers the tools you need to access and manage your files quickly, accurately, and completely on OS X. A world-class operating system deserves a world-class file manager. Dive into a familiar interface packed with uncommonly powerful features and make your file system sing...</string>
+			<key>display_name</key>
+			<string>%NAME%</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>blocking_applications</key>
+			<array>
+				<string>%NAME%</string>
+			</array>
+		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
@@ -39,25 +58,6 @@
 				<string>%dmg_path%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
-				<key>pkginfo</key>
-				<dict>
-					<key>catalogs</key>
-					<array>
-						<string>testing</string>
-					</array>
-					<key>description</key>
-					<string>Path Finder offers the tools you need to access and manage your files quickly, accurately, and completely on OS X. A world-class operating system deserves a world-class file manager. Dive into a familiar interface packed with uncommonly powerful features and make your file system sing...</string>
-					<key>display_name</key>
-					<string>%NAME%</string>
-					<key>name</key>
-					<string>%NAME%</string>
-					<key>unattended_install</key>
-					<true/>
-					<key>blocking_applications</key>
-					<array>
-						<string>%NAME%</string>
-					</array>
-				</dict>
 			</dict>
 		</dict>
 	</array>

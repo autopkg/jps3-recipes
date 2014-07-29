@@ -20,6 +20,44 @@
 		<string>WacomIntuosProDriver</string>
 		<key>MUNKI_NAME</key>
 		<string>%NAME%</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>name</key>
+			<string>%MUNKI_NAME%</string>
+			<key>displayname</key>
+			<string>%MUNKI_DISPLAYNAME%</string>
+			<key>description</key>
+			<string>%MUNKI_DESCRIPTION%</string>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>minimum_os_version</key>
+			<string>10.6</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+uninstall_script="/Applications/Wacom Tablet.localized/Wacom Table Utility.app/Contents/Resources/uninstall.pl"
+if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
+	"$uninstall_script"
+else
+	logger -is "ERROR: Could not locate uninstall_script: $uninstall_script"
+	exit 1
+fi</string>
+			<key>notes</key>
+			<string>
+				- Items staged to /tmp/ from pkg, later moved elsewhere (thus not represented in pkg bom)
+					+ /Library/Frameworks/WacomMultiTouch.framework/
+					+ /Library/Internet Plug-Ins/WacomTabletPlugin.plugin
+				- A binary in one of the support apps creates the following:
+					+ /Library/LaunchAgents/com.wacom.wacomtablet.plist
+				- By using Wacom's uninstall script (called by this pkginfo's uninstall_script) all should be cleaned up appropriately.
+			</string>
+		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -41,44 +79,6 @@
                 <string>%MUNKI_REPO_SUBDIR%</string>
                 <key>munkiimport_pkgname</key>
                 <string>%WACOM_PKG_NAME%</string>
-				<key>pkginfo</key>
-				<dict>
-					<key>name</key>
-					<string>%MUNKI_NAME%</string>
-					<key>displayname</key>
-					<string>%MUNKI_DISPLAYNAME%</string>
-					<key>description</key>
-					<string>%MUNKI_DESCRIPTION%</string>
-					<key>catalogs</key>
-					<array>
-						<string>testing</string>
-					</array>
-					<key>minimum_os_version</key>
-					<string>10.6</string>
-					<key>unattended_install</key>
-					<true/>
-					<key>uninstall_method</key>
-					<string>uninstall_script</string>
-					<key>uninstall_script</key>
-					<string>#!/bin/bash
-		PATH=/bin:/sbin:/usr/bin:/usr/sbin
-		uninstall_script="/Applications/Wacom Tablet.localized/Wacom Table Utility.app/Contents/Resources/uninstall.pl"
-		if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
-			"$uninstall_script"
-		else
-			logger -is "ERROR: Could not locate uninstall_script: $uninstall_script"
-			exit 1
-		fi</string>
-					<key>notes</key>
-					<string>
-						- Items staged to /tmp/ from pkg, later moved elsewhere (thus not represented in pkg bom)
-							+ /Library/Frameworks/WacomMultiTouch.framework/
-							+ /Library/Internet Plug-Ins/WacomTabletPlugin.plugin
-						- A binary in one of the support apps creates the following:
-							+ /Library/LaunchAgents/com.wacom.wacomtablet.plist
-						- By using Wacom's uninstall script (called by this pkginfo's uninstall_script) all should be cleaned up appropriately.
-					</string>
-				</dict>
             </dict>
         </dict>
 	</array>
