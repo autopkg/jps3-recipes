@@ -20,10 +20,6 @@
 			</array>
 			<key>description</key>
 			<string>This is a BETA version of the Rhino 3D application for Mac OS X.</string>
-			<key>pkg_path</key>
-			<string>%pathname%</string>
-			<key>version</key>
-			<string>%version%</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>display_name</key>
@@ -81,6 +77,13 @@
 				<string>%MUNKI_REPO_SUBDIR%</string>
 				<key>version_comparison_key</key>
 				<string>CFBundleVersion</string>
+				<key>pkginfo</key>
+				<dict>
+					<key>pkg_path</key>
+					<string>%pathname%</string>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
