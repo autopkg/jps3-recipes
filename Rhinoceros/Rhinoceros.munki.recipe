@@ -12,6 +12,33 @@
 		<string>Rhinoceros</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/Rhinoceros</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>This is a BETA version of the Rhino 3D application for Mac OS X.</string>
+			<key>pkg_path</key>
+			<string>%pathname%</string>
+			<key>version</key>
+			<string>%version%</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>display_name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+			<key>minimum_os_version</key>
+			<string>10.7.0</string>
+			<key>blocking_applications</key>
+			<array>
+				<string>%NAME%</string>
+			</array>
+		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
@@ -54,33 +81,6 @@
 				<string>%MUNKI_REPO_SUBDIR%</string>
 				<key>version_comparison_key</key>
 				<string>CFBundleVersion</string>
-				<key>pkginfo</key>
-				<dict>
-					<key>catalogs</key>
-					<array>
-						<string>testing</string>
-					</array>
-					<key>description</key>
-					<string>This is a BETA version of the Rhino 3D application for Mac OS X.</string>
-					<key>pkg_path</key>
-					<string>%pathname%</string>
-					<key>version</key>
-					<string>%version%</string>
-					<key>name</key>
-					<string>%NAME%</string>
-					<key>display_name</key>
-					<string>%NAME%</string>
-					<key>unattended_install</key>
-					<true/>
-					<key>unattended_uninstall</key>
-					<true/>
-					<key>minimum_os_version</key>
-					<string>10.7.0</string>
-					<key>blocking_applications</key>
-					<array>
-						<string>%NAME%</string>
-					</array>
-				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>

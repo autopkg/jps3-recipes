@@ -12,6 +12,25 @@
 		<string>VueScan</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/VueScan</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>VueScan is a powerful, easy-to-use program that scans documents, photos and film; creates PDF, JPEG, TIFF and TXT files; supports nearly 2000 scanners; For more information go to http://www.hamrick.com.</string>
+			<key>display_name</key>
+			<string>%NAME%</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>blocking_applications</key>
+			<array>
+				<string>%NAME%</string>
+			</array>
+		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -26,25 +45,6 @@
 				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
-				<key>pkginfo</key>
-				<dict>
-					<key>catalogs</key>
-					<array>
-						<string>testing</string>
-					</array>
-					<key>description</key>
-					<string>VueScan is a powerful, easy-to-use program that scans documents, photos and film; creates PDF, JPEG, TIFF and TXT files; supports nearly 2000 scanners; For more information go to http://www.hamrick.com.</string>
-					<key>display_name</key>
-					<string>%NAME%</string>
-					<key>name</key>
-					<string>%NAME%</string>
-					<key>unattended_install</key>
-					<true/>
-					<key>blocking_applications</key>
-					<array>
-						<string>%NAME%</string>
-					</array>
-				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>

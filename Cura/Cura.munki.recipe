@@ -12,6 +12,27 @@
 		<string>Cura</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/%NAME%</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+	        <key>description</key>
+	        <string>Cura is developed by Ultimaker to make 3D printing as easy and streamlined as possible. It includes everything you need to prepare a 3D file for printing and to print it. Cura is fully preconfigured to work on the Ultimaker. Cura comes with a friendly setup program that help you install the latest firmware as well as calibrate your printer.</string>
+			<key>display_name</key>
+			<string>%NAME%</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+			<key>blocking_applications</key>
+			<array>
+				<string>%NAME%</string>
+			</array>
+		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -37,27 +58,6 @@
 				<string>%dmg_path%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
-				<key>pkginfo</key>
-				<dict>
-					<key>catalogs</key>
-					<array>
-						<string>testing</string>
-					</array>
-			        <key>description</key>
-			        <string>Cura is developed by Ultimaker to make 3D printing as easy and streamlined as possible. It includes everything you need to prepare a 3D file for printing and to print it. Cura is fully preconfigured to work on the Ultimaker. Cura comes with a friendly setup program that help you install the latest firmware as well as calibrate your printer.</string>
-					<key>display_name</key>
-					<string>%NAME%</string>
-					<key>name</key>
-					<string>%NAME%</string>
-					<key>unattended_install</key>
-					<true/>
-					<key>unattended_uninstall</key>
-					<true/>
-					<key>blocking_applications</key>
-					<array>
-						<string>%NAME%</string>
-					</array>
-				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
