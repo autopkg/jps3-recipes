@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string></string>
+	<key>Identifier</key>
+	<string>com.github.jps3.munki.DTerm</string>
+	<key>Input</key>
+	<dict>
+        <key>repo_subdirectory</key>
+        <string>apps/%NAME%</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>displayname</key>
+            <string>%NAME%</string>
+            <key>description</key>
+            <string>A command line anywhere and everywhere. Command line work isn't a separate task that should live on its own—it's an integrated part of your natural workflow. DTerm provides a context-sensitive command line that makes it fast and easy to run commands on the files you're working with and then use the results of those commands.</string>
+            <key>unattended_install</key>
+            <true/>
+            <key>unattended_uninstall</key>
+            <true/>
+        </dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.1</string>
+    <key>ParentRecipe</key>
+	<string>com.github.jps3.download.DTerm</string>
+	<key>Process</key>
+	<array>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>DmgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_root</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>dmg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+            </dict>
+        </dict>
+	</array>
+</dict>
+</plist>
