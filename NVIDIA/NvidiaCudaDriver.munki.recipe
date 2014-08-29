@@ -23,13 +23,11 @@
 From http://www.nvidia.com/object/mac-driver-archive.html
 
 (PLEASE NOTE: NVIDIA does not provide any means currently to verify the integrity of the downloaded software, the installer package or any of the software installed. Additionally it is provided solely via unsecured and unverifiable HTTP connections. Unless you absolutely must use this software, it is recommended that you do NOT install it unti such time as NVIDIA rectifies these important issues.)</string>
-            <key>version</key>
-            <string>%version%</string>
         </dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
-    <key>ParentReceipe</key>
+    <key>ParentRecipe</key>
 	<string>com.github.jps3.download.NvidiaCudaDriver</string>
 	<key>Process</key>
 	<array>
@@ -40,6 +38,11 @@ From http://www.nvidia.com/object/mac-driver-archive.html
             <dict>
                 <key>pkg_path</key>
                 <string>%destination_path%</string>
+                <key>pkginfo</key>
+                <dict>
+		            <key>version</key>
+		            <string>%version%</string>
+                </dict>
             </dict>
 		</dict>
 	</array>
