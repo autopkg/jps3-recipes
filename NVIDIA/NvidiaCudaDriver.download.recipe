@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest NVIDIA CUDA driver for Mac from the NVDIA web site. PLEASE NOTE: This package, while recommended by some vendors, such as Adobe for After Effects, is not signed. Neither is any of the software being installed, which is mostly system-level (ex. kexts or Extensions, Frameworks, and libraries). The installer pkg is also served over HTTP. It is pretty much a trifecta of security fail. But... for many situations until NVIDIA fixes this, it is all we have to work with.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.download.NvidiaCudaDriver</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>NvidiaCudaDriver</string>
+        <key>download_page_url</key>
+        <string>http://www.nvidia.com/object/cuda-mac-driver.html</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%download_page_url%</string>
+                <key>re_pattern</key>
+                <string>"(?P&lt;url&gt;https?://.*\.nvidia\.com/Mac/.+/cudadriver-(?P&lt;version&gt;[\d\.]+)-macos\.dmg)"</string>
+                <key>re_flags</key>
+                <array>
+                    <string>IGNORECASE</string>
+                </array>
+            </dict>
+		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_path</key>
+                <string>%pathname%/*.pkg</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+            </dict>
+        </dict>
+	</array>
+</dict>
+</plist>
