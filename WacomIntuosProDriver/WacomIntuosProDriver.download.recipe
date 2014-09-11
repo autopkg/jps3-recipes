@@ -23,9 +23,11 @@
 	            <key>url</key>
 	            <string>http://us.wacom.com/en/support/drivers</string>
 	            <key>re_pattern</key>
-				<string>(http://.+/drivers/mac/pro/WacomTablet[0-9-_\.]+.dmg)</string>
-                <key>result_output_var_name</key>
-                <string>url</string>
+				<string>(?P&lt;url&gt;https?://.*\.?wacom\.com/.*/drivers?/mac/pro[^/]*/WacomTablet.*\.dmg)</string>
+                <key>re_flags</key>
+                <array>
+                    <string>IGNORECASE</string>
+                </array>
 	        </dict>
 	    </dict>
 		<dict>
