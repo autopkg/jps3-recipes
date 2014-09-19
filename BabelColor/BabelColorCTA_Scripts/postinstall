@@ -1,0 +1,22 @@
+#!/bin/bash
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+# Postinstall script for BabelColorCTA package to correct permissions
+# (mostly to unset world-writable permissions). I do the 'search'
+# for the folder using the glob/wildcard because of the use of
+# parentheses and ampersand can cause oddities when scripting.
+
+ls -1d /Applications/BabelColor*CT*A* | while read appdir; do
+	find "${appdir}" -perm +0022 -exec chmod go-w {} \;
+done
+
+# Example env vars:
+# DSTVOLUME=/
+# DSTROOT=/
+# USER=root
+# SCRIPT_NAME=postinstall
+# PATH=/bin:/sbin:/usr/bin:/usr/sbin
+# INSTALL_PKG_SESSION_ID=com.babelcolor.BabelColorCTA
+# LANG=en_US.UTF-8
+# PACKAGE_PATH=/path/to/BabelColorCTA-4.2.0.pkg

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of BabelColor CT&amp;A (Intel) application.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.munki.BabelColorCTA</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>BabelColorCTA</string>
+		<key>repo_subdirectory</key>
+		<string>apps/%NAME%</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>display_name</key>
+			<string>BabelColor CT&amp;A</string>
+			<key>description</key>
+			<string>BabelColor CT&amp;A is a collection of tools specifically designed for Color Translation, measurement, &amp; Analysis. Tools are grouped by theme in individually managed windows; these windows are controlled with a menu or a toolbar window.
+
+The RGB vs RGB tool is a bidirectional RGB color-space translator and comparator tool. The RGB vs RGB tool accepts manually entered L*a*b* and RGB inputs; it does not require a color measurement instrument although many colorimeters and spectrophotometers can be used to input data (instruments purchased separately; a list of supported instruments is available here).
+
+All other tools need spectral data in order to provide results; these tools are collectively called spectral tools. The CRI tools can accept input from an i1Pro or i1Pro 2 fitted with am ambient adapter OR from a file (an instrument is NOT required). All other spectral tools require a connected i1Pro or i1Pro 2 spectrophotometer, manufactured by X-Rite (the FluoCheck tools can only use an i1Pro 2).
+
+http://www.babelcolor.com/index.htm#CTandA
+			</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+			<key>blocking_applications</key>
+			<array>
+				<string>BabelColor CT&amp;A.app</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.jps3.pkg.BabelColorCTA</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%pkgroot%</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/%APPPATH%</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
