@@ -47,6 +47,9 @@
 				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app/Contents/Info.plist</string>
 			</dict>
 		</dict>
+		<!-- 2014-09-22T10:55:40-0400
+		     Temporarily disable this check until developer updates code signature to
+		     conform with recent OS X 10.9.5 requirements.
 		<dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
@@ -62,6 +65,7 @@
 				</array>
 			</dict>
 		</dict>
+		-->
 	</array>
 </dict>
 </plist>
