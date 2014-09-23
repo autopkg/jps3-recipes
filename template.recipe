@@ -5,19 +5,19 @@
 	<key>Description</key>
 	<string></string>
 	<key>Identifier</key>
-	<string></string>
+	<string>com.github.jps3.action.NAME</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string></string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.4.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string></string>
+			<string>ProcessorNameHere</string>
             <key>Arguments</key>
             <dict>
             </dict>
