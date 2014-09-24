@@ -10,7 +10,9 @@
 	<dict>
 		<key>NAME</key>
 		<string>VueScan</string>
-        <key>MUNKI_REPO_SUBDIR</key>
+        <key>APPNAME</key>
+        <string>%NAME%.app</string>
+        <key>repo_subdirectory</key>
         <string>apps/VueScan</string>
 		<key>pkginfo</key>
 		<dict>
@@ -40,22 +42,11 @@
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>Copier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>%pathname%/%NAME%.app</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%.app</string>
+				<string>%pathname%/%APPNAME%</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Application: Edward Hamrick</string>
@@ -71,19 +62,6 @@
 			<dict>
 				<key>pkg_path</key>
 				<string>%pathname%</string>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-					<string>%RECIPE_CACHE_DIR%/%NAME%.app</string>
-				</array>
 			</dict>
 		</dict>
 	</array>
