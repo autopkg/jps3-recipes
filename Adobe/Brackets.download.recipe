@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Adobe Brackets.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.download.Brackets</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Brackets</string>
+		<key>latest_github_url</key>
+		<string>https://github.com/adobe/brackets/releases/latest</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+				<key>url</key>
+				<string>%latest_github_url%</string>
+				<key>re_pattern</key>
+				<string>(?P&lt;url_path&gt;/adobe/brackets/.*/?Brackets.*\.dmg)</string>
+				<key>re_flags</key>
+				<array>
+					<string>IGNORECASE</string>
+				</array>
+            </dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://github.com/%url_path%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>

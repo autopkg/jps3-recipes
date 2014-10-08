@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Adobe Brackets and imports into Munki repository.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.munki.Brackets</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Brackets</string>
+        <key>repo_subdirectory</key>
+        <string>apps/Adobe/</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>display_name</key>
+            <string>%NAME%</string>
+            <key>description</key>
+            <string>Brackets is an open source code editor for web designers and front-end developers. http://brackets.io/</string>
+            <key>unattended_install</key>
+            <true/>
+            <key>unattended_uninstall</key>
+            <true/>
+			<key>blocking_applications</key>
+			<array>
+				<string>%NAME%</string>
+				<string>%NAME%.app</string>
+			</array>
+        </dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.jps3.download.Brackets</string>
+	<key>Process</key>
+	<array>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+            </dict>
+        </dict>
+	</array>
+</dict>
+</plist>
