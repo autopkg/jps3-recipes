@@ -29,10 +29,8 @@ Note: This will not "clean up" previous installations (ex. /Applications/SketchU
             <string>%NAME%</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>unattended_install</key>
-            <true/>
-            <key>unattended_uninstall</key>
-            <true/>
+            <key>minimum_os_version</key>
+            <string>10.7</string>
             <key>blocking_applications</key>
             <array>
                 <string>SketchUp.app</string>
