@@ -3,11 +3,14 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads SketchUp Pro 2014 by looking for the first match on the download page, and imports into Munki repository.
+    <string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page, and imports into Munki repository.
 
 You can specify LOCALE (default: en) for alternative languages. At last check locales were: en, de, es, fr, it, ja, ko.
 
-Note: It sppears that every major release is done annually and requires and updated license. You will want to keep that in mind if you are automating your deployments without testing!</string>
+Note: It sppears that every major release is done annually and requires and updated license. You will want to keep that in mind if you are automating your deployments without testing!
+
+Note: This will not "clean up" previous installations (ex. /Applications/SketchUp 2014)
+</string>
     <key>Identifier</key>
     <string>com.github.jps3.munki.SketchUpPro</string>
     <key>Input</key>

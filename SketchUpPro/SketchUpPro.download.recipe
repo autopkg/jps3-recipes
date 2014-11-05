@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads SketchUp Pro 2014 by looking for the first match on the download page. 
+    <string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page. 
 
 You can specify LOCALE (default: en) for alternative languages. At last check locales were: en, de, es, fr, it, ja, ko.
 
