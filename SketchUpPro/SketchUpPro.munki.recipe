@@ -42,7 +42,7 @@ Note: This will not "clean up" previous installations (ex. /Applications/SketchU
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.3.1</string>
+    <string>0.4.1</string>
     <key>ParentRecipe</key>
     <string>com.github.jps3.pkg.SketchUpPro</string>
     <key>Process</key>
