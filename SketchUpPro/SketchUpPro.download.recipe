@@ -18,9 +18,7 @@ Note: It sppears that every major release is done annually and requires and upda
         <key>NAME</key>
         <string>SketchUpPro</string>
         <key>RELEASE_YEAR</key>
-        <string>2014</string>
-        <key>APPNAME</key>
-        <string>SketchUp.app</string>
+        <string>2015</string>
         <key>SU_FOLDER</key>
         <string>SketchUp %RELEASE_YEAR%</string>
         <key>SUP_DOWNLOAD_PAGE_URL</key>
