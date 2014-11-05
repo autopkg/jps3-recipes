@@ -30,7 +30,7 @@ Note: This will not "clean up" previous installations (ex. /Applications/SketchU
             <key>name</key>
             <string>%NAME%</string>
             <key>minimum_os_version</key>
-            <string>10.7</string>
+            <string>10.8</string>
             <key>blocking_applications</key>
             <array>
                 <string>SketchUp.app</string>
