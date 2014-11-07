@@ -33,7 +33,7 @@
 				<string>testing</string>
 			</array>
 			<key>minimum_os_version</key>
-			<string>10.6</string>
+			<string>10.8</string>
 			<key>uninstall_method</key>
 			<string>uninstall_script</string>
 			<key>uninstall_script</key>
@@ -66,6 +66,18 @@ fi</string>
         <!--
  The Wacom software typically comes as a *.pkg enclosed in a *.dmg file. However the sub-pkgs often have items in their Resources folder symlinked to the *.dmg root folder (ex. different language license or "read me" files. This causes issues if the entire *.dmg is not taken as a while, such as if the *.pkg is removed to another *.dmg in the Munki import process.
         -->
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+	                <key>version</key>
+	                <string>%version%</string>
+                </dict>
+            </dict>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>MunkiImporter</string>
