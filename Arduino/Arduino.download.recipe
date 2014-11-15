@@ -10,17 +10,24 @@
 	<dict>
 		<key>NAME</key>
 		<string>Arduino</string>
-        <key>DOWNLOAD_URL_STUB</key>
-        <string>https://code.google.com/p/arduino/downloads/list</string>
+        <key>DOWNLOAD_PAGE</key>
+        <string>http://arduino.cc/en/Main/Software</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.3.1</string>
+	<string>0.4.1</string>
 	<key>Process</key>
 	<array>
-	    <dict>
-	        <key>Processor</key>
-	        <string>ArduinoUrlProvider</string>
-	    </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_PAGE%</string>
+                <key>re_pattern</key>
+                <string>(?P&lt;url&gt;https?://[^/]+/download\.php\?f=/arduino-[\d\.]+-macosx\.zip)</string>
+            </dict>
+        </dict>
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -47,25 +54,17 @@
 				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app/Contents/Info.plist</string>
 			</dict>
 		</dict>
-		<!-- 2014-09-22T10:55:40-0400
-		     Temporarily disable this check until developer updates code signature to
-		     conform with recent OS X 10.9.5 requirements.
-		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Application: ARDUINO SA</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
-			</dict>
-		</dict>
-		-->
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app</string>
+                <key>requirement</key>
+                 <string> identifier "cc.arduino.Arduino" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7KT7ZWMCJT"</string>
+            </dict>
+        </dict>
 	</array>
 </dict>
 </plist>
