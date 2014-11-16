@@ -31,7 +31,7 @@
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.jps3.pkg.VitaminR</string>
+	<string>com.github.jps3.download.VitaminR</string>
 	<key>Process</key>
 	<array>
 		<dict>
