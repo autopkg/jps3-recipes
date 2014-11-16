@@ -12,7 +12,7 @@
 		<string>net.publicspace.dist.vitaminr2.pkg</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.3.1</string>
+	<string>0.4.1</string>
 	<key>ParentRecipe</key>
 	<string>com.github.jps3.download.VitaminR</string>
 	<key>Process</key>
