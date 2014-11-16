@@ -51,9 +51,7 @@
 				<string>%RECIPE_CACHE_DIR%/%NAME%/%APPNAME%.app/Contents/Info.plist</string>
 			</dict>
 		</dict>
-		<!-- 2014-09-22T11:05:08-0400
-		     Temporarily disable this check until developer updates code signature to
-		     conform with recent OS X 10.9.5 requirements.
+        <!--
 		<dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
@@ -61,15 +59,11 @@
 			<dict>
 				<key>input_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/%APPNAME%.app</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Application: Frank Reiff</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
+                <key>requirement</key>
+                <string>anchor apple generic and identifier "net.publicspace.dist.vitaminr2" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7Y9KW4ND8W")</string>
 			</dict>
 		</dict>
-		-->
+        -->
 	</array>
 </dict>
 </plist>
