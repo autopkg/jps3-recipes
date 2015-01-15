@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+    <string>Downloads the latest PDFEditorMac DMG from the web site, and imports into Munki repository. It is assumed that the newest version is the only version on the web page for the application.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.munki.PDFEditorMac</string>
+	<key>Input</key>
+    <dict>
+        <key>repo_subdirectory</key>
+        <string>apps/%NAME%</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>PDF Editor Mac is a free application on Mac OS X that allows users to add text, insert images, put watermarks to label their copyright, changing font size and color, and perform other changes of a PDF document.
+
+                After adding text and images, you can change the text font and color, resize the image height and width or move them as well. If you need to delete some words or text from the PDF, simply click on the eraser tool then erase. Rotating certain pages and modifying document layout is also important so as multiple drawing tools like lines, brushes, horizontal lines or vertical lines. Better than normal PDF Readers and Annotators, PDF Editor Mac can permanently save the modified PDF content changes. </string>
+            <key>display_name</key>
+            <string>%APPNAME%</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>blocking_applications</key>
+            <array>
+                <string>%APPNAME%</string>
+            </array>
+        </dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.1</string>
+    <key>ParentRecipe</key>
+	<string>com.github.jps3.download.PDFEditorMac</string>
+	<key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>requirement</key>
+                <string>anchor apple generic and identifier "com.PDFEditoMac.PDFEditorMac" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "64FUCXH424")</string>
+                <key>input_path</key>
+                <string>%pathname%/%APPNAME%</string>
+            </dict>
+        </dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>version_comparison_key</key>
+                <string>CFBundleVersion</string>
+            </dict>
+		</dict>
+	</array>
+</dict>
+</plist>
