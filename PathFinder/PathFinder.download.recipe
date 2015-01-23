@@ -13,7 +13,7 @@
 		<key>UPDATE_XML_HOST</key>
 		<string>http://sparkle.cocoatech.com</string>
 		<key>UPDATE_XML_PATH</key>
-		<string>PF6_LION.xml</string>
+		<string>PF7.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>
