@@ -39,7 +39,7 @@
 			<key>uninstall_script</key>
 			<string>#!/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
-uninstall_script="/Applications/Wacom Tablet.localized/Wacom Table Utility.app/Contents/Resources/uninstall.pl"
+uninstall_script="/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app/Contents/Resources/uninstall.pl"
 if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
 	"$uninstall_script"
 else
