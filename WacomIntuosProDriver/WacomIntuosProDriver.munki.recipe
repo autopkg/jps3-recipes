@@ -1,96 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Description</key>
-	<string>Downloads the current release version of Wacom Intuos Pro Driver and imports into Munki.</string>
-	<key>Identifier</key>
-	<string>com.github.jps3.munki.WacomIntuosProTabletDriver</string>
-	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>WacomIntuosProDriver</string>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>drivers</string>
-		<key>WACOM_PKG_NAME</key>
-		<string>Install Wacom Tablet.pkg</string>
-		<key>MUNKI_DESCRIPTION</key>
-		<string>Drivers and support software for the Wacom Intuos Pro tablets.</string>
-		<key>MUNKI_DISPLAYNAME</key>
-		<string>WacomIntuosProDriver</string>
-		<key>MUNKI_NAME</key>
-		<string>%NAME%</string>
-		<key>pkginfo</key>
+		<key>Description</key>
+		<string>Downloads the current release version of Wacom Intuos Pro Driver and imports into Munki.</string>
+		<key>Identifier</key>
+		<string>com.github.jps3.munki.WacomIntuosProTabletDriver</string>
+		<key>Input</key>
 		<dict>
-			<key>name</key>
-			<string>%MUNKI_NAME%</string>
-			<key>displayname</key>
-			<string>%MUNKI_DISPLAYNAME%</string>
-			<key>description</key>
-			<string>%MUNKI_DESCRIPTION%</string>
-			<key>catalogs</key>
-			<array>
-				<string>testing</string>
-			</array>
-			<key>minimum_os_version</key>
-			<string>10.8</string>
-			<key>uninstall_method</key>
-			<string>uninstall_script</string>
-			<key>uninstall_script</key>
-			<string>#!/bin/bash
+			<key>NAME</key>
+			<string>WacomIntuosProDriver</string>
+			<key>MUNKI_REPO_SUBDIR</key>
+			<string>drivers</string>
+			<key>WACOM_PKG_NAME</key>
+			<string>Install Wacom Tablet.pkg</string>
+			<key>MUNKI_DESCRIPTION</key>
+			<string>Drivers and support software for the Wacom Intuos Pro tablets.</string>
+			<key>MUNKI_DISPLAYNAME</key>
+			<string>WacomIntuosProDriver</string>
+			<key>MUNKI_NAME</key>
+			<string>%NAME%</string>
+			<key>pkginfo</key>
+			<dict>
+				<key>name</key>
+				<string>%MUNKI_NAME%</string>
+				<key>displayname</key>
+				<string>%MUNKI_DISPLAYNAME%</string>
+				<key>description</key>
+				<string>%MUNKI_DESCRIPTION%</string>
+				<key>catalogs</key>
+				<array>
+					<string>testing</string>
+				</array>
+				<key>minimum_os_version</key>
+				<string>10.8</string>
+				<key>uninstall_method</key>
+				<string>removepackages</string>
+				<key>preuninstall_script</key>
+				<string>#!/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
 uninstall_script="/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app/Contents/Resources/uninstall.pl"
+
+# Because Wacom's uninstall.pl script will fail when run from Munki
+# (it assumes $HOME and $USER are not empty), we are going to trick
+# the script just enough so that it uninstalls everything, and does
+# not fail or complain. See notes keys in pkginfo file for more
+# information on why we need to use this script.
+fakeout_user="foo"
+fakeout_home="$(mktemp -d -t _wacom_uninstall_tmp)"
+
 if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
-	"$uninstall_script"
+    echo "preuninstall_script: Calling Wacom uninstall script: ${uninstall_script}"
+    USER="${fakeout_user}" HOME="${fakeout_home}" "$uninstall_script" 
+    echo "preuninstall_script: End of Wacom uninstall script."
 else
-	logger -is "ERROR: Could not locate uninstall_script: $uninstall_script"
+	echo "preuninstall_script ERROR: Could not locate uninstall_script: $uninstall_script"
 	exit 1
-fi</string>
-			<key>notes</key>
-			<string>
-				- Items staged to /tmp/ from pkg, later moved elsewhere (thus not represented in pkg bom)
-					+ /Library/Frameworks/WacomMultiTouch.framework/
-					+ /Library/Internet Plug-Ins/WacomTabletPlugin.plugin
-				- A binary in one of the support apps creates the following:
-					+ /Library/LaunchAgents/com.wacom.wacomtablet.plist
-				- By using Wacom's uninstall script (called by this pkginfo's uninstall_script) all should be cleaned up appropriately.
-			</string>
+fi
+
+exit 0
+    </string>
+			</dict>
 		</dict>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>0.2.9</string>
-	<key>ParentRecipe</key>
-	<string>com.github.jps3.download.WacomIntuosProTabletDriver</string>
-	<key>Process</key>
-	<array>
-        <!--
+		<key>MinimumVersion</key>
+		<string>0.2.9</string>
+		<key>ParentRecipe</key>
+		<string>com.github.jps3.download.WacomIntuosProTabletDriver</string>
+		<key>Process</key>
+		<array>
+			<!--
  The Wacom software typically comes as a *.pkg enclosed in a *.dmg file. However the sub-pkgs often have items in their Resources folder symlinked to the *.dmg root folder (ex. different language license or "read me" files. This causes issues if the entire *.dmg is not taken as a while, such as if the *.pkg is removed to another *.dmg in the Munki import process.
         -->
-        <dict>
-            <key>Processor</key>
-            <string>MunkiPkginfoMerger</string>
-            <key>Arguments</key>
-            <dict>
-                <key>additional_pkginfo</key>
-                <dict>
-	                <key>version</key>
-	                <string>%version%</string>
-                </dict>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>MunkiImporter</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pkg_path</key>
-                <string>%pathname%</string>
-                <key>repo_subdirectory</key>
-                <string>%MUNKI_REPO_SUBDIR%</string>
-                <key>munkiimport_pkgname</key>
-                <string>%WACOM_PKG_NAME%</string>
-            </dict>
-        </dict>
-	</array>
-</dict>
+			<dict>
+				<key>Processor</key>
+				<string>MunkiPkginfoMerger</string>
+				<key>Arguments</key>
+				<dict>
+					<key>additional_pkginfo</key>
+					<dict>
+						<key>version</key>
+						<string>%version%</string>
+					</dict>
+				</dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>MunkiImporter</string>
+				<key>Arguments</key>
+				<dict>
+					<key>pkg_path</key>
+					<string>%pathname%</string>
+					<key>repo_subdirectory</key>
+					<string>%MUNKI_REPO_SUBDIR%</string>
+					<key>munkiimport_pkgname</key>
+					<string>%WACOM_PKG_NAME%</string>
+				</dict>
+			</dict>
+		</array>
+	</dict>
 </plist>
