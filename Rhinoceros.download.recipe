@@ -10,13 +10,8 @@
     <dict>
         <key>NAME</key>
         <string>Rhinoceros</string>
-        <key>SEARCH_URL_REQUESTE_EMAIL_ADDRESS</key>
-        <string>you@your.org</string>
-        <key>SEARCH_URL</key>
-        <string>http://www.rhino3d.com/download/wenatchee/5.0/wip?current_page=download_new</string>
-        <string>http://www.rhino3d.com/download/rhino-for-mac/5.0/wip</string>
-        <key>SEARCH_PATTERN</key>
-        <string>(?P&lt;url&gt;http.*?\.dmg)</string>
+        <key>appcast_url</key>
+        <string>http://files.na.mcneel.com/rhino/5.0/mac/wenatcheeUpdates.xml</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.9</string>
@@ -24,13 +19,11 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>URLTextSearcher</string>
+            <string>SparkleUpdateInfoProvider</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>%SEARCH_URL%</string>
-                <key>re_pattern</key>
-                <string>%SEARCH_PATTERN%</string>
+                <string>%appcast_url%</string>
             </dict>
         </dict>
         <dict>
