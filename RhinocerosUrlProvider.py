@@ -28,7 +28,7 @@ from operator import itemgetter
 
 __all__ = ["RhinocerosUrlProvider"]
 
-xml_namespaces = {"atom": "http://www.w3.org/2005/Atom"}
+namespaces = { "x": "http://www.w3.org/1999/xhtml" } # the current ns in web page
 
 class RhinocerosUrlProvider(Processor):
     description = "Attempts to divine download URL for the Rhinoceros *.dmg file, as well as the license key."
@@ -54,6 +54,9 @@ class RhinocerosUrlProvider(Processor):
     def main(self):
         """POSTs a request for the download page of Rhinoceros. The POST must provide a 'valid' email address (x@y.z). The resulting HTML contains both the license key text, as well as the URL for the *.dmg file.
         """
+        # A little safety net in case the source HTML changes at some point.
+        # (Insert gripes about how frustrating ElementTree is here.)
+        get_namespace = lambda: re.findall('\{([^\}]*)\}',htmldoc.getroot().tag)[0]
 
         try:
             request = urllib2.Request(url=url, data=post_data)
@@ -61,14 +64,12 @@ class RhinocerosUrlProvider(Processor):
         except:
             raise ProcessorError("Could not open URL %s" % request.get_full_url())
 
-        # TODO: need to handle namespace '{http://www.w3.org/1999/xhtml}'
-
-
         try:
             htmldoc = ElementTree().parse(url_handle)
             docroot = htmldoc.getroot()
         except:
             raise ProcessorError("Error parsing HTML download request page.")
+            
 
         #items = htmldoc.findall("release[@os='Darwin']")
         # TODO: logic to find the tags/data of interest
