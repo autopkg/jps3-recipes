@@ -10,8 +10,11 @@
     <dict>
         <key>NAME</key>
         <string>Rhinoceros</string>
+        <key>SEARCH_URL_REQUESTE_EMAIL_ADDRESS</key>
+        <string>you@your.org</string>
         <key>SEARCH_URL</key>
         <string>http://www.rhino3d.com/download/wenatchee/5.0/wip?current_page=download_new</string>
+        <string>http://www.rhino3d.com/download/rhino-for-mac/5.0/wip</string>
         <key>SEARCH_PATTERN</key>
         <string>(?P&lt;url&gt;http.*?\.dmg)</string>
     </dict>
