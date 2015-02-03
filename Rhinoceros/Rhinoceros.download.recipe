@@ -3,7 +3,8 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-		<string>Downloads the latest version Rhinoceros, and checks for a valid code signature.</string>
+        <string>Downloads the latest version Rhinoceros, and checks for a valid code signature.
+NOTE: Please be certain to enter your email address as the value for the REGISTRANT_EMAIL_ADDRESS variable or the download may fail.</string>
 		<key>Identifier</key>
 		<string>com.github.jps3.download.Rhinoceros</string>
 		<key>Input</key>
@@ -13,7 +14,7 @@
 			<key>DOWNLOAD_URL</key>
 			<string>http://www.rhino3d.com/download/rhino-for-mac/5.0/wip</string>
 			<key>REGISTRANT_EMAIL_ADDRESS</key>
-			<string>put_your_email@here.now</string>
+            <string></string>
 		</dict>
 		<key>MinimumVersion</key>
 		<string>0.4.0</string>
