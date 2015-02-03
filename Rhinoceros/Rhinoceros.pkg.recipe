@@ -3,16 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest stable Rhinoceros and creates flat *.pkg installer. This recipe relies upon com.github.hansen-m.download.Rhinoceros which can be found in the following repo: https://github.com/autopkg/hansen-m-recipes.git. Also Note: I am basing the Munki version off of the CFBundleVersion key in Rhinoceros.app's Info.plist, rather than CFBundleShortVersionString which seems fairly useless for versioning. </string>
+    <string>Downloads the latest stable Rhinoceros and creates flat *.pkg installer. 
+        
+Please Note: I am basing the version information Munki uses off of the CFBundleVersion key in Rhinoceros.app's Info.plist, rather than CFBundleShortVersionString which seems fairly useless for versioning. However, you can specify another key using the INFO_PLIST_VERSION_KEY variable in the Input section.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.pkg.Rhinoceros</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Rhinoceros</string>
+        <string>Rhinoceros</string>
+        <key>INFO_PLIST_VERSION_KEY</key>
+        <string>CFBundleVersion</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.3.1</string>
+	<string>0.4.2</string>
 	<key>ParentRecipe</key>
 	<string>com.github.jps3.download.Rhinoceros</string>
 	<key>Process</key>
@@ -25,7 +29,7 @@
 				<key>input_plist_path</key>
 				<string>%pathname%/%NAME%.app/Contents/Info.plist</string>
 				<key>plist_version_key</key>
-				<string>CFBundleVersion</string>
+                <string>%INFO_PLIST_VERSION_KEY%</string>
 			</dict>
 		</dict>
 		<dict>

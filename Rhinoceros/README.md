@@ -1,7 +1,9 @@
 Rhinoceros.munki
 ================
 
-*2015-02-03*
+**2015-02-03**
+*(Update): There may not be a way to "automagically" perform the registration before or after installation, it would appear to be a fairly complex process requiring manual, GUI intervention to complete the licensing. Download and import into Munki appears straightforward.* 
+
 The download recipe required a fairly major refactoring due to
 changes made to how the downloads from the publisher's web site
 were being done.
@@ -15,7 +17,7 @@ What to do with the license key (as far as any automation within
 a recipe is concerned) has not yet been determined.
 
 
-*(prior)*
+**(prior)**
 The original com.github.hansen-m.download.Rhinoceros recipe can
 still be found at:
 https://github.com/autopkg/hansen-m-recipes/tree/master/Rhinoceros
