@@ -20,7 +20,7 @@
 
 import urllib
 import urllib2
-from xml.etree import ElementTree
+from xml.etree import ElementTree as ET
 import re
 
 from autopkglib import Processor, ProcessorError
@@ -45,13 +45,13 @@ class RhinocerosUrlProvider(Processor):
         "url": {
             "description": "URL for downloading.",
         },
-        "license_key": {
+        "license_code": {
             "description": "Text string of license key as displayed on download page.",
         },
     }
     __doc__ = description
 
-    def make_http_post_data_string():
+    def make_http_post_data_string(self):
         # These values determined by capturing the HTTP POST request while using
         # a GUI browser (Google Chrome in this case, 'Inspect Element' is so handy!)
         values = {
@@ -68,7 +68,7 @@ class RhinocerosUrlProvider(Processor):
         # for parsing out xmlns string
         rgx_namespace = re.compile('\{([^\}]*)\}')
         # for parsing check of reasonably valid @href
-        rgx_download  = re.compile(r'^http.*\.dmg$')
+        rgx_download  = re.compile(r'^http.*\.dmg$', flags=re.IGNORECASE)
         # for parsing check of reasonably valid license key
         rgx_license   = re.compile('^(?:[A-Z0-9]{4}-){4,}(?:[A-Z0-9]{4})$')
 
@@ -77,10 +77,10 @@ class RhinocerosUrlProvider(Processor):
         get_namespace = lambda  : { "x": re.findall(rgx_namespace, htmldoc.getroot().tag)[0] }
 
         try:
-            request = urllib2.Request( url=download_url, data=make_http_post_data_string() )
+            request = urllib2.Request( url=self.env['download_form_url'], data=self.make_http_post_data_string() )
             url_handle = urllib2.urlopen(request)
         except:
-            raise ProcessorError("Could not open URL %s" % request.get_full_url())
+            raise ProcessorError("Could not open URL %s\ne=%s" % (self.env['download_form_url'],e))
 
         try:
             htmldoc = ET.parse(url_handle)
@@ -91,22 +91,22 @@ class RhinocerosUrlProvider(Processor):
 
         try:
             download_link = docroot.find("x:body//x:a[@class='btn download_link']", namespace).get('href')
-            assert re.findall(rgx_download, download_link, flags=re.IGNORECASE)
+            assert re.findall(rgx_download, download_link)
             self.output( "Found installer download URL: {}".format(download_link) )
         except:
-            raise ProcessorError("Unable to parse or identify installer download URL.")
+            raise ProcessorError("Unable to parse or identify installer download URL.\nerror: %s" % e)
 
         try:
             # TODO: toughen the xpath as the "@class='...'" is probably somewhat 
             # fragile (as per site developer whims)
             license_code = docroot.find("x:body//x:a[@class='btn download_link']/..//x:nobr",namespace).text
-            assert re.findall(rgx_license, license_code, flags=re.IGNORECASE)
-            self.output( "Found license key on download page: {}".format(license_key) )
+            assert re.findall(rgx_license, license_code)
+            self.output( "Found license key on download page: {}".format(license_code) )
         except:
             raise ProcessorError("Unable to parse or identify the license key from download page.")
 
         self.env["url"] = download_link
-        self.env["license_key"] = license_key        
+        self.env["license_code"] = license_code        
 
 if __name__ == "__main__":
     processor = RhinocerosUrlProvider()
