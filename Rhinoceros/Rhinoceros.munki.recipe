@@ -35,7 +35,7 @@ Please Note: I am basing the version information Munki uses off of the CFBundleV
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.4.2</string>
+	<string>0.4.0</string>
     <key>ParentRecipe</key>
 	<string>com.github.jps3.download.Rhinoceros</string>
 	<key>Process</key>
