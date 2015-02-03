@@ -24,12 +24,8 @@
 			<string>%NAME%</string>
 			<key>display_name</key>
 			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
-			<key>unattended_uninstall</key>
-			<true/>
 			<key>minimum_os_version</key>
-			<string>10.7.0</string>
+			<string>10.8.5</string>
 			<key>blocking_applications</key>
 			<array>
 				<string>%NAME%</string>
@@ -37,26 +33,11 @@
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.3.1</string>
+	<string>0.4.2</string>
     <key>ParentRecipe</key>
-	<string>com.github.hansen-m.download.Rhinoceros</string>
+	<string>com.github.jps3.download.Rhinoceros</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg/%NAME%.app</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Application: Robert McNeel &amp; Associates</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
-			</dict>
-		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>Versioner</string>
