@@ -101,7 +101,7 @@ class RhinocerosUrlProvider(Processor):
             # fragile (as per site developer whims)
             license_code = docroot.find("x:body//x:a[@class='btn download_link']/..//x:nobr",namespace).text
             assert re.findall(rgx_license, license_code)
-            self.output( "Found license key on download page: {}".format(license_code) )
+            self.output( "Found license key on download page: '{0}' for email address '{1}' [You will need this information later when launching the application for the first time]".format(license_code, self.env['registrant_email']) )
         except:
             raise ProcessorError("Unable to parse or identify the license key from download page.")
 
