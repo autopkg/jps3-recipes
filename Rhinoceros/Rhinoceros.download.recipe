@@ -3,7 +3,7 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-        <string>Downloads the latest version Rhinoceros, and checks for a valid code signature.
+		<string>Downloads the latest version Rhinoceros, and checks for a valid code signature.
 NOTE: Please be certain to enter your email address as the value for the REGISTRANT_EMAIL_ADDRESS variable or the download may fail.</string>
 		<key>Identifier</key>
 		<string>com.github.jps3.download.Rhinoceros</string>
@@ -14,7 +14,7 @@ NOTE: Please be certain to enter your email address as the value for the REGISTR
 			<key>DOWNLOAD_URL</key>
 			<string>http://www.rhino3d.com/download/rhino-for-mac/5.0/wip</string>
 			<key>REGISTRANT_EMAIL_ADDRESS</key>
-            <string></string>
+			<string/>
 		</dict>
 		<key>MinimumVersion</key>
 		<string>0.4.0</string>
@@ -50,21 +50,21 @@ NOTE: Please be certain to enter your email address as the value for the REGISTR
 					<key>file_path</key>
 					<string>%RECIPE_CACHE_DIR%/rhinoceros_registration</string>
 					<key>file_content</key>
-                    <string>%license_code%
+					<string>%license_code%
 </string>
 				</dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
-                <string>CodeSignatureVerifier</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>input_path</key>
-                    <string>%pathname%/%NAME%.app</string>
-                    <key>requirement</key>
-                    <string>identifier "com.mcneel.rhinoceros" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = D6XDM4N99E</string>
-                </dict>
-            </dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>CodeSignatureVerifier</string>
+				<key>Arguments</key>
+				<dict>
+					<key>input_path</key>
+					<string>%pathname%/%NAME%.app</string>
+					<key>requirement</key>
+					<string>identifier "com.mcneel.rhinoceros" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = D6XDM4N99E</string>
+				</dict>
+			</dict>
 			<dict>
 				<key>Processor</key>
 				<string>EndOfCheckPhase</string>
