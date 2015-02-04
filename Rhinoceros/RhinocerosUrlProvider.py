@@ -18,16 +18,16 @@
 #    AutoPkg/autopkglib/SparkleUpdateInfoProvider.py
 #
 
+import re
 import urllib
 import urllib2
 from xml.etree import ElementTree as ET
-import re
 
 from autopkglib import Processor, ProcessorError
-from distutils.version import LooseVersion
-from operator import itemgetter
+
 
 __all__ = ["RhinocerosUrlProvider"]
+
 
 class RhinocerosUrlProvider(Processor):
     description = "Attempts to divine download URL for the Rhinoceros *.dmg file, as well as the license key."
@@ -51,6 +51,7 @@ class RhinocerosUrlProvider(Processor):
     }
     __doc__ = description
 
+
     def make_http_post_data_string(self):
         # These values determined by capturing the HTTP POST request while using
         # a GUI browser (Google Chrome in this case, 'Inspect Element' is so handy!)
@@ -59,7 +60,9 @@ class RhinocerosUrlProvider(Processor):
             "direction_next": "Next >",
             "current_page": "license_info",
         }
-        return urllib.urlencode(values)
+        encoded_post_string = urllib.urlencode(values)
+        return encoded_post_string
+
 
     def main(self):
         """POSTs a request for the download page of Rhinoceros. The POST must provide a 'valid' email address (x@y.z). The resulting HTML contains both the license key text, as well as the URL for the *.dmg file.
@@ -74,13 +77,20 @@ class RhinocerosUrlProvider(Processor):
 
         # A little safety net in case the source HTML changes at some point, and
         # their DOCTYPE or xmlns changes.
+        # Ex. "{http://www.w3.org/1999/xhtml}html" will extract "http://www.w3.org/1999/xhtml"
         get_namespace = lambda  : { "x": re.findall(rgx_namespace, htmldoc.getroot().tag)[0] }
+
+        try:
+            assert self.env["registrant_email"]
+        except:
+            raise ProcessorError("You must specify a registrant email address using the REGISTRANT_EMAIL_ADDRESS key. Or create a recipe override and specify it there.")
 
         try:
             request = urllib2.Request( url=self.env['download_form_url'], data=self.make_http_post_data_string() )
             url_handle = urllib2.urlopen(request)
-        except:
-            raise ProcessorError("Could not open URL %s\ne=%s" % (self.env['download_form_url'],e))
+        except Exception as e:
+            #self.output("ERROR: {}".format(e))
+            raise ProcessorError( "Could not open URL {}".format(self.env['download_form_url']) )
 
         try:
             htmldoc = ET.parse(url_handle)
@@ -94,14 +104,14 @@ class RhinocerosUrlProvider(Processor):
             assert re.findall(rgx_download, download_link)
             self.output( "Found installer download URL: {}".format(download_link) )
         except:
-            raise ProcessorError("Unable to parse or identify installer download URL.\nerror: %s" % e)
+            raise ProcessorError("Unable to parse or identify installer download URL.")
 
         try:
             # TODO: toughen the xpath as the "@class='...'" is probably somewhat 
             # fragile (as per site developer whims)
             license_code = docroot.find("x:body//x:a[@class='btn download_link']/..//x:nobr",namespace).text
             assert re.findall(rgx_license, license_code)
-            self.output( "Found license key on download page: '{0}' for email address '{1}' [You will need this information later when launching the application for the first time]".format(license_code, self.env['registrant_email']) )
+            self.output( "Found license key on download page: '{0}' for email address '{1}' [You may need this information later when launching the application for the first time]".format(license_code, self.env['registrant_email']) )
         except:
             raise ProcessorError("Unable to parse or identify the license key from download page.")
 
