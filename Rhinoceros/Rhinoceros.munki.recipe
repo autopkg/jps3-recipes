@@ -3,11 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-    <string>Downloads the latest Rhinoceros, checks for a valid code signature, and imports into Munki. 
+    <string>Downloads the latest Rhinoceros, checks for a valid code signature, 
+and imports into Munki. 
 
-NOTE: Please be certain to enter your email address as the value for the REGISTRANT_EMAIL_ADDRESS variable or the download may fail.
+NOTE #1: Please be certain to enter your email address as the value 
+for the REGISTRANT_EMAIL_ADDRESS variable or the download may fail.
 
-Please Note: I am basing the version information Munki uses off of the CFBundleVersion key in Rhinoceros.app's Info.plist, rather than CFBundleShortVersionString which seems fairly useless for versioning. However, you can specify another key using the INFO_PLIST_VERSION_KEY variable in the Input section.</string>
+    </string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.Rhinoceros</string>
 	<key>Input</key>
@@ -16,8 +18,6 @@ Please Note: I am basing the version information Munki uses off of the CFBundleV
 		<string>Rhinoceros</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/Rhinoceros</string>
-        <key>INFO_PLIST_VERSION_KEY</key>
-        <string>CFBundleVersion</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -50,7 +50,7 @@ Please Note: I am basing the version information Munki uses off of the CFBundleV
 				<key>input_plist_path</key>
 				<string>%pathname%/%NAME%.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
-                <string>%INFO_PLIST_VERSION_KEY%</string>
+                <string>CFBundleVersion</string>
 			</dict>
 		</dict>
 		<dict>
