@@ -19,15 +19,14 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-	        <string>The open-source Arduino environment makes it easy to write code and upload it to the i/o board. It runs on Windows, Mac OS X, and Linux. The environment is written in Java and based on Processing, avr-gcc, and other open source software.</string>			
+            <string>The open-source Arduino environment makes it easy to write code and upload it to the i/o board. It runs on Windows, Mac OS X, and Linux. The environment is written in Java and based on Processing, avr-gcc, and other open source software.</string>			
+            <string>The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. It runs on Windows, Mac OS X, and Linux. The environment is written in Java and based on Processing and other open-source software.
+                This software can be used with any Arduino board.
+            </string>
 			<key>display_name</key>
 			<string>%NAME%</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
-			<key>unattended_uninstall</key>
-			<true/>
 			<key>blocking_applications</key>
 			<array>
 				<string>%NAME%</string>
@@ -48,9 +47,9 @@
 				<key>dmg_root</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				<key>dmg_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
                 <key>dmg_megabytes</key>
-                <string>250</string>
+                <string>500</string>
 			</dict>
 		</dict>
 		<dict>
