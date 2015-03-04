@@ -1,7 +1,11 @@
 Rhinoceros.munki
 ================
 
-**Be certain to supply a valid email address to the `REGISTRANT_EMAIL_ADDRESS` variable or you will see errors from AutoPkg.**
+**2015-03-04**
+Apparently I missed the simpler solution, making the previous solution much more complicated than necessary. In this update we completely eschew the need for any "registrant email," etc. All that needs to be done is parse out the build number and download the `*.dmg` directly since only the build number changes in the basic download URL pattern. `#facepalm`
+
+
+~~**Be certain to supply a valid email address to the `REGISTRANT_EMAIL_ADDRESS` variable or you will see errors from AutoPkg.**~~
 
 **2015-02-05**
 I have done one test with the licensing, which as a result, it seems feasible to create a Munki update package for the main Rhinoceros pkg. On a virgin test Mac (Rhinoceros would not run in a VMware Fusion instance for me, even with the "Accelerated 3D Graphics" option enabled), I downloaded and installed Rhinoceros.app, copied it to /Applications and launched it. At some point shortly thereafter I was prompted to register the software. Before that process completed, I was prompted for admin credentials. I found that two files were created:
