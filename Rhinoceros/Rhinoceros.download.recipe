@@ -40,7 +40,11 @@
                     <key>url</key>
                     <string>%DOWNLOAD_URL_STUB%_%build_number%.dmg</string>
                 </dict>
-			</dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
 			<dict>
 				<key>Processor</key>
 				<string>CodeSignatureVerifier</string>
