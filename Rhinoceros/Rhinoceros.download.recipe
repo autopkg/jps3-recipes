@@ -3,56 +3,43 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-		<string>Downloads the latest version Rhinoceros, and checks for a valid code signature.
-NOTE: Please be certain to enter your email address as the value for the REGISTRANT_EMAIL_ADDRESS variable or the download may fail.</string>
+		<string>Downloads the latest version Rhinoceros.</string>
 		<key>Identifier</key>
 		<string>com.github.jps3.download.Rhinoceros</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>
 			<string>Rhinoceros</string>
-			<key>DOWNLOAD_URL</key>
-			<string>http://www.rhino3d.com/download/rhino-for-mac/5.0/wip</string>
-			<key>REGISTRANT_EMAIL_ADDRESS</key>
-			<string/>
+			<key>SEARCH_URL</key>
+            <string>http://www.rhino3d.com/download/rhino-for-mac/5.0/wip</string>
+            <key>DOWNLOAD_URL_STUB</key>
+            <string>http://files.mcneel.com/Releases/Rhino/5.0/Mac/rhinoceros_wip</string>
 		</dict>
 		<key>MinimumVersion</key>
 		<string>0.4.0</string>
 		<key>Process</key>
-		<array>
-			<dict>
-				<key>Processor</key>
-				<string>RhinocerosUrlProvider</string>
-				<key>Arguments</key>
-				<dict>
-					<key>download_form_url</key>
-					<string>%DOWNLOAD_URL%</string>
-					<key>registrant_email</key>
-					<string>%REGISTRANT_EMAIL_ADDRESS%</string>
-				</dict>
-			</dict>
-			<dict>
-				<key>Processor</key>
-				<string>URLDownloader</string>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>URLTextSearcher</string>
 				<key>Arguments</key>
 				<dict>
 					<key>url</key>
-					<string>%url%</string>
-					<key>filename</key>
-					<string>%NAME%.dmg</string>
+                    <string>%SEARCH_URL%</string>
+                    <key>result_output_var_name</key>
+                    <string>build_number</string>
+                    <key>re_pattern</key>
+                    <string>(5A\d{3,}) \s*|.* change\s+log</string>
 				</dict>
-			</dict>
+            </dict>
 			<dict>
 				<key>Processor</key>
-				<string>FileCreator</string>
-				<key>Arguments</key>
-				<dict>
-					<key>file_path</key>
-					<string>%RECIPE_CACHE_DIR%/rhinoceros_registration</string>
-					<key>file_content</key>
-					<string>%license_code%
-</string>
-				</dict>
+                <string>URLDownloader</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>url</key>
+                    <string>%DOWNLOAD_URL_STUB%_%build_number%.dmg</string>
+                </dict>
 			</dict>
 			<dict>
 				<key>Processor</key>
@@ -68,7 +55,7 @@ NOTE: Please be certain to enter your email address as the value for the REGISTR
 			<dict>
 				<key>Processor</key>
 				<string>EndOfCheckPhase</string>
-			</dict>
+            </dict>
 		</array>
 	</dict>
 </plist>

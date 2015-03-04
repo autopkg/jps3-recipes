@@ -3,13 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-    <string>Downloads the latest Rhinoceros, checks for a valid code signature, 
-and imports into Munki. 
-
-NOTE #1: Please be certain to enter your email address as the value 
-for the REGISTRANT_EMAIL_ADDRESS variable or the download may fail.
-
-    </string>
+    <string>Downloads the latest Rhinoceros and imports into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.Rhinoceros</string>
 	<key>Input</key>
