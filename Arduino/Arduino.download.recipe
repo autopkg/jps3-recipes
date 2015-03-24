@@ -25,12 +25,17 @@
                 <key>url</key>
                 <string>%DOWNLOAD_PAGE%</string>
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;https?:\/\/(?:[^\/]*)arduino\.cc\/[^"']+-macosx\.zip)</string>
+                <string>(?P&lt;url&gt;https?:\/\/(?:[^\/]*)arduino\.cc\/(?:download_handler\.php\?f=\/)(?P&lt;filename&gt;[^"']+-macosx\.zip))</string>
             </dict>
         </dict>
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://downloads.arduino.cc/%filename%</string>
+            </dict>
 		</dict>
 		<dict>
 			<key>Processor</key>
