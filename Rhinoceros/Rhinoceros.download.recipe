@@ -29,7 +29,7 @@
                     <key>result_output_var_name</key>
                     <string>build_number</string>
                     <key>re_pattern</key>
-                    <string>(5A\d{3,}) \s*|.* change\s+log</string>
+                    <string>(5A[\w\d]{3,}) \s*|.* change\s+log</string>
 				</dict>
             </dict>
 			<dict>
