@@ -13,7 +13,7 @@
 			<key>SEARCH_URL</key>
             <string>http://www.rhino3d.com/download/rhino-for-mac/5.0/wip</string>
             <key>DOWNLOAD_URL_STUB</key>
-            <string>http://files.mcneel.com/Releases/Rhino/5.0/Mac/rhinoceros_wip</string>
+            <string>http://files.mcneel.com/Releases/Rhino/5.0/Mac</string>
 		</dict>
 		<key>MinimumVersion</key>
 		<string>0.4.0</string>
@@ -38,7 +38,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>%DOWNLOAD_URL_STUB%_%build_number%.dmg</string>
+                    <string>%DOWNLOAD_URL_STUB%/Rhinoceros_%build_number%.dmg</string>
                 </dict>
             </dict>
             <dict>
