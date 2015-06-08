@@ -24,8 +24,11 @@
             <dict>
                 <key>url</key>
                 <string>%DOWNLOAD_PAGE%</string>
+                <!-- 2015-06-08
+                //www.arduino.cc/download_handler.php?f=/arduino-1.6.4-macosx.zip
+                -->
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;https?:\/\/(?:[^\/]*)arduino\.cc\/(?:download_handler\.php\?f=\/)(?P&lt;filename&gt;[^"']+-macosx\.zip))</string>
+                <string>(?P&lt;url&gt;(https?:)?\/\/(?:[^\/]*)arduino\.cc\/(?:download_handler\.php\?f=\/)(?P&lt;filename&gt;/?[^"']+-macosx\.zip))</string>
             </dict>
         </dict>
 		<dict>
