@@ -25,7 +25,7 @@
 				<key>url</key>
 				<string>%DOWNLOAD_PAGE%</string>
 				<key>re_pattern</key>
-				<string>href="[^"]*(%NAME%-osx-.+-?stable.dmg)"</string>
+                <string>href="[^"]*/?(%NAME%-osx-[^"]+-?stable\.dmg)"</string>
 				<key>re_flags</key>
 				<array>
 					<string>IGNORECASE</string>
