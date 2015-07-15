@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright 2014 Jason Stanford
+# Copyright 2015 Jason Stanford
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,95 +20,62 @@
 
 
 import urllib2
-from xml.etree import ElementTree
+import platform
+import json
 
 from autopkglib import Processor, ProcessorError
 from distutils.version import LooseVersion
-from operator import itemgetter
 
 __all__ = ["CuraUrlProvider"]
 
-xml_namespaces = {"atom": "http://www.w3.org/2005/Atom"}
+CURA_URL = 'http://software.ultimaker.com/latest.json'
+CURA_EXT = 'dmg'
 
 class CuraUrlProvider(Processor):
     description = "docstring for CuraUrlProvider"
-    input_variables = {
-        "updates_url": {
-            "required": True,
-            "description": "The URL to the XML update feed.",
-        },
-    }
+    input_variables = {}
     output_variables = {
         "url": {
-            "description": "URL for downloading.",
-        },
-        "version": {
-            "description": "Version of the Cura download.",
-        },
-        "mime_type": {
-            "description": "MIME Type of download file.",
+            "description": "CURA_URL for downloading.",
         },
     }
     __doc__ = description
     
-    def get_feed_items(self, url):
-        """Retrieves XML updated feed data from URL.
-        Example snippet:
-        <cura>
-        ...
-        	<release os="Darwin" major="14" minor="3" revision="0">
-        		<filename>Cura-14.03-MacOS.dmg</filename>
-        	</release>
-        ...
-        </cura>
-        """
+    def get_latest_json(self, url):
+        """Retrieves 'latest.json' file"""
         request = urllib2.Request(url=url)
 
         try:
             url_handle = urllib2.urlopen(request)
         except:
-            raise ProcessorError("Could not open URL %s" % request.get_full_url())
+            raise ProcessorError("Could not open CURA_URL %s" % request.get_full_url())
 
         data = url_handle.read()
 
         try:
-            xmldata = ElementTree.fromstring(data)
+            latest = json.loads(data)
         except:
-            raise ProcessorError("Error parsing XML from appcast feed.")
+            raise ProcessorError("Error parsing JSON data from {}.".format(url))
 
-        items = xmldata.findall("release[@os='Darwin']")
-        
-        versions = []
-        for item_elem in items:
-            item = {}
-            release_major = item_elem.attrib['major']
-            release_revision = item_elem.attrib['revision']
-            release_minor = item_elem.attrib['minor']
-            item["version"] = "%s.%s%s" % (release_major, release_revision, release_minor)
-            filepath = "current/%s" % item_elem.find('filename').text
-            item["url"] = urllib2.urlparse.urljoin(url, filepath)
+        zeropad = lambda i: "{:02d}".format(i)
+        getdatum = lambda s: latest['cura']['Darwin'][s]
 
-            if item["url"] is None:
-                raise ProcessorError("Could not extract download URL in information from entry from feed!")
-            if item["version"] is None:
-                raise ProcessorError("Could not extract version information from entry in feed!")
-            versions.append(item)
+        release_major = getdatum('major')
+        release_minor = zeropad(getdatum('minor'))
+        release_revision = zeropad(getdatum('revision'))
+        filepath = "{maj}.{min}/Cura-{maj}.{min}.{rev}-{sys}.{ext}".format(
+                        maj=release_major, min=release_minor, rev=release_revision, sys=platform.system(), ext=CURA_EXT)
+        try:
+            self.env["url"] = urllib2.urlparse.urljoin(url, filepath)
+        except:
+            raise ProcessorError("An error occured when attempting to construct the download URL from the latest.json update data.")
 
-        return versions
-
+        return
 
 
     def main(self):
-        def compare_version(a,b):
-            return cmp(LooseVersion(a), LooseVersion(b))
-
-        items = self.get_feed_items(self.env.get("updates_url"))
-        sorted_items = sorted( items, key=itemgetter("version"), cmp=compare_version)
-        latest = sorted_items[-1]
-        self.env["version"] = latest["version"]
-        self.output("Version retrieved from update feed: %s" % latest["version"])
-        self.env["url"] = latest["url"]
-        self.output("Found URL %s" % self.env["url"])
+        self.get_latest_json(CURA_URL)
+        self.output("Found download Cura download URL: {}".format(self.env["url"]))
 
 
 if __name__ == "__main__":
