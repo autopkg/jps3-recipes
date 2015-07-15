@@ -1,6 +1,9 @@
 Rhinoceros.munki
 ================
 
+**2015-07-15**
+_Late_ posting (apologies). These recipes are now deprecated. They'd originally been created to handle the Beta/RC. Now that Rhinoceros is (ostensibly) commercially available for licensing the original recipe's author is no longer supporting it (as he does not have access to licensed versions, and his labs are not planning on purchasing).
+
 **2015-03-04**
 Apparently I missed the simpler solution, making the previous solution much more complicated than necessary. In this update we completely eschew the need for any "registrant email," etc. All that needs to be done is parse out the build number and download the `*.dmg` directly since only the build number changes in the basic download URL pattern. `#facepalm`
 

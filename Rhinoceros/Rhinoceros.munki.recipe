@@ -3,70 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-    <string>Downloads the latest Rhinoceros and imports into Munki.</string>
+	<string>Rhinoceros is now a commercially licensed application. These recipes for downloading the Beta/RC binaries are no longer supported. Officially deprecated. Anyone who has licenses can take this over... (Original author has nothing to test with.)</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.Rhinoceros</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>Rhinoceros</string>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/Rhinoceros</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>catalogs</key>
-			<array>
-				<string>testing</string>
-			</array>
-			<key>description</key>
-			<string>This is a BETA version of the Rhino 3D application for Mac OS X.</string>
-			<key>name</key>
-			<string>%NAME%</string>
-			<key>display_name</key>
-			<string>%NAME%</string>
-			<key>blocking_applications</key>
-			<array>
-				<string>%NAME%</string>
-			</array>
-		</dict>
-	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.0</string>
     <key>ParentRecipe</key>
 	<string>com.github.jps3.download.Rhinoceros</string>
 	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%pathname%/%NAME%.app/Contents/Info.plist</string>
-                <key>plist_version_key</key>
-                <string>CFBundleVersion</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_path</key>
-				<string>%pathname%</string>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
-				<key>version_comparison_key</key>
-				<string>CFBundleVersion</string>
-				<key>pkginfo</key>
-				<dict>
-					<key>pkg_path</key>
-					<string>%pathname%</string>
-					<key>version</key>
-					<string>%version%</string>
-				</dict>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
-		</dict>
-	</array>
+	<array/>
 </dict>
 </plist>
