@@ -3,75 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string></string>
+	<string>[Wednesday; July 22, 2015] - DEPRECATED. Deletion from repo pending. App appears abandoned. No longer used at our site, no need to upkeep these recipes.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.DTerm</string>
-	<key>Input</key>
-	<dict>
-        <key>repo_subdirectory</key>
-        <string>apps/%NAME%</string>
-        <key>pkginfo</key>
-        <dict>
-            <key>name</key>
-            <string>%NAME%</string>
-            <key>displayname</key>
-            <string>%NAME%</string>
-            <key>description</key>
-            <string>A command line anywhere and everywhere. Command line work isn't a separate task that should live on its own—it's an integrated part of your natural workflow. DTerm provides a context-sensitive command line that makes it fast and easy to run commands on the files you're working with and then use the results of those commands.</string>
-            <key>unattended_install</key>
-            <true/>
-            <key>unattended_uninstall</key>
-            <true/>
-        </dict>
-	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
     <key>ParentRecipe</key>
 	<string>com.github.jps3.download.DTerm</string>
 	<key>Process</key>
-	<array>
-		<dict>
-            <key>Processor</key>
-            <string>Unarchiver</string>
-		</dict>
-        <dict>
-            <key>Processor</key>
-            <string>FileFinder</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pattern</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/*.app</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>Versioner</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_plist_path</key>
-                <string>%found_filename%/Contents/Info.plist</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>DmgCreator</string>
-            <key>Arguments</key>
-            <dict>
-                <key>dmg_root</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                <key>dmg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>MunkiImporter</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
-            </dict>
-        </dict>
-	</array>
+	<array/>
 </dict>
 </plist>
