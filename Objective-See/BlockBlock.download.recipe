@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Downloads the latest version of BlockBlock persistent OS component install monitor.</string>
+        <key>Identifier</key>
+        <string>com.github.jps3.download.BlockBlock</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>BlockBlock</string>
+            <key>DOWNLOAD_PAGE_URL</key>
+            <string>https://objective-see.com/products/blockblock.html</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.4.0</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>URLTextSearcher</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>url</key>
+                    <string>%DOWNLOAD_PAGE_URL%</string>
+                    <key>re_pattern</key>
+                    <string>"(?P&lt;url&gt;https://bitbucket.org/objective-see/deploy/downloads/%NAME%.*\.zip)"</string>
+                    <!-- https://bitbucket.org/objective-see/deploy/downloads/BlockBlock_0.9.3.zip -->
+                    <!-- So, how can we check digest signatures against what's downloaded "easily" -->
+                    <key>re_flags</key>
+                    <array>
+                        <string>IGNORECASE</string>
+                    </array>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
+        </array>
+    </dict>
+</plist>
