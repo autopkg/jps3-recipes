@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of KnockKnock (UI) persistent malware checker and imports into Munki repository.</string>
+	<string>Downloads the latest version of KnockKnock (UI) persistent malware checker with VirusTotal integration and imports into Munki repository.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.KnockKnock</string>
 	<key>Input</key>

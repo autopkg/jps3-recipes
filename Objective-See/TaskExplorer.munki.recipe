@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Objective-See’s TaskExplorer and imports into Munki repository.</string>
+	<string>Downloads the latest version of Objective-See’s TaskExplorer and imports into Munki repository with VirusTotal integration.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.TaskExplorer</string>
 	<key>Input</key>

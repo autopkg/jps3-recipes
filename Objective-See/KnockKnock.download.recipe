@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads the latest version of KnockKnock (UI) persistent malware checker.</string>
+        <string>Downloads the latest version of KnockKnock (UI) persistent malware checker with VirusTotal integration.</string>
         <key>Identifier</key>
         <string>com.github.jps3.download.KnockKnock</string>
         <key>Input</key>

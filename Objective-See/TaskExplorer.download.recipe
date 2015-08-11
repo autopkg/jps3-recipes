@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads the latest version of Objective-See’s TaskExplorer.</string>
+        <string>Downloads the latest version of Objective-See’s TaskExplorer with VirusTotal integration.</string>
         <key>Identifier</key>
         <string>com.github.jps3.download.TaskExplorer</string>
         <key>Input</key>
