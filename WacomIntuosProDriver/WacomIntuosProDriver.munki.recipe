@@ -52,7 +52,7 @@ fakeout_home="$(mktemp -d -t _wacom_uninstall_tmp)"
 
 if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
     echo "preuninstall_script: Calling Wacom uninstall script: ${uninstall_script}"
-    USER="${fakeout_user}" HOME="${fakeout_home}" "$uninstall_script" 
+    USER="${fakeout_user}" HOME="${fakeout_home}" "$uninstall_script"
     echo "preuninstall_script: End of Wacom uninstall script."
 else
 	echo "preuninstall_script ERROR: Could not locate uninstall_script: $uninstall_script"
@@ -64,14 +64,20 @@ exit 0
 			</dict>
 		</dict>
 		<key>MinimumVersion</key>
-		<string>0.2.9</string>
+		<string>0.4.1</string>
 		<key>ParentRecipe</key>
 		<string>com.github.jps3.download.WacomIntuosProTabletDriver</string>
 		<key>Process</key>
 		<array>
 			<!--
- The Wacom software typically comes as a *.pkg enclosed in a *.dmg file. However the sub-pkgs often have items in their Resources folder symlinked to the *.dmg root folder (ex. different language license or "read me" files. This causes issues if the entire *.dmg is not taken as a while, such as if the *.pkg is removed to another *.dmg in the Munki import process.
-        -->
+	 			The Wacom software typically comes as a *.pkg enclosed in a
+				*.dmg file. However the sub-pkgs often have items in their
+				Resources folder symlinked to the *.dmg root folder
+				(ex. different language license or "read me" files. This
+				causes issues if the entire *.dmg is not taken as a while,
+				such as if the *.pkg is removed to another *.dmg in the
+				Munki import process.
+	        -->
 			<dict>
 				<key>Processor</key>
 				<string>MunkiPkginfoMerger</string>
