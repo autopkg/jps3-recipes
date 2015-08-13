@@ -68,6 +68,15 @@ exit 0
 		<key>ParentRecipe</key>
 		<string>com.github.jps3.download.WacomIntuosProTabletDriver</string>
 		<key>Process</key>
+		<!--
+			The Wacom software typically comes as a *.pkg enclosed in a
+			*.dmg file. However the sub-pkgs often have items in their
+			Resources folder symlinked to the *.dmg root folder
+			(ex. different language license or "read me" files. This
+			causes issues if the entire *.dmg is not taken as a while,
+			such as if the *.pkg is removed to another *.dmg in the
+			Munki import process.
+		-->
 		<array>
 			<dict>
 				<key>Processor</key>
@@ -84,16 +93,6 @@ exit 0
 					</array>
 				</dict>
 			</dict>
-			<!--
-	 			The Wacom software typically comes as a *.pkg enclosed in a
-				*.dmg file. However the sub-pkgs often have items in their
-				Resources folder symlinked to the *.dmg root folder
-				(ex. different language license or "read me" files. This
-				causes issues if the entire *.dmg is not taken as a while,
-				such as if the *.pkg is removed to another *.dmg in the
-				Munki import process.
-	        -->
-			<dict>
 				<key>Processor</key>
 				<string>MunkiPkginfoMerger</string>
 				<key>Arguments</key>
