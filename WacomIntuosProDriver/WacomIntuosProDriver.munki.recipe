@@ -32,8 +32,6 @@
 				<array>
 					<string>testing</string>
 				</array>
-				<key>minimum_os_version</key>
-				<string>10.8</string>
 				<key>uninstall_method</key>
 				<string>removepackages</string>
 				<key>preuninstall_script</key>
@@ -52,7 +50,7 @@ fakeout_home="$(mktemp -d -t _wacom_uninstall_tmp)"
 
 if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
     echo "preuninstall_script: Calling Wacom uninstall script: ${uninstall_script}"
-    USER="${fakeout_user}" HOME="${fakeout_home}" "$uninstall_script" 
+    USER="${fakeout_user}" HOME="${fakeout_home}" "$uninstall_script"
     echo "preuninstall_script: End of Wacom uninstall script."
 else
 	echo "preuninstall_script ERROR: Could not locate uninstall_script: $uninstall_script"
@@ -64,14 +62,106 @@ exit 0
 			</dict>
 		</dict>
 		<key>MinimumVersion</key>
-		<string>0.2.9</string>
+		<string>0.4.1</string>
 		<key>ParentRecipe</key>
 		<string>com.github.jps3.download.WacomIntuosProTabletDriver</string>
 		<key>Process</key>
+		<!--
+			The Wacom software typically comes as a *.pkg enclosed in a
+			*.dmg file. However the sub-pkgs often have items in their
+			Resources folder symlinked to the *.dmg root folder
+			(ex. different language license or "read me" files. This
+			causes issues if the entire *.dmg is not taken as a while,
+			such as if the *.pkg is removed to another *.dmg in the
+			Munki import process.
+		-->
 		<array>
-			<!--
- The Wacom software typically comes as a *.pkg enclosed in a *.dmg file. However the sub-pkgs often have items in their Resources folder symlinked to the *.dmg root folder (ex. different language license or "read me" files. This causes issues if the entire *.dmg is not taken as a while, such as if the *.pkg is removed to another *.dmg in the Munki import process.
-        -->
+			<dict>
+				<key>Processor</key>
+				<string>CodeSignatureVerifier</string>
+				<key>Arguments</key>
+				<dict>
+					<key>input_path</key>
+					<string>%pathname%/Install Wacom Tablet.pkg</string>
+					<key>expected_authority_names</key>
+					<array>
+						<string>Developer ID Installer: Wacom Technology Corp.</string>
+						<string>Developer ID Certification Authority</string>
+						<string>Apple Root CA</string>
+					</array>
+				</dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>FlatPkgUnpacker</string>
+				<key>Arguments</key>
+				<dict>
+					<key>purge_destination</key>
+					<true/>
+					<key>destination_path</key>
+					<string>%RECIPE_CACHE_DIR%/pkgtmp</string>
+					<key>flat_pkg_path</key>
+					<string>%pathname%/Install Wacom Tablet.pkg</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>FileFinder</string>
+				<key>Arguments</key>
+				<dict>
+					<key>pattern</key>
+					<string>%RECIPE_CACHE_DIR%/pkgtmp/*.pkg</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>PkgPayloadUnpacker</string>
+				<key>Arguments</key>
+				<dict>
+					<key>purge_destination</key>
+					<true/>
+					<key>destination_path</key>
+					<string>%RECIPE_CACHE_DIR%/faux_root</string>
+					<key>pkg_payload_path</key>
+					<string>%found_filename%/Payload</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>MunkiInstallsItemsCreator</string>
+				<key>Arguments</key>
+				<dict>
+					<key>faux_root</key>
+					<string>%RECIPE_CACHE_DIR%/faux_root</string>
+					<key>installs_item_paths</key>
+					<array>
+						<string>/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app</string>
+						<string>/Applications/Wacom Tablet.localized/Wacom Desktop Center.app</string>
+						<string>/Library/Application Support/Tablet/WacomTabletDriver.app</string>
+						<string>/Library/PreferencePanes/WacomTablet.prefpane</string>
+					</array>
+					<key>version_comparison_key</key>
+					<string>CFBundleVersion</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>MunkiPkginfoMerger</string>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>PlistReader</string>
+				<key>Arguments</key>
+				<dict>
+					<key>plist_keys</key>
+					<dict>
+						<key>LSMinimumSystemVersion</key>
+						<string>minimum_os_version</string>
+					</dict>
+					<key>info_path</key>
+					<string>%RECIPE_CACHE_DIR%/faux_root/Applications/Wacom Tablet.localized/Wacom Desktop Center.app/Contents/Info.plist</string>
+				</dict>
+			</dict>
 			<dict>
 				<key>Processor</key>
 				<string>MunkiPkginfoMerger</string>
@@ -79,6 +169,8 @@ exit 0
 				<dict>
 					<key>additional_pkginfo</key>
 					<dict>
+						<key>minimum_os_version</key>
+						<string>%minimum_os_version%</string>
 						<key>version</key>
 						<string>%version%</string>
 					</dict>
