@@ -2,93 +2,129 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page, and imports into Munki repository.
+	<key>Description</key>
+	<string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page, and imports into Munki repository.
 
 You can specify LOCALE (default: en) for alternative languages. At last check locales were: en, de, es, fr, it, ja, ko.
 
 Note: It sppears that every major release is done annually and requires and updated license. You will want to keep that in mind if you are automating your deployments without testing!
 
-Note: This will not "clean up" previous installations (ex. /Applications/SketchUp 2014)
+Note: This will not &quot;clean up&quot; previous installations (ex. /Applications/SketchUp 2014)
 </string>
-    <key>Identifier</key>
-    <string>com.github.jps3.munki.SketchUpPro</string>
-    <key>Input</key>
-    <dict>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/%NAME%</string>
-        <key>pkginfo</key>
-        <dict>
-            <key>catalogs</key>
-            <array>
-                <string>testing</string>
-            </array>
-            <key>description</key>
-            <string>SketchUp Pro is the most intuitive way to design, document and communicate your ideas in 3D. http://www.sketchup.com/products/sketchup-pro</string>
-            <key>display_name</key>
-            <string>%NAME%</string>
-            <key>name</key>
-            <string>%NAME%</string>
-            <key>minimum_os_version</key>
-            <string>10.8</string>
-            <key>blocking_applications</key>
-            <array>
-                <string>SketchUp.app</string>
-                <string>Style Builder.app</string>
-                <string>Layout.app</string>
-            </array>
-        </dict>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>0.4.1</string>
-    <key>ParentRecipe</key>
-    <string>com.github.jps3.pkg.SketchUpPro</string>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Processor</key>
-            <string>MunkiPkginfoMerger</string>
-            <key>Arguments</key>
-            <dict>
-                <key>additional_pkginfo</key>
-                <dict>
-                    <key>version</key>
-                    <string>%version%</string>
-                </dict>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>MunkiInstallsItemsCreator</string>
-            <key>Arguments</key>
-            <dict>
-                <key>faux_root</key>
-                <string>%RECIPE_CACHE_DIR%/pkgroot</string>
-                <key>installs_item_paths</key>
-                <array>
-                    <string>/Applications/%SU_FOLDER%/SketchUp.app</string>
-                    <string>/Applications/%SU_FOLDER%/Layout.app</string>
-                    <string>/Applications/%SU_FOLDER%/Style Builder.app</string>
-                </array>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>MunkiPkginfoMerger</string>
-            <key>Arguments</key>
-            <dict/>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>MunkiImporter</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pkg_path</key>
-                <string>%pkg_path%</string>
-                <key>repo_subdirectory</key>
-                <string>%MUNKI_REPO_SUBDIR%</string>
-            </dict>
-        </dict>
-    </array>
+	<key>Identifier</key>
+	<string>com.github.jps3.munki.SketchUpPro</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>SketchUp Pro is the most intuitive way to design, document and communicate your ideas in 3D. http://www.sketchup.com/products/sketchup-pro</string>
+			<key>display_name</key>
+			<string>%NAME%</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>minimum_os_version</key>
+			<string>10.8</string>
+			<key>blocking_applications</key>
+			<array>
+				<string>SketchUp.app</string>
+				<string>Style Builder.app</string>
+				<string>Layout.app</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.jps3.download.SketchUpPro</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0755</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%pathname%/%SU_FOLDER%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/%SU_FOLDER%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/%SU_FOLDER%/SketchUp.app/Contents/Info.plist</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/%SU_FOLDER%/SketchUp.app</string>
+					<string>/Applications/%SU_FOLDER%/Layout.app</string>
+					<string>/Applications/%SU_FOLDER%/Style Builder.app</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+			<key>Arguments</key>
+			<dict/>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>munkiimport_appname</key>
+				<string>%SU_FOLDER%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
