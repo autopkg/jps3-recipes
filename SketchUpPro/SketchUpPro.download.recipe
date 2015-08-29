@@ -2,57 +2,57 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page. 
+	<key>Description</key>
+	<string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page. 
 
 You can specify LOCALE (default: en) for alternative languages. At last check locales were: en, de, es, fr, it, ja, ko.
 
 Note: It sppears that every major release is done annually and requires and updated license. You will want to keep that in mind if you are automating your deployments without testing!
 </string>
-    <key>Identifier</key>
-    <string>com.github.jps3.download.SketchUpPro</string>
-    <key>Input</key>
-    <dict>
-        <key>LOCALE</key>
-        <string>en</string>
-        <key>NAME</key>
-        <string>SketchUpPro</string>
-        <key>RELEASE_YEAR</key>
-        <string>2015</string>
-        <key>SU_FOLDER</key>
-        <string>SketchUp %RELEASE_YEAR%</string>
-        <key>SUP_DOWNLOAD_PAGE_URL</key>
-        <string>http://www.sketchup.com/download/all</string>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>0.4.1</string>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Processor</key>
-            <string>URLTextSearcher</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>%SUP_DOWNLOAD_PAGE_URL%</string>
-                <key>result_output_var_name</key>
-                <string>url</string>
-                <key>re_pattern</key>
-                <string>&quot;(http://.+/%NAME%.*%LOCALE%.*.dmg)&quot;</string>
-                <key>re_flags</key>
-                <array>
-                    <string>IGNORECASE</string>
-                </array>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-        </dict>
-    </array>
+	<key>Identifier</key>
+	<string>com.github.jps3.download.SketchUpPro</string>
+	<key>Input</key>
+	<dict>
+		<key>LOCALE</key>
+		<string>en</string>
+		<key>NAME</key>
+		<string>SketchUpPro</string>
+		<key>RELEASE_YEAR</key>
+		<string>2015</string>
+		<key>SU_FOLDER</key>
+		<string>SketchUp %RELEASE_YEAR%</string>
+		<key>SUP_DOWNLOAD_PAGE_URL</key>
+		<string>http://www.sketchup.com/download/all</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%SUP_DOWNLOAD_PAGE_URL%</string>
+				<key>result_output_var_name</key>
+				<string>url</string>
+				<key>re_pattern</key>
+				<string>&quot;(http://.+/SketchUpPro.*%LOCALE%.*.dmg)&quot;</string>
+				<key>re_flags</key>
+				<array>
+					<string>IGNORECASE</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
 </dict>
 </plist>
