@@ -79,6 +79,8 @@ Note: This will not &quot;clean up&quot; previous installations (ex. /Applicatio
 			<dict>
 				<key>input_plist_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/%SU_FOLDER%/SketchUp.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleVersion</string>
 			</dict>
 		</dict>
 		<dict>
@@ -100,6 +102,8 @@ Note: This will not &quot;clean up&quot; previous installations (ex. /Applicatio
 			<dict>
 				<key>faux_root</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+				<key>version_comparison_key</key>
+				<string>CFBundleVersion</string>
 				<key>installs_item_paths</key>
 				<array>
 					<string>/Applications/%SU_FOLDER%/SketchUp.app</string>
