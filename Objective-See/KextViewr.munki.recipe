@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Objective-See’s KextViewr and imports into Munki repository with VirusTotal integration.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.munki.KextViewr</string>
+	<key>Input</key>
+	<dict>
+		<key>repo_subdirectory</key>
+		<string>apps/Objective-See</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+            <string>View all modules on that are loaded in the OS kernel.
+                Modules that are loaded into the kernel are called kernel extension, or 'kexts.' They run at the OS's highest privilege level; ring-0. KextViewr displays all loaded kexts, along with their signing status, full path, VirusTotal detection ratios, and more! 
+            </string>
+			<key>display_name</key>
+			<string>%NAME%</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>blocking_applications</key>
+			<array>
+				<string>%NAME%.app</string>
+				<string>%NAME%</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.jps3.download.KextViewr</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app/Contents/Info.plist</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+            </dict>
+		</dict>
+	</array>
+</dict>
+</plist>
