@@ -3,15 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Cura 3D printer software as a dmg. From this it extracts Cura.app from the /Cura/ subfolder and copies to a new dmg file by itself. The input key `release_type` can be `stable` (default) or `beta`.</string>
+	<string>Downloads the latest version of Cura 3D printer software as a dmg. From this it extracts Cura.app from the /Cura/ subfolder and copies to a new dmg file by itself.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.download.Cura</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>Cura</string>
-		<key>release_type</key>
-		<string>stable</string>
 		<key>update_url_stub</key>
 		<string>http://software.ultimaker.com</string>
 	</dict>
