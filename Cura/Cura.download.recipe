@@ -26,7 +26,6 @@
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
-			<!-- If `RELEASE_TYPE` == `BETA` we should rename downloaded file to append 'BETA' somewhere, no? -->
 		</dict>
 		<dict>
 			<key>Processor</key>
