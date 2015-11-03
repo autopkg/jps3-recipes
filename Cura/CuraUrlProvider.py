@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Based on code Copyright 2013 Timothy Sutton 
+# Originally based on code Copyright 2013 Timothy Sutton
 #    AutoPkg/autopkglib/SparkleUpdateInfoProvider.py
 #
 
