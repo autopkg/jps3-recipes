@@ -18,13 +18,12 @@
 #    AutoPkg/autopkglib/SparkleUpdateInfoProvider.py
 #
 
-
 import urllib2
 import platform
+from distutils.version import LooseVersion
+from autopkglib import Processor, ProcessorError
 import json
 
-from autopkglib import Processor, ProcessorError
-from distutils.version import LooseVersion
 
 __all__ = ["CuraUrlProvider"]
 
