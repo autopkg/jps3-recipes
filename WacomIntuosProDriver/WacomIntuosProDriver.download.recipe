@@ -9,7 +9,9 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>WacomIntuosProDriver</string>
+        <string>WacomIntuosProDriver</string>
+        <key>DRIVERS_URL</key>
+        <string>https://www.wacom.com/en-us/support/product-support/drivers</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>
@@ -21,7 +23,7 @@
 	        <key>Arguments</key>
 	        <dict>
 	            <key>url</key>
-	            <string>http://us.wacom.com/en/support/drivers</string>
+                <string>%DRIVERS_URL%</string>
 	            <key>re_pattern</key>
                 <string>(?P&lt;url&gt;https?://.*\.?wacom\.com/.*/drivers?/mac/pro[^/]*/WacomTablet_(?P&lt;version&gt;[\w\d\.-]+)\.dmg)</string>
                 <key>re_flags</key>
