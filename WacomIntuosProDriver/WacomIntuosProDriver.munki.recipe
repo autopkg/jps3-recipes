@@ -119,11 +119,20 @@ exit 0
 				<key>Arguments</key>
 				<dict>
 					<key>purge_destination</key>
-					<true/>
+					<false/>
 					<key>destination_path</key>
 					<string>%RECIPE_CACHE_DIR%/faux_root</string>
 					<key>pkg_payload_path</key>
 					<string>%found_filename%/Payload</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>AddExecutePermissionsToDirectories</string>
+				<key>Arguments</key>
+				<dict>
+					<key>root_path</key>
+					<string>%RECIPE_CACHE_DIR%/faux_root</string>
 				</dict>
 			</dict>
 			<dict>
@@ -187,6 +196,22 @@ exit 0
 					<string>%MUNKI_REPO_SUBDIR%</string>
 					<key>munkiimport_pkgname</key>
 					<string>%WACOM_PKG_NAME%</string>
+				</dict>
+			</dict>
+			<dict>
+				<!-- 
+					Manual cleanup since we need to add the AddExecutePermissionsToDirectories 
+					step, thus precluding having PkgPayloadUnpacker purge 
+				-->
+				<key>Processor</key>
+				<string>PathDeleter</string>
+				<key>Arguments</key>
+				<dict>
+					<key>path_list</key>
+					<array>
+						<string>%RECIPE_CACHE_DIR%/faux_root</string>
+						<string>%RECIPE_CACHE_DIR%/pkgtmp</string>
+					</array>
 				</dict>
 			</dict>
 		</array>
