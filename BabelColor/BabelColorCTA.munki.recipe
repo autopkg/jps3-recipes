@@ -38,11 +38,12 @@ http://www.babelcolor.com/index.htm#CTandA
 			<key>blocking_applications</key>
 			<array>
 				<string>BabelColor CT&amp;A.app</string>
+				<string>CT&amp;A.app</string>
 			</array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.3.1</string>
+	<string>0.4.1</string>
 	<key>ParentRecipe</key>
 	<string>com.github.jps3.pkg.BabelColorCTA</string>
 	<key>Process</key>

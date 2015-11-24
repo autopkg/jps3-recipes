@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of BabelColor CT&amp;A (Intel) application.</string>
+	<string>Downloads the latest version of BabelColor CT&amp;A application.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.pkg.BabelColorCTA</string>
 	<key>Input</key>
@@ -11,12 +11,12 @@
 		<key>NAME</key>
 		<string>BabelColorCTA</string>
 		<key>APPNAME</key>
-		<string>BabelColor CT&amp;A.app</string>
+		<string>CT&amp;A.app</string>
 		<key>APPPATH</key>
-		<string>BabelColor CT&amp;A (Intel)/%APPNAME%</string>
+		<string>BabelColor CT&amp;A/%APPNAME%</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.3.1</string>
+	<string>0.4.1</string>
 	<key>ParentRecipe</key>
 	<string>com.github.jps3.download.BabelColorCTA</string>
 	<key>Process</key>

@@ -11,10 +11,10 @@
 		<key>NAME</key>
 		<string>BabelColorCTA</string>
         <key>url</key>
-        <string>http://www.babelcolor.com/download/BabelColor_OS_X_Intel.zip</string>
+        <string>http://www.babelcolor.com/download/CTA_OS_X.zip</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.3.1</string>
+	<string>0.4.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
