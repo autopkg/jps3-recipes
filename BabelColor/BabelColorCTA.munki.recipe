@@ -38,6 +38,7 @@ http://www.babelcolor.com/index.htm#CTandA
 			<key>blocking_applications</key>
 			<array>
 				<string>BabelColor CT&amp;A.app</string>
+				<string>CT&amp;A.app</string>
 			</array>
 		</dict>
 	</dict>
