@@ -10,6 +10,15 @@
 	<dict>
 		<key>NAME</key>
 		<string>Fritzing</string>
+        <!-- 2016-02-05T08:54:09-0500
+	            This is a note regarding security issues with Sparkle updates over http, as
+	            reported at https://vulnsec.com/2016/osx-apps-vulnerabilities/
+
+	            % curl -LI https://fritzing.org/download/feed/atom/mac-os-x-105/
+	            curl: (7) Failed to connect to macitbetter.com port 443: Connection refused
+
+	            Will need to test again at a later date and update as required.
+        -->
 		<key>FRITZING_UPDATES_URL</key>
 		<string>http://fritzing.org/download/feed/atom/mac-os-x-105/</string>
 	</dict>
