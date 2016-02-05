@@ -28,7 +28,7 @@ import xml.etree.ElementTree as ET
 
 __all__ = ["CuraUrlProvider"]
 
-CURA_URL_STUB_DEFAULT = 'http://software.ultimaker.com'
+CURA_URL_STUB_DEFAULT = 'https://software.ultimaker.com'
 CURA_EXT = 'dmg'
 
 
