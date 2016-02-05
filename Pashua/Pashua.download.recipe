@@ -13,10 +13,10 @@ http://www.bluem.net/en/mac/pashua/</string>
 		<key>NAME</key>
 		<string>Pashua</string>
         <key>url</key>
-        <string>http://www.bluem.net/files/Pashua.dmg</string>
+        <string>https://www.bluem.net/files/Pashua.dmg</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.4.2</string>
 	<key>Process</key>
 	<array>
 		<dict>
