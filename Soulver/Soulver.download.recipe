@@ -10,6 +10,17 @@
 	<dict>
 		<key>NAME</key>
 		<string>Soulver</string>
+		<!-- 
+			2016-02-05T11:27:53-0500
+
+			This is a note regarding security issues with Sparkle updates over http, as reported at:
+      		https://vulnsec.com/2016/osx-apps-vulnerabilities/
+
+      		When attempting to use 'https' in %appcast_url%, an Invalid Certificate Chain
+      		error is returned.
+
+      		Will have to revisit and test for https at a later date.
+		-->
 		<key>appcast_url</key>
 		<string>http://www.acqualia.com/soulver/appcast/soulver2.xml</string>
 	</dict>
