@@ -10,6 +10,11 @@
 	<dict>
 		<key>NAME</key>
 		<string>PDFEditorMac</string>
+		<!--
+			2016-02-05T12:20:30-0500
+			Attempted to identify HTTPS download URL(s).
+			Certificate name mismatch error.
+		-->
         <key>url</key>
         <string>http://www.pdfeditormac.com/down/pdfeditormac.dmg</string>
         <key>APPNAME</key>
