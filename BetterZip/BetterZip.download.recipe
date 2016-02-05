@@ -20,6 +20,15 @@
 			<string>SparkleUpdateInfoProvider</string>
             <key>Arguments</key>
             <dict>
+                <!-- 2016-02-05T08:42:55-0500 
+                        This is a note regarding security issues with Sparkle updates over http, as
+                        reported at https://vulnsec.com/2016/osx-apps-vulnerabilities/
+
+                        % curl -LI https://macitbetter.com/BetterZip3.rss
+                        curl: (7) Failed to connect to macitbetter.com port 443: Connection refused
+
+                        Will need to test again at a later date and update as required.
+                -->
                 <key>appcast_url</key>
                 <string>http://macitbetter.com/BetterZip3.rss</string>
             </dict>
