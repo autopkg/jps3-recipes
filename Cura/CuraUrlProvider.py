@@ -82,7 +82,7 @@ class CuraUrlProvider(Processor):
         return urllib2.urlparse.urljoin(stub_url, filepath)
 
     def main(self):
-        self.env["url"] = self.get_latest_feed_file()
+        self.env["url"] = self.get_latest_feed_file(self.env["update_url_stub"])
         self.output(
             "Found download Cura download URL: {}".format(self.env["url"]))
 
