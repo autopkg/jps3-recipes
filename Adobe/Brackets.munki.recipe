@@ -24,11 +24,6 @@
             <true/>
             <key>unattended_uninstall</key>
             <true/>
-			<key>blocking_applications</key>
-			<array>
-				<string>%NAME%</string>
-				<string>%NAME%.app</string>
-			</array>
         </dict>
 	</dict>
 	<key>MinimumVersion</key>
