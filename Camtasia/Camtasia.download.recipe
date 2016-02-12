@@ -18,8 +18,6 @@
             Certificate DNS name(s) do not match that of URL.
         -->
         <string>http://download.techsmith.com/camtasiamac/enu/camtasia.dmg</string>
-        <key>APPNAME</key>
-        <string>%NAME% 2.app</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.4.1</string>
