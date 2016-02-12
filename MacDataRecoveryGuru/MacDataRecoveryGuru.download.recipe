@@ -10,6 +10,11 @@
 	<dict>
 		<key>NAME</key>
 		<string>MacDataRecoveryGuru</string>
+        <!--
+            2016-02-05T11:51:49-0500
+            Tested for availability of HTTPS download.
+            Received invalid certificate chain error.
+        -->
         <key>URL</key>
         <string>http://macosxfilerecovery.com/datarecoveryproducts/data-recovery-guru/</string>
 	</dict>

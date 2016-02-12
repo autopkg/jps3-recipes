@@ -3,15 +3,15 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads the latest version of BlockBlock persistent OS component install monitor.</string>
+        <string>Downloads the latest version of Objective-See’s Ostiarius with VirusTotal integration.</string>
         <key>Identifier</key>
-        <string>com.github.jps3.download.BlockBlock</string>
+        <string>com.github.jps3.download.Ostiarius</string>
         <key>Input</key>
         <dict>
             <key>NAME</key>
-            <string>BlockBlock</string>
+            <string>Ostiarius</string>
             <key>DOWNLOAD_PAGE_URL</key>
-            <string>https://objective-see.com/products/blockblock.html</string>
+            <string>https://objective-see.com/products/ostiarius.html</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>
@@ -26,7 +26,6 @@
                     <string>%DOWNLOAD_PAGE_URL%</string>
                     <key>re_pattern</key>
                     <string>"(?P&lt;url&gt;https://bitbucket.org/objective-see/deploy/downloads/%NAME%.*\.zip)"</string>
-                    <!-- https://bitbucket.org/objective-see/deploy/downloads/BlockBlock_0.9.3.zip -->
                     <!-- So, how can we check digest signatures against what's downloaded "easily" -->
                     <key>re_flags</key>
                     <array>
@@ -47,12 +46,10 @@
                 <string>Unarchiver</string>
                 <key>Arguments</key>
                 <dict>
-                    <key>archive_path</key>
-                    <string>%pathname%</string>
-                    <key>destination_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
                     <key>purge_destination</key>
                     <true/>
+                    <key>destination_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
                 </dict>
             </dict>
             <dict>
@@ -61,9 +58,9 @@
                 <key>Arguments</key>
                 <dict>
                     <key>input_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/BlockBlock_Installer.app</string>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app</string>
                     <key>requirement</key>
-                    <string>anchor apple generic and identifier "com.objectiveSee.BlockBlock" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VBG97UB4TA)</string>
+                    <string>anchor apple generic and identifier "com.objectiveSee.Ostiarius" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VBG97UB4TA)</string>
                 </dict>
             </dict>
         </array>

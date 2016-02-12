@@ -11,6 +11,12 @@
 		<key>NAME</key>
 		<string>Camtasia</string>
         <key>url</key>
+        <!--
+        	2016-02-05T11:44:45-0500
+        	Tested availability of HTTPS scheme to download. 
+        	Received Invalid Certificate Chain error.
+        	Certificate DNS name(s) do not match that of URL.
+        -->
         <string>http://download.techsmith.com/camtasiamac/enu/camtasia.dmg</string>
         <key>APPNAME</key>
         <string>%NAME% 2.app</string>

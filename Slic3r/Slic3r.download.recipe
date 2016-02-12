@@ -10,8 +10,12 @@
 	<dict>
 		<key>NAME</key>
 		<string>Slic3r</string>
+		<!--
+			2016-02-05T12:27:25-0500
+			Checked for availability of HTTPS downoads. There do not appear to be any available (port 443 connection refused).
+		-->
         <key>DOWNLOAD_PAGE</key>
-        <string>http://dl.slic3r.org/mac</string>
+        <string>http://dl.slic3r.org/mac/</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>

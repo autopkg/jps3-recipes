@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>Cura</string>
 		<key>update_url_stub</key>
-		<string>http://software.ultimaker.com</string>
+		<string>https://software.ultimaker.com</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.0</string>

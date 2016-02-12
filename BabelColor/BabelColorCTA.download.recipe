@@ -10,6 +10,10 @@
 	<dict>
 		<key>NAME</key>
 		<string>BabelColorCTA</string>
+		<!-- 
+			2016-02-05T11:40:31-0500
+			No HTTPS available for download.
+		-->
         <key>url</key>
         <string>http://www.babelcolor.com/download/CTA_OS_X.zip</string>
 	</dict>

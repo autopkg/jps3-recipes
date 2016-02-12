@@ -10,6 +10,11 @@
 	<dict>
 		<key>NAME</key>
 		<string>SuspiciousPackageQLP</string>
+		<!--
+			2016-02-05T12:28:43-0500
+			Checked for availability of HTTPS download. Connections to port 443 refused.
+			Oh, the irony, SuspiciousPackage!
+		-->
 		<key>pkg_url</key>
 		<string>http://www.mothersruin.com/software/downloads/SuspiciousPackage.pkg</string>
 	</dict>
