@@ -8,6 +8,8 @@
     <string>com.github.jps3.munki.Camtasia</string>
     <key>Input</key>
     <dict>
+        <key>NAME</key>
+        <string>Camtasia</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>DMS/Applications</string>
         <key>DISPLAY_NAME</key>
@@ -21,9 +23,9 @@
             <key>description</key>
             <string>A powerful, yet easy-to-use screen recorder, Camtasia helps you create professional videos without having to be a video pro. Easily record your screen movements and actions, or import HD video from a camera or other source. Customize and edit content on both Mac and Windows platforms, and share your videos with viewers on nearly any device.</string>
             <key>display_name</key>
-            <string>%NAME%</string>
+            <string>%DISPLAY_NAME%</string>
             <key>name</key>
-            <string>DISPLAY_NAME</string>
+            <string>%NAME%</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
