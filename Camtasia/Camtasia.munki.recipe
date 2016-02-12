@@ -20,10 +20,6 @@
             <string>%NAME%</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>blocking_applications</key>
-            <array>
-                <string>%APPNAME%</string>
-            </array>
         </dict>
     </dict>
     <key>MinimumVersion</key>
