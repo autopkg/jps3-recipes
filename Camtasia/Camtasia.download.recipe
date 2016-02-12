@@ -2,37 +2,37 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
+    <key>Description</key>
     <string>Downloads the latest Camtasia DMG from the TechSmith web site. It is assumed that the newest version is the only version on the web page for the application.</string>
-	<key>Identifier</key>
-	<string>com.github.jps3.download.Camtasia</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>Camtasia</string>
+    <key>Identifier</key>
+    <string>com.github.jps3.download.Camtasia</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Camtasia</string>
         <key>url</key>
         <!--
-        	2016-02-05T11:44:45-0500
-        	Tested availability of HTTPS scheme to download. 
-        	Received Invalid Certificate Chain error.
-        	Certificate DNS name(s) do not match that of URL.
+            2016-02-05T11:44:45-0500
+            Tested availability of HTTPS scheme to download. 
+            Received Invalid Certificate Chain error.
+            Certificate DNS name(s) do not match that of URL.
         -->
         <string>http://download.techsmith.com/camtasiamac/enu/camtasia.dmg</string>
         <key>APPNAME</key>
         <string>%NAME% 2.app</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>0.4.1</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.4.1</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
