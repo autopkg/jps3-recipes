@@ -2,12 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
+    <key>Description</key>
     <string>Downloads the Camtasia DMG from the TechSmith web site, and imports into Munki repository. It is assumed that the newest version is the only version on the web page for the application.</string>
-	<key>Identifier</key>
-	<string>com.github.jps3.munki.Camtasia</string>
-	<key>Input</key>
+    <key>Identifier</key>
+    <string>com.github.jps3.munki.Camtasia</string>
+    <key>Input</key>
     <dict>
+        <key>NAME</key>
+        <string>Camtasia</string>
+        <key>DISPLAY_NAME</key>
+        <string>%NAME%</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>DMS/Applications</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -17,35 +23,20 @@
             <key>description</key>
             <string>A powerful, yet easy-to-use screen recorder, Camtasia helps you create professional videos without having to be a video pro. Easily record your screen movements and actions, or import HD video from a camera or other source. Customize and edit content on both Mac and Windows platforms, and share your videos with viewers on nearly any device.</string>
             <key>display_name</key>
-            <string>%NAME%</string>
+            <string>%DISPLAY_NAME%</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>blocking_applications</key>
-            <array>
-                <string>%APPNAME%</string>
-            </array>
         </dict>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>0.4.1</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.4.1</string>
     <key>ParentRecipe</key>
-	<string>com.github.jps3.download.Camtasia</string>
-	<key>Process</key>
+    <string>com.github.jps3.download.Camtasia</string>
+    <key>Process</key>
     <array>
         <dict>
             <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
-            <key>Arguments</key>
-            <dict>
-                <key>requirement</key>
-                <string>identifier "com.techsmith.camtasia2" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7TQL462TU8"</string>
-                <key>input_path</key>
-                <string>%pathname%/%APPNAME%</string>
-            </dict>
-        </dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
+            <string>MunkiImporter</string>
             <key>Arguments</key>
             <dict>
                 <key>pkg_path</key>
@@ -53,9 +44,9 @@
                 <key>version_comparison_key</key>
                 <string>CFBundleVersion</string>
                 <key>repo_subdirectory</key>
-                <string>DMS/Applications</string>
+                <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>
-		</dict>
-	</array>
+        </dict>
+    </array>
 </dict>
 </plist>
