@@ -10,10 +10,10 @@
     <dict>
         <key>NAME</key>
         <string>Camtasia</string>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>DMS/Applications</string>
         <key>DISPLAY_NAME</key>
         <string>%NAME%</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>DMS/Applications</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
