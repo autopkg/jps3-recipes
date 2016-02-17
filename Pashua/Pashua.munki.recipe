@@ -10,16 +10,8 @@ http://www.bluem.net/en/mac/pashua/</string>
 	<string>com.github.jps3.munki.Pashua</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Pashua</string>
-        <key>url</key>
-        <string>http://www.bluem.net/files/Pashua.dmg</string>
         <key>pkginfo</key>
         <dict>
-            <key>catalogs</key>
-            <array>
-                <string>testing</string>
-            </array>
             <key>description</key>
             <string>Pashua is a tool for creating native Aqua dialog windows from programming languages that have none or only limi­ted support for graphic user inter­faces on Mac OS X. Currently, it supports Apple­Script, Perl, PHP, Python, Groovy, Rexx, Ruby, shell scripts and Tcl—and if your favourite language is not included in this list: writing the glue code for communicating with Pashua is pretty simple.
 
@@ -31,20 +23,12 @@ http://www.bluem.net/en/mac/pashua/
             <string>%NAME%</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>unattended_install</key>
-            <true/>
-            <key>unattended_uninstall</key>
-            <true/>
-            <key>blocking_applications</key>
-            <array>
-                <string>%NAME%</string>
-            </array>
             <key>minimum_os_version</key>
             <string>10.6</string>
         </dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.5.0</string>
     <key>ParentRecipe</key>
 	<string>com.github.jps3.download.Pashua</string>
 	<key>Process</key>
