@@ -10,12 +10,8 @@
 	<dict>
 		<key>NAME</key>
         <string>Uebersicht</string>
-        <!--
-            2016-02-05T12:30:28-0500
-            Checked for availability of HTTPS downloads. Connections simply timed out to port 443.
-        -->
         <key>appcast_url</key>
-        <string>http://tracesof.net/uebersicht/updates.xml.rss</string>
+        <string>https://raw.githubusercontent.com/felixhageloh/uebersicht/gh-pages/updates.xml.rss</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.0</string>
