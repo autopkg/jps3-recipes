@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of the Suspicious Package application.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.download.SuspiciousPackageApp</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>SuspiciousPackageApp</string>
+		<key>PKG_URL</key>
+		<string>http://www.mothersruin.com/software/downloads/SuspiciousPackage.dmg</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%PKG_URL%</string>				
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Suspicious Package.app</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Application: Randy Saldinger (936EB786NH)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
