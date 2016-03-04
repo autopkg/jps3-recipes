@@ -42,95 +42,11 @@ exit 0
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>PkgRootCreator</string>
+			<string>AppDmgVersioner</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkgroot</string>
-				<key>pkgdirs</key>
-				<dict>
-					<key>Library</key>
-					<string>0755</string>
-					<key>QuickLook</key>
-					<string>0755</string>
-				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
-			<key>Arguments</key>
-			<dict>
-				<key>purge_destinateion</key>
-				<true/>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkg_contents</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkg_contents</string>
-				<key>flat_pkg_path</key>
+				<key>dmg_path</key>
 				<string>%pathname%</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkg_contents/*.pkg</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string>
-			<key>Arguments</key>
-			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkgroot</string>
-				<key>pkg_payload_path</key>
-				<string>%found_filename%/Payload</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiInstallsItemsCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>faux_root</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkgroot</string>
-				<key>installs_item_paths</key>
-				<array>
-					<string>/Library/QuickLook/Suspicious Package.qlgenerator</string>
-				</array>
-				<key>version_comparison_key</key>
-				<string>CFBundleShortVersionString</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkgroot/Library/QuickLook/Suspicious Package.qlgenerator/Contents/Info.plist</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-			<key>Arguments</key>
-			<dict>
-				<key>additional_pkginfo</key>
-				<dict>
-					<key>version</key>
-					<string>%version%</string>
-				</dict>
 			</dict>
 		</dict>
 		<dict>
@@ -140,18 +56,6 @@ exit 0
 			<dict>
 				<key>pkg_path</key>
 				<string>%pathname%</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-					<string>%RECIPE_CACHE_DIR%/tmp_pkgroot</string>
-					<string>%RECIPE_CACHE_DIR%/tmp_pkg_contents</string>
-				</array>
 			</dict>
 		</dict>
 	</array>
