@@ -16,7 +16,7 @@
 			Oh, the irony, SuspiciousPackage!
 		-->
 		<key>pkg_url</key>
-		<string>http://www.mothersruin.com/software/downloads/SuspiciousPackage.pkg</string>
+		<string>http://www.mothersruin.com/software/downloads/SuspiciousPackage.dmg</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
@@ -38,12 +38,12 @@
 			<dict>
 				<key>expected_authority_names</key>
 				<array>
-					<string>Developer ID Installer: Randy Saldinger (936EB786NH)</string>
+					<string>Developer ID Application: Randy Saldinger (936EB786NH)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
 				<key>input_path</key>
-				<string>%pathname%</string>
+				<string>%pathname%/Suspicious Package*.app</string>
 			</dict>
 		</dict>
 		<dict>
