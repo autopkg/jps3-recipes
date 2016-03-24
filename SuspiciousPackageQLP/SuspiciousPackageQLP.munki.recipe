@@ -3,157 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of the Suspicious Package QuickLook plugin, and imports into Munki.</string>
+	<string>THIS RECIPE IS DEPRECATED. Developer changed format of packaging, which these recipes no longer worked for. Please choose one of the other fine alternatives.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.SuspiciousPackageQLP</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>SuspiciousPackageQLP</string>
-		<key>repo_subdirectory</key>
-		<string>plugins</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>name</key>
-			<string>%NAME%</string>
-			<key>display_name</key>
-			<string>Suspicious Package QuickLook Plug-in</string>
-			<key>description</key>
-			<string>Suspicious Package: A Quick Look Plug-in for OS X Installer Packages. What's in that OS X Installer package? With Suspicious Package, you can find out quickly and safely from the Finder. Select a package, and hit the space bar. http://www.mothersruin.com/software/SuspiciousPackage/</string>
-			<key>minimum_os_version</key>
-			<string>10.8</string>
-			<key>postuninstall_script</key>
-			<string>#!/bin/bash
-console_user_uid="$(stat -f "%u" /dev/console)"
-console_user_username="$(id -un "${console_user_uid}")"
-if [[ -n "${console_user_username}" &amp;&amp; "${consle_user_username}" != "root" ]]; then
-	logger -is -t "munki-postuninstall_script" "User '${console_user_username}' at console. Calling qlmanage -r"
-	sudo -u $console_user_username /usr/bin/qlmanage -r
-fi
-exit 0
-			</string>
-		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.2</string>
 	<key>ParentRecipe</key>
 	<string>com.github.jps3.download.SuspiciousPackageQLP</string>
 	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkgroot</string>
-				<key>pkgdirs</key>
-				<dict>
-					<key>Library</key>
-					<string>0755</string>
-					<key>QuickLook</key>
-					<string>0755</string>
-				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
-			<key>Arguments</key>
-			<dict>
-				<key>purge_destinateion</key>
-				<true/>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkg_contents</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkg_contents</string>
-				<key>flat_pkg_path</key>
-				<string>%pathname%</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkg_contents/*.pkg</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string>
-			<key>Arguments</key>
-			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkgroot</string>
-				<key>pkg_payload_path</key>
-				<string>%found_filename%/Payload</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiInstallsItemsCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>faux_root</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkgroot</string>
-				<key>installs_item_paths</key>
-				<array>
-					<string>/Library/QuickLook/Suspicious Package.qlgenerator</string>
-				</array>
-				<key>version_comparison_key</key>
-				<string>CFBundleShortVersionString</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/tmp_pkgroot/Library/QuickLook/Suspicious Package.qlgenerator/Contents/Info.plist</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-			<key>Arguments</key>
-			<dict>
-				<key>additional_pkginfo</key>
-				<dict>
-					<key>version</key>
-					<string>%version%</string>
-				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_path</key>
-				<string>%pathname%</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-					<string>%RECIPE_CACHE_DIR%/tmp_pkgroot</string>
-					<string>%RECIPE_CACHE_DIR%/tmp_pkg_contents</string>
-				</array>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 </dict>
 </plist>

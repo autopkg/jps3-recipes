@@ -3,49 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of the Suspicious Package QuickLook plugin.</string>
+	<string>THIS RECIPE IS DEPRECATED. Developer changed format of packaging, which these recipes no longer worked for. Please choose one of the other fine alternatives.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.download.SuspiciousPackageQLP</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>SuspiciousPackageQLP</string>
-		<!--
-			2016-02-05T12:28:43-0500
-			Checked for availability of HTTPS download. Connections to port 443 refused.
-			Oh, the irony, SuspiciousPackage!
-		-->
 		<key>pkg_url</key>
-		<string>http://www.mothersruin.com/software/downloads/SuspiciousPackage.pkg</string>
+		<string></string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>%pkg_url%</string>				
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Installer: Randy Saldinger (936EB786NH)</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
-				<key>input_path</key>
-				<string>%pathname%</string>
-			</dict>
-		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
