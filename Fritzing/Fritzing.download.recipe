@@ -10,7 +10,7 @@
 	<dict>
 		<key>NAME</key>
 		<string>Fritzing</string>
-        <!-- 2016-02-05T08:54:09-0500
+        <!-- 2016-04-13T09:59:06-0400
 	            This is a note regarding security issues with Sparkle updates over http, as
 	            reported at https://vulnsec.com/2016/osx-apps-vulnerabilities/
 
@@ -20,7 +20,7 @@
 	            Will need to test again at a later date and update as required.
         -->
 		<key>FRITZING_UPDATES_URL</key>
-		<string>http://fritzing.org/download/feed/atom/mac-os-x-105/</string>
+		<string>http://fritzing.org/download/feed/atom/mac-os-x-105/?version=0.0.0&amp;sysname=Mac%20OS%20X&amp;sysversion=UNKNOWN</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
