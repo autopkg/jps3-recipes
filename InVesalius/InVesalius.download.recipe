@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of InVesalius for OS X from developer's web site. (Note: The URL returned has historically used the 'ftp' scheme, which with autopkg effectively causes it to download _every_ time, and the *.dmg's file size is typically ~300MB.)</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.download.InVesalius</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>InVesalius</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>http://www.cti.gov.br/invesalius/?page_id=8</string>
+				<key>re_pattern</key>
+				<!-- Ex. ftp://ftp.cti.gov.br/pub/dt3d/invesalius/files/InVesalius-3.0.dmg -->
+				<string>href="(?P&lt;url&gt;(https?://|ftp://)[^"]*\/?(?P&lt;dmg_filename&gt;InVesalius-(?P&lt;version&gt;[^"]+)\.dmg))"</string>
+				<key>re_flags</key>
+				<array>
+					<string>IGNORECASE</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>CHECK_FILESIZE_ONLY</key>
+				<false/>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
+
+<!--
+
+=== NOTES ====
+
+There is another way to check, but will have to write the *.py helper script first (TODO)...
+
+% ngrep -d en0 '^(GET|POST) .* HTTP/.*$' 'port 80 and host www.cti.gov.br'
+...snip/reconstruct...
+POST /dt3d/invesalius/update/checkupdate.php HTTP/1.1
+Accept-Encoding: identity
+Content-Length: 122
+Host: www.cti.gov.br
+Content-Type: application/x-www-form-urlencoded
+Connection: close
+User-Agent: Mozilla/5.0 (compatible; MSIE 5.5; Windows NT)
+
+language=en&random_id=1894244128144140&invesalius_version=3.0&platform=darwin&architecture=64bit&update_protocol_version=1
+...end...
+
+% curl -sL -F "${form_data}" -A "${user_agent}" http://www.cti.gov.br/dt3d/invesalius/update/checkupdate.php
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Date: Fri, 15 Apr 2016 18:40:32 GMT
+Server: Apache/2.2.15 (CentOS)
+X-Powered-By: PHP/5.3.3
+Content-Length: 50
+Connection: close
+Content-Type: text/html; charset=UTF-8
+
+3.0
+http://www.cti.gov.br/invesalius/?page_id=8
+
+-->
