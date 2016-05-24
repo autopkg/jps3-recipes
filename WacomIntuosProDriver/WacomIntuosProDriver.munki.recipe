@@ -20,6 +20,8 @@
 			<string>WacomIntuosProDriver</string>
 			<key>MUNKI_NAME</key>
 			<string>%NAME%</string>
+			<key>MINIMUM_OS_VERSION</key>
+			<string>10.9.0</string>
 			<key>pkginfo</key>
 			<dict>
 				<key>name</key>
@@ -159,27 +161,13 @@ exit 0
 			</dict>
 			<dict>
 				<key>Processor</key>
-				<string>PlistReader</string>
-				<key>Arguments</key>
-				<dict>
-					<key>plist_keys</key>
-					<dict>
-						<key>LSMinimumSystemVersion</key>
-						<string>minimum_os_version</string>
-					</dict>
-					<key>info_path</key>
-					<string>%RECIPE_CACHE_DIR%/faux_root/Applications/Wacom Tablet.localized/Wacom Desktop Center.app/Contents/Info.plist</string>
-				</dict>
-			</dict>
-			<dict>
-				<key>Processor</key>
 				<string>MunkiPkginfoMerger</string>
 				<key>Arguments</key>
 				<dict>
 					<key>additional_pkginfo</key>
 					<dict>
 						<key>minimum_os_version</key>
-						<string>%minimum_os_version%</string>
+						<string>%MINIMUM_OS_VERSION%</string>
 						<key>version</key>
 						<string>%version%</string>
 					</dict>
