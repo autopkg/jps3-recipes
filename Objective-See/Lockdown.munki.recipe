@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+    <string>Downloads the latest version of Objective-See’s Lockdown GUI wrapper for Summit Route's osxlockdown tool and imports into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.jps3.munki.Lockdown</string>
+	<key>Input</key>
+	<dict>
+		<key>repo_subdirectory</key>
+		<string>apps/Objective-See</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+            <key>description</key>
+            <string>Lockdown is an open-source tool for El Capitan that audits and remediates security configuration settings. Written as a UI wrapper for Summit Route's open-source 'osxlockdown' tool, Lockdown helps to secure OS X computers by reducing their attack surface. https://objective-see.com/products/lockdown.html
+
+From the Objective See download page:
+"... Lockdown provides:
+- A simple 'point and click' GUI-based experience
+- The ability to quickly toggle commands on and off, via the UI
+- Cryptographic verification of itself and the osxlockdown components
+
+If Lockdown sounds right for you, it should be noted that the same warnings for osxlockdown apply here. Specifically (from osxlockdown's README):
+
+- Many of the rules disable functionality in the name of security. This may make you sad.
+- System commands and dark arts are involved, so ensure you have your system backed up first.
+"
+            </string>
+			<key>display_name</key>
+			<string>%NAME%</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>blocking_applications</key>
+			<array>
+				<string>%NAME%.app</string>
+				<string>%NAME%</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.jps3.download.Lockdown</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app/Contents/Info.plist</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+            </dict>
+		</dict>
+	</array>
+</dict>
+</plist>
