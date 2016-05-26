@@ -58,7 +58,7 @@ killall BlockBlock
 	<key>MinimumVersion</key>
 	<string>0.4.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.jps3.download.BlockBLock</string>
+	<string>com.github.jps3.download.BlockBlock</string>
 	<key>Process</key>
 	<array>
 		<dict>
