@@ -5,7 +5,7 @@
 	<key>Description</key>
     <string>Downloads the latest version of BlockBlock persistent OS component install monitor and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.jps3.munki.BlockBLock</string>
+	<string>com.github.jps3.munki.BlockBlock</string>
 	<key>Input</key>
 	<dict>
 		<key>repo_subdirectory</key>
