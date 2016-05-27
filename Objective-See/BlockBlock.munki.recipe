@@ -33,25 +33,38 @@ BlockBlock is currently still a beta product. This version isn't as fully tested
             <string>#!/bin/bash
 PATH=/bin:/usr/bin:/sbin
 # Per instructions at https://objetive-see.com/products/blockblock.html
+# We add some conditionals around the `launchctl`, `rm` and other commands
+# because the presence of the BlockBlock_Install.app does not guarantee
+# the app was actually installed.
 
 # uninstall kext
 kextunload -b com.objectiveSee.kext.BlockBlock
-rm -rf /Library/Extensions/BlockBlock.kext
+if [[ -e /Library/Extensions/BlockBlock.kext ]]; then
+    rm -rf /Library/Extensions/BlockBlock.kext
+fi
 
 # uninstall launch daemon
-launchctl unload /Library/LaunchDaemons/com.objectiveSee.blockblock.plist
-rm -rf /Library/LaunchDaemons/com.objectiveSee.blockblock.plist
+if [[ -e /Library/LaunchDaemons/com.objectiveSee.blockblock.plist ]]; then
+    launchctl unload /Library/LaunchDaemons/com.objectiveSee.blockblock.plist
+    rm -rf /Library/LaunchDaemons/com.objectiveSee.blockblock.plist
+fi
 
 # uninstall launch agent
-launchctl unload ~/Library/LaunchAgents/com.objectiveSee.blockblock.plist
-rm -rf ~/Library/LaunchAgents/com.objectiveSee.blockblock.plist
+# TODO: How should this be handled via Munki on (possibily multiusuer)
+#       machine?
+#launchctl unload ~/Library/LaunchAgents/com.objectiveSee.blockblock.plist
+#rm -rf ~/Library/LaunchAgents/com.objectiveSee.blockblock.plist
 
 # remove application's support directory (log file, etc)
+# TODO: How should this be handled via Munki on (possibily multiusuer)
+#       machine?
 #rm -rf ~/Library/Application Support/com.objectiveSee.BlockBlock
 
 # remove binary &amp; make all running tasks are killed
-rm -rf /Applications/BlockBlock.app
+rm -rf /Applications/BlockBlock.app /Applications/BlockBlock_Installer.app
 killall BlockBlock
+
+exit 0
             </string>
 		</dict>
 	</dict>
@@ -60,14 +73,14 @@ killall BlockBlock
 	<key>ParentRecipe</key>
 	<string>com.github.jps3.download.BlockBlock</string>
 	<key>Process</key>
-	<array>
+    <array>
 		<dict>
 			<key>Processor</key>
 			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app/Contents/Info.plist</string>
+				<string>%found_filename%/Contents/Info.plist</string>
 			</dict>
 		</dict>
 		<dict>
