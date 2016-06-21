@@ -14,8 +14,10 @@
 			2016-03-24T14:49:29-0400
 			No HTTPS available for download.
 		-->
+        <key>url_stub</key>
+        <string>http://www.babelcolor.com/</string>
         <key>url</key>
-        <string>http://www.babelcolor.com/index_htm_files/CTA_OS_X.zip</string>
+        <string>http://www.babelcolor.com/download.htm</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>
@@ -23,9 +25,32 @@
 	<array>
 		<dict>
 			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>result_output_var_name</key>
+				<string>download_url</string>
+				<key>re_flags</key>
+				<array>
+					<string>IGNORECASE</string>
+				</array>
+				<key>request_headers</key>
+				<dict>
+					<key>User-Agent</key>
+					<string>Macintosh</string>
+				</dict>
+				<key>re_pattern</key>
+				<!-- index_htm_files/CTA_OS_X_50.zip -->
+				<string>href="(.*/CTA_OS_X[^\.]*\.zip)"</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
+				<key>url</key>
+				<string>%url_stub%/%download_url%</string>
 				<key>request_headers</key>
 				<dict>
 					<key>User-Agent</key>
