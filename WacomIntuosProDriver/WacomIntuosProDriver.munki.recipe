@@ -158,19 +158,16 @@ exit 0
 				<string>MunkiPkginfoMerger</string>
 			</dict>
 			<dict>
-				<key>Processor</key>
-				<string>PlistReader</string>
-				<key>Arguments</key>
-				<dict>
-					<key>plist_keys</key>
-					<dict>
-						<key>LSMinimumSystemVersion</key>
-						<string>minimum_os_version</string>
-					</dict>
-					<key>info_path</key>
-					<string>%RECIPE_CACHE_DIR%/faux_root/Applications/Wacom Tablet.localized/Wacom Desktop Center.app/Contents/Info.plist</string>
-				</dict>
-			</dict>
+    	        <key>Processor</key>
+    	        <string>URLTextSearcher</string>
+    	        <key>Arguments</key>
+    	        <dict>
+    	            <key>url</key>
+                    <string>file://localhost/%RECIPE_CACHE_DIR%/pkgtmp/Distribution</string>
+    	            <key>re_pattern</key>
+                    <string>&lt;os-version min="(?P&lt;minimum_os_version&gt;.*?)"/&gt;</string>
+    	        </dict>
+    	    </dict>
 			<dict>
 				<key>Processor</key>
 				<string>MunkiPkginfoMerger</string>
