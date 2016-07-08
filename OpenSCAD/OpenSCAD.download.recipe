@@ -3,7 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest OpenSCAD.</string>
+	<string>Downloads the latest OpenSCAD.
+	Note: Code signature verification for OpenSCAD cannot be done at this time.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.download.OpenSCAD</string>
 	<key>Input</key>
