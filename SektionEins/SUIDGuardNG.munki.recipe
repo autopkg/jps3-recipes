@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current version of SektionEins’ SUIDGuardNG kernel driver and imports into Munki repository.</string>
+	<string>DEPRECATED software. Do not use. Recipe does nothing. Will be removed from repo.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.SUIDGuardNG</string>
 	<key>Input</key>
@@ -12,28 +12,12 @@
 		<string>apps/SektionEins</string>
 		<key>pkginfo</key>
 		<dict>
-			<key>RestartAction</key>
-			<string>RequireRestart</string>
 			<key>catalogs</key>
 			<array>
-				<string>testing</string>
+				<string>deprecated</string>
 			</array>
 			<key>description</key>
-			<string>What is SUIDGuard?
-
-SUIDGuard is a TrustedBSD kernel driver that implements several mitigations to protect against weaknesses usually involving SUID/SGID binaries.
-
-    * protects SUID/SGID root binaries from DYLD_ environment variables by overwriting the string DYLD_ with XYLD_
-    * protects the O_APPEND flag usually used when opening e.g. logfiles from being disabled by someone with credentials that are different from those used to open the file
-
-Tested with OS X Yosemite 10.10.4.
-License
-
-SUIDGuard is licensed under the BSD License. If you are using SUIDGuard to guard servers powering commercial services, consider donating a few bucks to us via PayPal or with bitcoins: 1Gs39frAj4v6su3xVMsFa3hVXq9fwSNRhJ.
-Copyright
-
-2015 © Stefan Esser stefan.esser@sektioneins.de / SektionEins GmbH
-			</string>
+			<string>DO NOT USE</string>
 			<key>display_name</key>
 			<string>%NAME%</string>
 			<key>name</key>
@@ -45,16 +29,6 @@ Copyright
 	<key>ParentRecipe</key>
 	<string>com.github.jps3.download.SUIDGuardNG</string>
 	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
-            <key>Arguments</key>
-            <dict>
-				<key>pkg_path</key>
-				<string>%pathname%</string>
-            </dict>
-		</dict>
-	</array>
+	<array/>
 </dict>
 </plist>

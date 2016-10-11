@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string></string>
+        <string>DEPRECATED do not use. Will be removed from repo.</string>
         <key>Identifier</key>
         <string>com.github.jps3.download.SUIDGuardNG</string>
         <key>Input</key>
@@ -17,26 +17,6 @@
         <string>0.4.0</string>
         <key>Process</key>
         <array>
-            <dict>
-                <key>Processor</key>
-                <string>URLTextSearcher</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>url</key>
-                    <string>%DOWNLOAD_PAGE_URL%</string>
-                    <key>re_pattern</key>
-                    <string>"(?P&lt;url&gt;https://www.suidguard.com/.*/?%NAME%-[^\.]*\.dmg)"</string>
-                    <!-- https://www.suidguard.com/downloads/SUIDGuardNG-105.dmg -->
-                    <key>re_flags</key>
-                    <array>
-                        <string>IGNORECASE</string>
-                    </array>
-                </dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
-                <string>URLDownloader</string>
-            </dict>
             <dict>
                 <key>Processor</key>
                 <string>EndOfCheckPhase</string>
