@@ -10,26 +10,18 @@
 	<dict>
 		<key>NAME</key>
 		<string>QuickLookCSV</string>
-        <key>DOWNLOAD_PAGE_URL</key>
-        <string>https://code.google.com/feeds/p/quicklook-csv/downloads/basic</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.6.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
+			<string>GitHubReleasesInfoProvider</string>
             <key>Arguments</key>
             <dict>
-                <key>url</key>
-                <string>%DOWNLOAD_PAGE_URL%</string>
-                <key>re_pattern</key>
-                <string>href="(?P&lt;url&gt;http://[^\.]+.googlecode.com/files/%NAME%[^"]*\.dmg)"</string>
-                <key>re_flags</key>
-                <array>
-                    <string>IGNORECASE</string>
-                </array>
+                <key>github_repo</key>
+                <string>p2/quicklook-csv</string>
             </dict>
 		</dict>
         <dict>
@@ -39,15 +31,6 @@
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>Versioner</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_plist_path</key>
-                <string>%pathname%/%NAME%.qlgenerator/Contents/Info.plist</string>
-            </dict>
         </dict>
 	</array>
 </dict>
