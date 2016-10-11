@@ -16,11 +16,14 @@
             Tested availability of HTTPS scheme to download. 
             Received Invalid Certificate Chain error.
             Certificate DNS name(s) do not match that of URL.
+
+            2016-10-11T09:41:00-0400
+            HTTPS "now" available.
         -->
-        <string>http://download.techsmith.com/camtasiamac/enu/camtasia.dmg</string>
+        <string>https://download.techsmith.com/camtasiamac/enu/camtasia.dmg</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.4.1</string>
+    <string>0.6.1</string>
     <key>Process</key>
     <array>
         <dict>
@@ -33,7 +36,7 @@
             <key>Arguments</key>
             <dict>
                 <key>requirement</key>
-                <string>identifier "com.techsmith.camtasia2" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7TQL462TU8"</string>
+                <string>identifier "com.techsmith.camtasia3" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7TQL462TU8"</string>
                 <key>input_path</key>
                 <string>%pathname%/Camtasia*</string>
             </dict>
