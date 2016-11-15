@@ -48,7 +48,7 @@
 				<key>pkg_path</key>
 				<string>%pathname%</string>
 				<key>munkiimport_appname</key>
-				<string>%NAME%/%NAME%.app</string>
+				<string>%NAME%.app</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
