@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>Brackets</string>
         <key>repo_subdirectory</key>
-        <string>apps/Adobe/</string>
+        <string>apps/adobe/</string>
         <key>pkginfo</key>
         <dict>
             <key>name</key>
