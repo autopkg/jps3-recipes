@@ -18,7 +18,7 @@
 import json
 import urllib2
 
-from autopkglib import ProcessorError
+from autopkglib import Processor, ProcessorError
 
 __all__ = ["JSONParser"]
 
@@ -26,7 +26,7 @@ __all__ = ["JSONParser"]
 MASTER_FEED_URL = "https://objective-see.com/products.json"
 
 
-class JSONParser():
+class JSONParser(Processor):
     #pylint disable=line-too-long
     """Gets download links, based on products from the ObjectiveSee apps master feed
        Assumes handoff to URLDownloader as subsequent step.

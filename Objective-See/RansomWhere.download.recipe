@@ -19,7 +19,7 @@
 		<array>
 			<dict>
 				<key>Processor</key>
-				<string>JSONParser</string>
+				<string>com.github.jps3.shared/JSONParser</string>
 				<key>Arguments</key>
 				<dict>
 					<key>product</key>
