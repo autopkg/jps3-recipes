@@ -11,7 +11,9 @@
 		<key>DOWNLOAD_URL</key>
 		<string>https://www.pdfeditormac.com/down/pdfeditormac.dmg</string>
 		<key>NAME</key>
-		<string>PDFEditorMac</string>
+        <string>PDFEditorMac</string>
+        <key>APPNAME</key>
+        <string>PDF Editor Mac.app</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
