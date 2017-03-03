@@ -14,9 +14,12 @@
             2016-02-05T11:51:49-0500
             Tested for availability of HTTPS download.
             Received invalid certificate chain error.
+
+            2017-03-03T15:07-0500
+            HTTPS supported, updating URL.
         -->
         <key>URL</key>
-        <string>http://macosxfilerecovery.com/datarecoveryproducts/data-recovery-guru/</string>
+        <string>https://macosxfilerecovery.com/datarecoveryproducts/data-recovery-guru/</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>
