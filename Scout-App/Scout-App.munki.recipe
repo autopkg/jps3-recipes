@@ -20,6 +20,13 @@
             <string>Scout-App - The simplest Sass processor http://scout-app.io</string>
             <key>unattended_install</key>
             <true/>
+            <key>postinstall_script</key>
+            <string>#!/bin/bash
+# We need to fix some permissions of important files which do not 
+# have group or other set, preventing application launch
+find /Applications/%NAME%.app -type f -perm +0700 ! -perm +0055 -exec chmod go+rx {} +
+exit 0
+            </string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
