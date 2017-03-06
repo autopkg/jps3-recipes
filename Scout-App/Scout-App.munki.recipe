@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
-	<string>Downloads the latest version of scout-app GUI SASS processor and imports into Munki.</string>
-	<key>Identifier</key>
-	<string>com.github.jps3.munki.Scout-App</string>
-	<key>Input</key>
-	<dict>
+    <key>Description</key>
+    <string>Downloads the latest version of Scout-App GUI SASS processor and imports into Munki.</string>
+    <key>Identifier</key>
+    <string>com.github.jps3.munki.Scout-App</string>
+    <key>Input</key>
+    <dict>
         <key>pkginfo</key>
         <dict>
             <key>name</key>
@@ -21,13 +21,13 @@
             <key>unattended_install</key>
             <true/>
         </dict>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>1.0.1</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.1</string>
     <key>ParentRecipe</key>
-	<string>com.github.jps3.download.scout-app</string>
-	<key>Process</key>
-	<array>
+    <string>com.github.jps3.download.Scout-App</string>
+    <key>Process</key>
+    <array>
         <dict>
             <key>Processor</key>
             <string>Unarchiver</string>
@@ -41,9 +41,9 @@
                 <string>%RECEIPE_CACHE_DIR%/%NAME%</string>
             </dict>
         </dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
             <key>Arguments</key>
             <dict>
                 <key>pkg_path</key>
@@ -52,6 +52,6 @@
                 <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
