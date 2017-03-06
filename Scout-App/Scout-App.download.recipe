@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of scout-app GUI SASS processor and imports into Munki</string>
 	<key>Identifier</key>
-	<string>com.github.jps3.download.scout-app</string>
+	<string>com.github.jps3.download.Scout-App</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
