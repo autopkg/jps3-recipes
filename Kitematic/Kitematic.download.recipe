@@ -3,79 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Kitematic.</string>
+    <string>DEPRECATION NOTICE -- Please use https://github.com/autopkg/homebysix-recipes. The Identifier will remain the same, but you will want to update your autopkg repos and any overrides to reflect the change.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.download.Kitematic</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-        <string>Kitematic</string>
-        <key>DOWNLOAD_PAGE_URL</key>
-        <string>https://github.com/kitematic/kitematic/releases/latest</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.0</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-            <string>URLTextSearcher</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>%DOWNLOAD_PAGE_URL%</string>
-                <key>result_output_var_name</key>
-                <string>url_stub</string>
-                <key>re_pattern</key>
-                <string>"(.*/docker/kitematic/releases/download/.*/?Kitematic[^"]+[Mm]ac[^"]*\.zip)</string>
-                <key>re_flags</key>
-                <array>
-                    <string>IGNORECASE</string>
-                </array>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>https://github.com/%url_stub%</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>Unarchiver</string>
-            <key>Arguments</key>
-            <dict>
-                <key>purge_destination</key>
-                <true/>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>FileFinder</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pattern</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%*.app</string>
-            </dict>
-        </dict>
-        <dict> 
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_path</key>
-                <string>%found_filename%</string>
-                <key>requirement</key>
-                <string>identifier "com.electron.kitematic_(beta)" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "9BNSXJN65R"</string>
-            </dict>
-        </dict>
 	</array>
 </dict>
 </plist>
