@@ -3,30 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Kitematic and imports it into your Munki repository.</string>
+    <string>DEPRECATION NOTICE -- Please use https://github.com/autopkg/homebysix-recipes. The Identifier will remain the same, but you will want to update your autopkg repos and any overrides to reflect the change.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.Kitematic</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-        <string>Kitematic</string>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/%NAME%</string>
-        <key>pkginfo</key>
-        <dict>
-            <key>name</key>
-            <string>%NAME%</string>
-            <key>displayname</key>
-            <string>Kitematic</string>
-            <key>description</key>
-            <string>The easiest way to use Docker on your Mac. https://kitematic.com/docs/</string>
-            <key>blocking_apps</key>
-            <array>
-                <string>Kitematic (Beta).app</string>
-                <string>Kitematic.app</string>
-                <string>Kitematic</string>
-            </array>
-        </dict>
 	</dict>
 	<key>MinimumVersion</key>
     <string>0.4.0</string>
@@ -34,41 +15,6 @@
     <string>com.github.jps3.download.Kitematic</string>
 	<key>Process</key>
     <array>
-        <dict>
-            <key>Processor</key>
-            <string>Versioner</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_plist_path</key>
-                <string>%found_filename%/Contents/Info.plist</string>
-                <key>plist_version_key</key>
-                <string>CFBundleVersion</string>
-            </dict>
-        </dict>
-		<dict>
-			<key>Processor</key>
-            <string>DmgCreator</string>
-            <key>Arguments</key>
-            <dict>
-                <key>dmg_root</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                <key>dmg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
-                <key>dmg_megabytes</key>
-                <string>225</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>MunkiImporter</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
-                <key>repo_subdirectory</key>
-                <string>%MUNKI_REPO_SUBDIR%</string>
-            </dict>
-        </dict>
 	</array>
 </dict>
 </plist>

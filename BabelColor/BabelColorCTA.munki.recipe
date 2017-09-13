@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <!--
+
+    2017-08-30
+
+    NOTICE of Deprecation
+
+    Does anyone wish to take support of these recipes over? I no longer support any
+    workstations doing color-critical work (or anyone who even understands basic
+    color management).
+
+    Otherwise I will simply delete this folder from my repo at some point in late
+    2017 or early 2018.
+
+
+    -->
 	<key>Description</key>
 	<string>Downloads the latest version of BabelColor CT&amp;A (Intel) application.</string>
 	<key>Identifier</key>
