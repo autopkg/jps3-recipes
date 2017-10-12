@@ -184,9 +184,9 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin
 				</dict>
 			</dict>
 			<dict>
-				<!-- 
-					Manual cleanup since we need to add the AddExecutePermissionsToDirectories 
-					step, thus precluding having PkgPayloadUnpacker purge 
+				<!--
+					Manual cleanup since we need to add the AddExecutePermissionsToDirectories
+					step, thus precluding having PkgPayloadUnpacker purge
 				-->
 				<key>Processor</key>
 				<string>PathDeleter</string>
