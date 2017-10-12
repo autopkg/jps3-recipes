@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist
+  PUBLIC '-//Apple//DTD PLIST 1.0//EN'
+  'http://www.apple.com/DTDs/PropertyList-1.0.dtd'>
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
@@ -38,59 +40,41 @@
 				<string>#!/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
-uninstall_script="/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app/Contents/Resources/uninstall.pl"
-
-# Because Wacom's uninstall.pl script will fail when run from Munki
-# (it assumes $HOME and $USER are not empty), we are going to trick
-# the script just enough so that it uninstalls everything, and does
-# not fail or complain. See notes keys in pkginfo file for more
-# information on why we need to use this script.
-fakeout_user="foo"
-fakeout_home="$(mktemp -d -t _wacom_uninstall_tmp)"
-
-if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
-    echo "preuninstall_script: Calling Wacom uninstall script: ${uninstall_script}"
-    USER="${fakeout_user}" HOME="${fakeout_home}" "$uninstall_script"
-    echo "preuninstall_script: End of Wacom uninstall script."
-else
-	echo "preuninstall_script ERROR: Could not locate uninstall_script: $uninstall_script"
-	exit 1
-fi
-
-exit 0
+# 2017-10-12 'uninstall.pl' no longer appears to exist.
+#
+#            TODO: Create custom pre/post uninstall scripts for Munki pkginfo file after
+#                  attempting to reverse engineer what is performed by Wacom Tablet Utility
+#                  (Objective-C), no longer by separate script.
+#
+# uninstall_script=&quot;/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app/Contents/Resources/# uninstall.pl&quot;
+# 
+# # Because Wacom's uninstall.pl script will fail when run from Munki
+# # (it assumes $HOME and $USER are not empty), we are going to trick
+# # the script just enough so that it uninstalls everything, and does
+# # not fail or complain. See notes keys in pkginfo file for more
+# # information on why we need to use this script.
+# fakeout_user=&quot;foo&quot;
+# fakeout_home=&quot;$(mktemp -d -t _wacom_uninstall_XXXXX)&quot;
+# 
+# if [[ -f &quot;$uninstall_script&quot; &amp;&amp; -x &quot;$uninstall_script&quot; ]]; then
+#     echo &quot;preuninstall_script: Calling Wacom uninstall script: ${uninstall_script}&quot;
+#     USER=&quot;${fakeout_user}&quot; HOME=&quot;${fakeout_home}&quot; &quot;$uninstall_script&quot;
+#     echo &quot;preuninstall_script: End of Wacom uninstall script.&quot;
+# else
+# 	echo &quot;preuninstall_script ERROR: Could not locate uninstall_script: $uninstall_script&quot;
+# 	exit 1
+# fi
+# 
+# exit 0
     </string>
 			</dict>
 		</dict>
 		<key>MinimumVersion</key>
-		<string>0.4.1</string>
+		<string>1.0.0</string>
 		<key>ParentRecipe</key>
 		<string>com.github.jps3.download.WacomIntuosProTabletDriver</string>
 		<key>Process</key>
-		<!--
-			The Wacom software typically comes as a *.pkg enclosed in a
-			*.dmg file. However the sub-pkgs often have items in their
-			Resources folder symlinked to the *.dmg root folder
-			(ex. different language license or "read me" files. This
-			causes issues if the entire *.dmg is not taken as a while,
-			such as if the *.pkg is removed to another *.dmg in the
-			Munki import process.
-		-->
 		<array>
-			<dict>
-				<key>Processor</key>
-				<string>CodeSignatureVerifier</string>
-				<key>Arguments</key>
-				<dict>
-					<key>input_path</key>
-					<string>%pathname%/Install Wacom Tablet.pkg</string>
-					<key>expected_authority_names</key>
-					<array>
-                        <string>Developer ID Installer: Wacom Technology Corp. (EG27766DY7)</string>
-						<string>Developer ID Certification Authority</string>
-						<string>Apple Root CA</string>
-					</array>
-				</dict>
-			</dict>
 			<dict>
 				<key>Processor</key>
 				<string>FlatPkgUnpacker</string>
@@ -144,10 +128,14 @@ exit 0
 					<string>%RECIPE_CACHE_DIR%/faux_root</string>
 					<key>installs_item_paths</key>
 					<array>
-						<string>/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app</string>
 						<string>/Applications/Wacom Tablet.localized/Wacom Desktop Center.app</string>
+						<string>/Applications/Wacom Tablet.localized/Wacom Display Settings.app</string>
+						<string>/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app</string>
 						<string>/Library/Application Support/Tablet/WacomTabletDriver.app</string>
+						<string>/Library/Extensions/Wacom Tablet.kext</string>
 						<string>/Library/PreferencePanes/WacomTablet.prefpane</string>
+						<string>/Library/PrivilegedHelperTools/com.wacom.DataStoreMgr.app</string>
+						<string>/Library/PrivilegedHelperTools/com.wacom.UpdateHelper.app</string>
 					</array>
 					<key>version_comparison_key</key>
 					<string>CFBundleVersion</string>
@@ -158,16 +146,16 @@ exit 0
 				<string>MunkiPkginfoMerger</string>
 			</dict>
 			<dict>
-    	        <key>Processor</key>
-    	        <string>URLTextSearcher</string>
-    	        <key>Arguments</key>
-    	        <dict>
-    	            <key>url</key>
-                    <string>file://localhost/%RECIPE_CACHE_DIR%/pkgtmp/Distribution</string>
-    	            <key>re_pattern</key>
-                    <string>&lt;os-version min="(?P&lt;minimum_os_version&gt;.*?)"/&gt;</string>
-    	        </dict>
-    	    </dict>
+				<key>Processor</key>
+				<string>URLTextSearcher</string>
+				<key>Arguments</key>
+				<dict>
+					<key>url</key>
+					<string>file://localhost/%RECIPE_CACHE_DIR%/pkgtmp/Distribution</string>
+					<key>re_pattern</key>
+					<string>&lt;os-version min=&quot;(?P&lt;minimum_os_version&gt;.*?)&quot;/&gt;</string>
+				</dict>
+			</dict>
 			<dict>
 				<key>Processor</key>
 				<string>MunkiPkginfoMerger</string>
