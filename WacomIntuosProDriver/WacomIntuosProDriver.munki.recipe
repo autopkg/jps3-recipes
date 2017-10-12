@@ -78,21 +78,6 @@ exit 0
 		<array>
 			<dict>
 				<key>Processor</key>
-				<string>CodeSignatureVerifier</string>
-				<key>Arguments</key>
-				<dict>
-					<key>input_path</key>
-					<string>%pathname%/Install Wacom Tablet.pkg</string>
-					<key>expected_authority_names</key>
-					<array>
-						<string>Developer ID Installer: Wacom Technology Corp.</string>
-						<string>Developer ID Certification Authority</string>
-						<string>Apple Root CA</string>
-					</array>
-				</dict>
-			</dict>
-			<dict>
-				<key>Processor</key>
 				<string>FlatPkgUnpacker</string>
 				<key>Arguments</key>
 				<dict>
@@ -196,9 +181,9 @@ exit 0
 				</dict>
 			</dict>
 			<dict>
-				<!-- 
-					Manual cleanup since we need to add the AddExecutePermissionsToDirectories 
-					step, thus precluding having PkgPayloadUnpacker purge 
+				<!--
+					Manual cleanup since we need to add the AddExecutePermissionsToDirectories
+					step, thus precluding having PkgPayloadUnpacker purge
 				-->
 				<key>Processor</key>
 				<string>PathDeleter</string>
