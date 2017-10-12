@@ -85,7 +85,7 @@ exit 0
 					<string>%pathname%/Install Wacom Tablet.pkg</string>
 					<key>expected_authority_names</key>
 					<array>
-						<string>Developer ID Installer: Wacom Technology Corp.</string>
+                        <string>Developer ID Installer: Wacom Technology Corp. (EG27766DY7)</string>
 						<string>Developer ID Certification Authority</string>
 						<string>Apple Root CA</string>
 					</array>
