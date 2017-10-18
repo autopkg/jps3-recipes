@@ -23,7 +23,13 @@
 			<key>MUNKI_NAME</key>
 			<string>%NAME%</string>
 			<key>pkginfo</key>
-			<dict>
+            <dict>
+                <key>blocking_applications</key>
+                <array>
+                    <string>Wacom Desktop Center.app</string>
+                    <string>Wacom Display Settings.app</string>
+                    <string>Wacom Tablet Utility.app</string>
+                </array>
 				<key>name</key>
 				<string>%MUNKI_NAME%</string>
 				<key>displayname</key>
