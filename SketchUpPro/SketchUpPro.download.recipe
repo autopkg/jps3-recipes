@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page. 
+	<string>Downloads the latest version of SketchUp Pro for RELEASE_YEAR (ex. 2017) by looking for the first match on the download page. 
 
 You can specify LOCALE (default: en) for alternative languages. At last check locales were: en, de, es, fr, it, ja, ko.
 
@@ -30,7 +30,7 @@ Note: It sppears that every major release is done annually and requires and upda
 		-->
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.4.1</string>
+	<string>1.0.3</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -43,7 +43,8 @@ Note: It sppears that every major release is done annually and requires and upda
 				<key>result_output_var_name</key>
 				<string>url</string>
 				<key>re_pattern</key>
-				<string>&quot;((?:https?:)?//.+/SketchUpPro.*%LOCALE%.*.dmg)&quot;</string>
+				<string>(?&lt;=&quot;)((?:https?:)?//.+/sketchup/2017/.+-en.dmg)(?=&quot;)</string>
+				<!-- Ex. http://dl.trimble.com/sketchup/2017/en/sketchuppro-2017-3-116-90851-en.dmg -->
 				<key>re_flags</key>
 				<array>
 					<string>IGNORECASE</string>
