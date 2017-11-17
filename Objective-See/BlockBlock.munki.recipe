@@ -29,6 +29,10 @@ BlockBlock is currently still a beta product. This version isn't as fully tested
 			<string>%NAME%</string>
 			<key>name</key>
             <string>%NAME%</string>
+   			<key>developer</key>
+			<string>Objective-See</string>
+			<key>category</key>
+			<string>Security</string>
             <key>preuninstall_script</key>
             <string>#!/bin/bash
 PATH=/bin:/usr/bin:/sbin

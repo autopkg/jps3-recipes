@@ -31,6 +31,10 @@ Installation script is based on command-line installation instructions at the ab
 			<string>%NAME%</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>developer</key>
+			<string>Objective-See</string>
+			<key>category</key>
+			<string>Security</string>
 			<key>postinstall_script</key>
 			<string>#!/bin/bash
 

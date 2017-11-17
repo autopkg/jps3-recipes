@@ -24,6 +24,10 @@ Let's try to generically thwart OS X ransomware via math! By continually monitor
 			<string>%NAME%</string>
 			<key>name</key>
             <string>%NAME%</string>
+			<key>developer</key>
+			<string>Objective-See</string>
+			<key>category</key>
+			<string>Security</string>
             <key>postinstall_script</key>
             <string>#!/bin/bash
 /Applications/RansomWhere.app/Contents/MacOS/RansomWhere -install

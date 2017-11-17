@@ -29,6 +29,10 @@ And, if you find any issues while using this tool, please send an email to bugs@
 			<string>%NAME%</string>
 			<key>name</key>
             <string>%NAME%</string>
+			<key>developer</key>
+			<string>Objective-See</string>
+			<key>category</key>
+			<string>Security</string>
             <key>preuninstall_script</key>
             <string>#!/bin/bash
 PATH=/sbin:/bin
