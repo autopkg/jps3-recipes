@@ -24,17 +24,64 @@
 OverSight monitors a mac's mic and webcam, alerting the user when the internal mic is activated, or whenever a process accesses the webcam
 
 https://objective-see.com/products/oversight.html
+
+Installation script is based on command-line installation instructions at the above URL.
 			</string>
 			<key>display_name</key>
 			<string>%NAME%</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>postinstall_script</key>
+			<string>#!/bin/bash
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+OSI="/Applications/OverSight_Installer.app"
+
+#
+# Since Munki will handle the installation of the Oversight application 
+# via command line (per developer instructions on product web page),
+# it would seem to be a good idea to hide the OverSight_Installer.app
+# so any client machines which have a local administrator do not use
+# (or delete) it manually while it is still a managed or optional
+# install.
+#
+
+chflags hidden ${OSI}
+
+#
+# Perform the installation per developer instructions.
+#
+
+${OSI}/Contents/MacOS/OverSight_Installer -install
+
+			</string>
+			<key>preuninstall_script</key>
+			<string>#!/bin/bash
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+OSI="/Applications/OverSight_Installer.app"
+
+#
+# Go ahead and unhide the application
+#
+
+chflags hidden ${OSI}
+
+#
+# Perform the uninstallation per developer instructions.
+#
+
+${OSI}/Contents/MacOS/OverSight_Installer -uninstall
+
+			</string>
 		</dict>
 		<key>repo_subdirectory</key>
 		<string>apps/Objective-See</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.4.0</string>
+	<string>1.0.3</string>
 	<key>ParentRecipe</key>
 	<string>com.github.jps3.download.OverSight</string>
 	<key>Process</key>

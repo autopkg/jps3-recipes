@@ -14,7 +14,7 @@
 		<string>OverSight</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.4.0</string>
+	<string>1.0.3</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -50,6 +50,17 @@
 			</dict>
 			<key>Processor</key>
 			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%_Installer.app</string>
+				<key>requirement</key>
+				<string>anchor apple generic and identifier "com.objectiveSee.OverSight-Installer" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VBG97UB4TA)</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
