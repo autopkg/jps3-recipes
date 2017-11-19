@@ -43,7 +43,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/%INSTALLER_APP_NAME%/Contents/Resources/%NAME%/Contents/Info.plist</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/%INSTALLER_APP_NAME%/Contents/Resources/%NAME%.app/Contents/Info.plist</string>
 			</dict>
 		</dict>
 		<dict>
