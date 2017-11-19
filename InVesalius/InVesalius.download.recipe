@@ -3,10 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>***DEPRECATION NOTICE 27-Sep-2017***
-My clients who had been using this app are no longer with my organization, and no one else is making use of this application. I will be deprecating support of these recipes. If anyone would like to take over, please notify me via Github (submit new issue, or otherwise).
+    <string>***FINAL DEPRECATION NOTICE 19-Nov-2017***
+        
+        ***DEPRECATION NOTICE 27-Sep-2017***
+~~My clients who had been using this app are no longer with my organization, and no one else is making use of this application. I will be deprecating support of these recipes. If anyone would like to take over, please notify me via Github (submit new issue, or otherwise).~~
 
-Downloads the latest version of InVesalius for OS X from developer's web site. (Note: The URL returned has historically used the 'ftp' scheme, which with autopkg effectively causes it to download _every_ time, and the *.dmg's file size is typically ~300MB.)</string>
+~~Downloads the latest version of InVesalius for OS X from developer's web site. (Note: The URL returned has historically used the 'ftp' scheme, which with autopkg effectively causes it to download _every_ time, and the *.dmg's file size is typically ~300MB.)~~
+    </string>
 	<key>Identifier</key>
 	<string>com.github.jps3.download.InVesalius</string>
 	<key>Input</key>
@@ -17,7 +20,8 @@ Downloads the latest version of InVesalius for OS X from developer's web site. (
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
 	<key>Process</key>
-	<array>
+    <array>
+        <!-- 
 		<dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -26,7 +30,7 @@ Downloads the latest version of InVesalius for OS X from developer's web site. (
 				<key>url</key>
 				<string>http://www.cti.gov.br/invesalius/?page_id=8</string>
 				<key>re_pattern</key>
-				<!-- Ex. ftp://ftp.cti.gov.br/pub/dt3d/invesalius/files/InVesalius-3.0.dmg -->
+				<! - - Ex. ftp://ftp.cti.gov.br/pub/dt3d/invesalius/files/InVesalius-3.0.dmg - - >
 				<string>href="(?P&lt;url&gt;(https?://|ftp://)[^"]*\/?(?P&lt;dmg_filename&gt;InVesalius-(?P&lt;version&gt;[^"]+)\.dmg))"</string>
 				<key>re_flags</key>
 				<array>
@@ -46,7 +50,8 @@ Downloads the latest version of InVesalius for OS X from developer's web site. (
 				<key>CHECK_FILESIZE_ONLY</key>
 				<false/>
 			</dict>
-		</dict>
+        </dict>
+        -->
 	</array>
 </dict>
 </plist>
