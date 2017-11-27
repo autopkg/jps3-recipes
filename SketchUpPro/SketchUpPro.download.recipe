@@ -43,7 +43,7 @@ Note: It sppears that every major release is done annually and requires and upda
 				<key>result_output_var_name</key>
 				<string>url</string>
 				<key>re_pattern</key>
-				<string>(?&lt;=&quot;)((?:https?:)?//.+/sketchup/2017/.+-en.dmg)(?=&quot;)</string>
+				<string>(?&lt;=&quot;)((?:https?:)?//.+/sketchup/%RELEASE_YEAR%/.+-en.dmg)(?=&quot;)</string>
 				<!-- Ex. http://dl.trimble.com/sketchup/2017/en/sketchuppro-2017-3-116-90851-en.dmg -->
 				<key>re_flags</key>
 				<array>
