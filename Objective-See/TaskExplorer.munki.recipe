@@ -26,6 +26,10 @@ https://objective-see.com/products/taskexplorer.html
 			<string>%NAME%</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>developer</key>
+			<string>Objective-See</string>
+			<key>category</key>
+			<string>Security</string>
 			<key>blocking_applications</key>
 			<array>
 				<string>%NAME%.app</string>
