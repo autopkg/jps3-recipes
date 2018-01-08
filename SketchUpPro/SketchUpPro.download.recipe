@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of SketchUp Pro for RELEASE_YEAR (ex. 2017) by looking for the first match on the download page. 
+	<string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page. 
 
-You can specify LOCALE (default: en) for alternative languages. At last check locales were: en, de, es, fr, it, ja, ko.
+You can specify LOCALE (default: en) for alternative languages. At last check locales were: en, de, es, fr, it, ja, ko, pt-br, ru, sv, zh-cn, zh-tw.
 
 Note: It sppears that every major release is done annually and requires and updated license. You will want to keep that in mind if you are automating your deployments without testing!
 </string>
@@ -18,7 +18,7 @@ Note: It sppears that every major release is done annually and requires and upda
 		<key>NAME</key>
 		<string>SketchUpPro</string>
 		<key>RELEASE_YEAR</key>
-		<string>2017</string>
+		<string>2018</string>
 		<key>SU_FOLDER</key>
 		<string>SketchUp %RELEASE_YEAR%</string>
 		<key>SUP_DOWNLOAD_PAGE_URL</key>
@@ -43,8 +43,8 @@ Note: It sppears that every major release is done annually and requires and upda
 				<key>result_output_var_name</key>
 				<string>url</string>
 				<key>re_pattern</key>
-				<string>(?&lt;=&quot;)((?:https?:)?//.+/sketchup/%RELEASE_YEAR%/.+-en.dmg)(?=&quot;)</string>
-				<!-- Ex. http://dl.trimble.com/sketchup/2017/en/sketchuppro-2017-3-116-90851-en.dmg -->
+				<string>(?&lt;=&quot;)((?:https?:)?//.+/sketchup/SketchUpPro-%LOCALE%\.dmg)(?=&quot;)</string>
+				<!-- Ex. http://dl.trimble.com/sketchup/SketchUpPro-en.dmg -->
 				<key>re_flags</key>
 				<array>
 					<string>IGNORECASE</string>
