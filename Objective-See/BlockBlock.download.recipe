@@ -72,7 +72,7 @@
                     <key>input_path</key>
                     <string>%found_filename%</string>
                     <key>requirement</key>
-                    <string>identifier "com.objectiveSee.BlockBlock" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: patrickistraveling@yahoo.com (S683JERM94)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+                    <string>anchor apple generic and identifier "com.objectiveSee.BlockBlock" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VBG97UB4TA)</string>
                     <!-- See notice on Objective-See web site regarding (temp) signing certs. As of this date and time, I saved to the Wayback Machine, you can see the notice at: https://web.archive.org/web/20171009164747/https://objective-see.com/products/blockblock.html -->
                 </dict>
             </dict>
