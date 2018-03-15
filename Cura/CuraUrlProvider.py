@@ -18,6 +18,7 @@
 #    AutoPkg/autopkglib/SparkleUpdateInfoProvider.py
 #
 
+import urllib
 import urllib2
 import platform
 from distutils.version import LooseVersion
@@ -61,7 +62,7 @@ class CuraUrlProvider(Processor):
             for item in root.iterfind('release'):
                 if item.get('os').lower() == 'darwin':
                     filename = item.find('filename').text
-                    filepath = "current/{fn}".format(fn=filename)
+                    filepath = urllib.quote("current/{fn}".format(fn=filename))
             assert filepath is not None
         except Exception as e:
             raise ProcessorError(
