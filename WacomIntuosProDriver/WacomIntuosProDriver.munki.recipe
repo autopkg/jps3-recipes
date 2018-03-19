@@ -32,7 +32,7 @@
                 </array>
 				<key>name</key>
 				<string>%MUNKI_NAME%</string>
-				<key>displayname</key>
+				<key>display_name</key>
 				<string>%MUNKI_DISPLAYNAME%</string>
 				<key>description</key>
 				<string>%MUNKI_DESCRIPTION%</string>
