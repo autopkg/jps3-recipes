@@ -14,7 +14,7 @@
 		<string>OverSight</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -28,6 +28,10 @@
 				<string>"(?P&lt;url&gt;https://bitbucket.org/objective-see/deploy/downloads/%NAME%.*\.zip)"</string>
 				<key>url</key>
 				<string>%DOWNLOAD_PAGE_URL%</string>
+				<key>curl_opts</key>
+				<array>
+					<string>--compress</string>
+				</array>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -58,6 +62,8 @@
 				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%_Installer.app</string>
 				<key>requirement</key>
 				<string>anchor apple generic and identifier "com.objectiveSee.OverSight-Installer" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VBG97UB4TA)</string>
+				<key>strict_verification</key>
+				<true />
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
@@ -69,6 +75,8 @@
 				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%_Installer.app/Contents/Resources/%NAME%.app</string>
 				<key>requirement</key>
 				<string>anchor apple generic and identifier "com.objective-see.OverSight" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VBG97UB4TA)</string>
+				<key>strict_verification</key>
+				<true />
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
