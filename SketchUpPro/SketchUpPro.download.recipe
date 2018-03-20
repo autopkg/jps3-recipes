@@ -17,14 +17,12 @@ Note: It sppears that every major release is done annually and requires and upda
 	<dict>
 		<key>LOCALE</key>
         <string>en</string>
-        <key>LANGUAGE</key>
-        <string>English</string>
 		<key>NAME</key>
 		<string>SketchUpPro</string>
 		<key>RELEASE_YEAR</key>
 		<string>2018</string>
 		<key>SU_FOLDER</key>
-		<string>SketchUp %RELEASE_YEAR% (%LANGUAGE%)</string>
+        <string>SketchUp %RELEASE_YEAR%</string>
 		<key>SUP_DOWNLOAD_PAGE_URL</key>
 		<string>https://www.sketchup.com/download/all</string>
 	</dict>
