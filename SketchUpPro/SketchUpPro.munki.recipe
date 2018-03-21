@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-    <string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page, and imports into Munki. 
-        
+	<string>Downloads the latest version of SketchUp Pro by looking for the first match on the download page, then imports into your Munki repo. 
+		
 You can specify LOCALE (default: en) for alternative languages. At last check locales were: en, de, es, fr, it, ja, ko.
 
-(The previous functionality of this recipe which attempted to allow for easy configuration of which "RELEASE_YEAR" version to download/import/etc was not working well. For the nonce that functionality has been reverted. You will need to update or recreate your RecipeOverride(s). The RELEASE_YEAR variable is just used to help with consistent naming, _NOT_ in choosing which version to download.)
+Note (20-Mar-2018): The previous functionality of this recipe which attempted to allow for easy configuration of which "RELEASE_YEAR" version to download and process was not working well due to the not-quite-straightforward way the developer creates their URL patterns. For the time being that functionality has been reverted such that RELEASE_YEAR is used as a convenience variable to limit the number of locations you would need to edit in your overrides. (You will need to update or recreate your RecipeOverride(s) for these changes to take effect for you.
 
-Note: It sppears that every major release is done annually and requires and updated license. You will want to keep that in mind if you are automating your deployments without testing!
+Note (21-Mar-2018): If you encounter any errors in AutoPkg with these recipes, I recommend: (a) recreate your override(s); (b) rename or delete the cached downloads as that has cleared up the majority of hdiutil-related errors for me. Whether you save your receipts or not is up to your conscience and accountant.
 </string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.SketchUpPro</string>
@@ -24,13 +24,15 @@ Note: It sppears that every major release is done annually and requires and upda
 				<string>development</string>
 			</array>
 			<key>description</key>
-			<string>SketchUp Pro is the most intuitive way to design, document and communicate your ideas in 3D.</string>
+			<string>SketchUp Pro is the most intuitive way to design, document and communicate your ideas in 3D.
+Additional information can be found at https://www.sketchup.com/products/sketchup-pro
+			</string>
 			<key>display_name</key>
 			<string>SketchUp Pro</string>
 			<key>developer</key>
-			<string>Trimble Navigation Ltd.</string>
+			<string>Trimble Inc.</string>
 			<key>name</key>
-			<string>%NAME%</string>
+			<string>%NAME%%RELEASE_YEAR%</string>
 			<key>minimum_os_version</key>
 			<string>10.11</string>
 			<key>blocking_applications</key>
@@ -42,7 +44,7 @@ Note: It sppears that every major release is done annually and requires and upda
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.4.1</string>
+	<string>1.0.4</string>
 	<key>ParentRecipe</key>
 	<string>com.github.jps3.download.SketchUpPro</string>
 	<key>Process</key>
