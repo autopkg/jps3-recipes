@@ -68,7 +68,7 @@ class CuraUrlProvider(Processor):
         except Exception as e:
             raise ProcessorError(
                 "Error parsing XML data from feed. ('{}')".format(e))
-        return filepath
+        return filepath_encoded
 
     def get_latest_feed_file(self, stub_url=CURA_URL_STUB_DEFAULT):
         """Retrieves version feed file."""
