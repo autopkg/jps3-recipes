@@ -9,7 +9,9 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Cura</string>
+        <string>UltimakerCura</string>
+        <key>APP_NAME</key>
+        <string>Ultimaker Cura</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/%NAME%</string>
 		<key>pkginfo</key>
@@ -19,9 +21,9 @@
 				<string>testing</string>
 			</array>
 	        <key>description</key>
-	        <string>Cura is developed by Ultimaker to make 3D printing as easy and streamlined as possible. It includes everything you need to prepare a 3D file for printing and to print it. Cura is fully preconfigured to work on the Ultimaker. Cura comes with a friendly setup program that help you install the latest firmware as well as calibrate your printer.</string>
+            <string>Ultimaker Cura prepares your model for 3D printing. For novices, it makes it easy to get great results. For experts, there are over 200 settings to adjust to your needs. And integration with major software platforms makes 3D printing even simpler. Get more information at: https://ultimaker.com/en/products/ultimaker-cura-software</string>
 			<key>display_name</key>
-			<string>%NAME%</string>
+			<string>%APP_NAME%</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -30,12 +32,12 @@
 			<true/>
 			<key>blocking_applications</key>
 			<array>
-				<string>%NAME%</string>
+				<string>%APP_NAME%</string>
 			</array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.4.0</string>
+	<string>1.0.4</string>
     <key>ParentRecipe</key>
     <string>com.github.jps3.download.Cura</string>
 	<key>Process</key>
@@ -48,7 +50,7 @@
 				<key>pkg_path</key>
 				<string>%pathname%</string>
 				<key>munkiimport_appname</key>
-				<string>%NAME%.app</string>
+				<string>%APP_NAME%.app</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
