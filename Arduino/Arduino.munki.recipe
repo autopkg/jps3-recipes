@@ -19,8 +19,13 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-            <string>The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. It runs on Windows, Mac OS X, and Linux. The environment is written in Java and based on Processing and other open-source software.
-                This software can be used with any Arduino board.
+            <string>The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. It runs on Windows, Mac OS X, and Linux. The environment is written in Java and based on Processing and other open-source software. 
+                
+This software can be used with any Arduino board. 
+
+Refer to the Getting Started page for Installation instructions:
+
+https://www.arduino.cc/en/Guide/HomePage
             </string>
 			<key>display_name</key>
 			<string>%NAME%</string>
@@ -30,29 +35,10 @@
 			<array>
 				<string>%NAME%</string>
 			</array>
-			<key>postinstall_script</key>
-			<string>#!/bin/bash
-PATH=/bin:/usr/sbin
-
-# We need to fix permissions of one or more items embedded within the *.app bundle which, apparently
-
-# https://github.com/arduino/Arduino/issues/4501
-chmod 0755 "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin/avrdude_bin"
-
-# https://github.com/arduino/Arduino/issues/4273
-chmod 0755 "/Applications/Arduino.app/Contents/Java/reference/Edison_help_files"
-chmod 0755 "/Applications/Arduino.app/Contents/Java/reference/Galileo_help_files"
-
-# Related:
-# https://github.com/arduino/Arduino/issues/3468
-
-# Verify that still passes gatekeeper check
-spctl --assess /Applications/Arduino.app || logger -is "$0: spctl --assess /Applications/Arduino.app returned '$?'"
-			</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.4.1</string>
+	<string>1.0.2</string>
     <key>ParentRecipe</key>
     <string>com.github.jps3.download.Arduino</string>
 	<key>Process</key>
@@ -66,8 +52,6 @@ spctl --assess /Applications/Arduino.app || logger -is "$0: spctl --assess /Appl
 				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				<key>dmg_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
-                <key>dmg_megabytes</key>
-                <string>500</string>
 			</dict>
 		</dict>
 		<dict>

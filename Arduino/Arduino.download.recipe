@@ -14,7 +14,7 @@
         <string>https://arduino.cc/en/Main/Software</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.4.1</string>
+	<string>1.0.4</string>
 	<key>Process</key>
 	<array>
         <dict>
