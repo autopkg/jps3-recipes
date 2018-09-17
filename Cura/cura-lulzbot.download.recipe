@@ -29,7 +29,7 @@
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-                <string>href="https?://(download\.lulzbot\.com/Software/cura-lulzbot/mac/cura-lulzbot[_-]\d+\.\d+(\.\d+)?.dmg)"</string>
+                <string>href="https?://(download\.alephobjects\.com/lulzbot/Software/cura-lulzbot/mac/cura-lulzbot[_-]\d+\.\d+(\.\d+)?.dmg)"</string>
 			</dict>
 		</dict>
 		<dict>
