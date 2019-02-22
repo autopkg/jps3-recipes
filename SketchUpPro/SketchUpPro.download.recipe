@@ -20,14 +20,14 @@ Note: It sppears that every major release is done annually and requires and upda
 		<key>NAME</key>
 		<string>SketchUpPro</string>
 		<key>RELEASE_YEAR</key>
-		<string>2018</string>
+		<string>2019</string>
 		<key>SU_FOLDER</key>
 		<string>SketchUp %RELEASE_YEAR%</string>
 		<key>SUP_DOWNLOAD_PAGE_URL</key>
 		<string>https://www.sketchup.com/download/all</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -38,10 +38,11 @@ Note: It sppears that every major release is done annually and requires and upda
 				<key>url</key>
 				<string>%SUP_DOWNLOAD_PAGE_URL%</string>
 				<key>result_output_var_name</key>
-				<string>url</string>
+				<string>url_file_path</string>
 				<key>re_pattern</key>
-				<string>(?&lt;=&quot;)((?:https?:)?//.+/sketchup/.+-%LOCALE%-dmg)(?=&quot;)</string>
-				<!-- Ex. https://www.sketchup.com/sketchup/SketchUpPro-en-dmg -->
+                <string>(?&lt;=&quot;)(?:https?:)?(?://.+)?(/sketchup/(?:%RELEASE_YEAR%/)?.+-%LOCALE%-dmg)(?=&quot;)</string>
+                <!-- Ex. https://www.sketchup.com/sketchup/SketchUpPro-en-dmg -->
+                <!-- Ex. /sketchup/2019/SketchUpPro-en-dmg                    -->
 				<key>re_flags</key>
 				<array>
 					<string>IGNORECASE</string>
@@ -52,7 +53,9 @@ Note: It sppears that every major release is done annually and requires and upda
 			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
-			<dict>
+            <dict>
+                <key>url</key>
+                <string>https://www.sketchup.com%url_file_path%</string>
 				<key>filename</key>
 				<string>%NAME%-%LOCALE%.dmg</string>
 			</dict>
