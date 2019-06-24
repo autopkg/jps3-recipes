@@ -40,7 +40,7 @@
                 <key>pkg_path</key>
                 <string>%pathname%</string>
                 <key>munkiimport_appname</key>
-                <string>%NAME%.app</string>
+                <string>i1Diagnostics.app</string>
             </dict>
         </dict>
 	</array>

@@ -43,7 +43,7 @@
                     <true/>
                     <key>blocking_applications</key>
                     <array>
-                        <string>%NAME%</string>
+                        <string>TotalTerminal</string>
                         <string>Terminal</string>
                         <string>TotalTerminalCrashWatcher</string>
                     </array>
@@ -73,7 +73,7 @@
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%_unpacked</string>
                 <key>pkg_payload_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%_expanded/%NAME%_Plugin.pkg/Payload</string>
+                <string>%RECIPE_CACHE_DIR%/%NAME%_expanded/TotalTerminal_Plugin.pkg/Payload</string>
             </dict>
         </dict>
         <dict>
@@ -85,8 +85,8 @@
                 <string>%RECIPE_CACHE_DIR%/%NAME%_unpacked</string>
                 <key>installs_item_paths</key>
                 <array>
-                    <string>/Applications/%NAME%.app</string>
-                    <string>/Library/ScriptingAdditions/%NAME%.osax</string>
+                    <string>/Applications/TotalTerminal.app</string>
+                    <string>/Library/ScriptingAdditions/TotalTerminal.osax</string>
                 </array>
             </dict>
         </dict>

@@ -37,7 +37,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_path</key>
-                <string>%pathname%/%NAME%.app</string>
+                <string>%pathname%/i1Diagnostics.app</string>
                 <key>expected_authority_names</key>
 	            <array>
 	                <string>Developer ID Application: X-Rite, Incorporated</string>

@@ -37,9 +37,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
-				<string>%pathname%/%NAME%.app</string>
+				<string>%pathname%/Fritzing.app</string>
 				<key>destination_path</key>
-				<string>%pkgroot%/Applications/%NAME%.app</string>
+				<string>%pkgroot%/Applications/Fritzing.app</string>
 			</dict>
 		</dict>
 		<dict>

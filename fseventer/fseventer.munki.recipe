@@ -70,7 +70,7 @@ exit 0
 					<true/>
 					<key>blocking_applications</key>
 					<array>
-						<string>%NAME%</string>
+						<string>fseventer</string>
 					</array>
 				</dict>
 			</dict>
@@ -84,7 +84,7 @@ exit 0
 				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>installs_item_paths</key>
 				<array>
-					<string>/Applications/%NAME%.app</string>					
+					<string>/Applications/fseventer.app</string>
 				</array>
 				<key>version_comparison_key</key>
 				<string>CFBundleVersion</string>
