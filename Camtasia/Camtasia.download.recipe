@@ -9,11 +9,11 @@
 	<key>Input</key>
 	<dict>
 		<key>APPCAST_URL</key>
-		<string>https://www.techsmith.com/snagitmactudi/?version=18.0.0</string>
+        <string>https://www.techsmith.com/redirect.asp?target=sparkleappcast&amp;product=camtasiamac&amp;lang=enu&amp;ver=2.0.0.0&amp;code=none</string>
 		<key>NAME</key>
 		<string>Camtasia</string>
 		<key>USER_AGENT</key>
-		<string>Camtasia/2018.0.0 Sparkle/1.16.0</string>
+        <string>Camtasia</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.4</string>
