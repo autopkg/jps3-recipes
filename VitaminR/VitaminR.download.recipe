@@ -16,7 +16,7 @@
 			Invalid certificate chain error.
 		-->
 		<key>appcast_url</key>
-		<string>http://www.publicspace.net/app/vitamin2.xml</string>
+		<string>https://www.publicspace.net/app/vitamin2.xml</string>
 		<key>APPNAME</key>
 		<string>Vitamin-R 2</string>
 	</dict>
