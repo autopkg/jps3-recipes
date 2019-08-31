@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import absolute_import
 import urllib2
 import xml.etree.ElementTree as ET
 from autopkglib import Processor, ProcessorError

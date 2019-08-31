@@ -15,6 +15,7 @@
 # limitations under the License.
 """See docstring for JSONParser class"""
 
+from __future__ import absolute_import
 import json
 import urllib2
 

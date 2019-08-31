@@ -18,6 +18,7 @@
 #    AutoPkg/autopkglib/SparkleUpdateInfoProvider.py
 #
 
+from __future__ import absolute_import
 import urllib
 import urllib2
 import platform
