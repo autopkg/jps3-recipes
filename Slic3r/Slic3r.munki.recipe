@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>Slic3r</string>
         <key>munki_PAGE</key>
-        <string>http://dl.slic3r.org/mac</string>
+        <string>https://dl.slic3r.org/mac</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/%NAME%</string>
 		<key>pkginfo</key>
