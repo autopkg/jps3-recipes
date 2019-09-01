@@ -14,18 +14,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Based on code Copyright 2013 Timothy Sutton 
+# Based on code Copyright 2013 Timothy Sutton
 #    AutoPkg/autopkglib/SparkleUpdateInfoProvider.py
 #
 
 
 from __future__ import absolute_import
-import urllib2
 from xml.etree import ElementTree
 
 from autopkglib import Processor, ProcessorError
 from distutils.version import LooseVersion
 from operator import itemgetter
+
+try:
+    from urllib.request import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["FritzingUrlProvider"]
 
@@ -51,7 +55,7 @@ class FritzingUrlProvider(Processor):
         },
     }
     __doc__ = description
-    
+
     def get_feed_items(self, url):
         """Retrieves ATOM/XML updated feed data from URL.
         Like the SparkleUpdateInfoProvider, this also returns an array
@@ -61,12 +65,11 @@ class FritzingUrlProvider(Processor):
         description_data: HTML description for update (optional)
         description_url: URL given by entry/link[@rel='alternate']/@href
         """
-        request = urllib2.Request(url=url)
 
         try:
-            url_handle = urllib2.urlopen(request)
+            url_handle = urlopen(url)
         except:
-            raise ProcessorError("Could not open URL %s" % request.get_full_url())
+            raise ProcessorError("Could not open URL %s" % url)
 
         data = url_handle.read()
 
@@ -74,9 +77,9 @@ class FritzingUrlProvider(Processor):
             xmldata = ElementTree.fromstring(data)
         except:
             raise ProcessorError("Error parsing XML from appcast feed.")
-        
+
         items = xmldata.findall('atom:entry', xml_namespaces)
-        
+
         versions = []
         for item_elem in items:
             item = {}
