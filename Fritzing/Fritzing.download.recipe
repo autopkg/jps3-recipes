@@ -10,39 +10,32 @@
 	<dict>
 		<key>NAME</key>
 		<string>Fritzing</string>
-        <!-- 2016-04-13T09:59:06-0400
-	            This is a note regarding security issues with Sparkle updates over http, as
-	            reported at https://vulnsec.com/2016/osx-apps-vulnerabilities/
-
-	            % curl -LI https://fritzing.org/download/feed/atom/mac-os-x-105/
-	            curl: (7) Failed to connect to macitbetter.com port 443: Connection refused
-
-	            Will need to test again at a later date and update as required.
-        -->
-		<key>FRITZING_UPDATES_URL</key>
-		<string>http://fritzing.org/download/feed/atom/mac-os-x-105/?version=0.0.0&amp;sysname=Mac%20OS%20X&amp;sysversion=UNKNOWN</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>1.1</string>
 	<key>Process</key>
 	<array>
-	    <dict>
-	        <key>Processor</key>
-	        <string>FritzingUrlProvider</string>
+		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>updates_url</key>
-				<string>%FRITZING_UPDATES_URL%</string>
+				<key>re_pattern</key>
+				<string>href="(?P&lt;urlpath&gt;\/download\/(?P&lt;version&gt;[\d\.\w]+)\/mac-os-x-105\/Fritzing[\d\.\w]+\.dmg)"</string>
+				<key>url</key>
+				<string>http://fritzing.org/download/</string>
 			</dict>
-	    </dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>http://fritzing.org%urlpath%</string>
+				<key>filename</key>
+				<string>%NAME%-%version%.dmg</string>
+			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>filename</key>
-                <string>%NAME%-%version%.dmg</string>
-            </dict>
 		</dict>
 		<dict>
 			<key>Processor</key>
