@@ -69,7 +69,7 @@ class CuraUrlProvider(Processor):
                     filepath = "current/{fn}".format(fn=filename)
                     filepath_encoded = urllib.pathname2url(filepath)
             assert filepath is not None
-        except Exception as e:
+        except BaseException as e:
             raise ProcessorError(
                 "Error parsing XML data from feed. ('{}')".format(e))
         return filepath_encoded
