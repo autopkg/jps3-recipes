@@ -95,4 +95,4 @@ class CuraUrlProvider(Processor):
 
 if __name__ == "__main__":
     processor = CuraUrlProvider()
-    processor.execute_shell
+    processor.execute_shell()
