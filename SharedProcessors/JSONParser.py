@@ -16,6 +16,7 @@
 """See docstring for JSONParser class"""
 
 from __future__ import absolute_import
+
 import json
 
 from autopkglib import Processor, ProcessorError
