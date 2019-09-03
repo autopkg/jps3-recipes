@@ -35,13 +35,13 @@ class PathFinderURLProvider(Processor):
         update_url = "%s/%s" % (self.env['UPDATE_XML_HOST'], self.env['UPDATE_XML_PATH'])
         try:
             f = urlopen(update_url)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Unable to download %s: %s" % (update_url, e))
 
         try:
             xml = f.read()
             doc = ET.fromstring(xml)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Error attempting to parse XML data from update feed at: %s (Error: %s)" % (update_url, e) )
         else:
             self.env["url"] = doc.find('url').text
