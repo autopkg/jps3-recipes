@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Scout-App GUI SASS processor and imports into Munki</string>
+	<string>Downloads the latest version of Scout-App GUI SASS processor.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.download.Scout-App</string>
 	<key>Input</key>
