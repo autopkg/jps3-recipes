@@ -29,7 +29,7 @@
 	<key>MinimumVersion</key>
 	<string>0.4.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.jps3.download.Brackets</string>
+	<string>com.github.novaksam.download.Brackets</string>
 	<key>Process</key>
 	<array>
         <dict>
