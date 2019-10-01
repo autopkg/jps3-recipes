@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest VueScan and imports into Munki. This recipe relies upon the com.github.hansen-m.download.VueScan recipe, so be certain you have added his autopkg repo https://github.com/autopkg/hansen-m-recipes.git.</string>
+	<string>Downloads the latest VueScan. This recipe relies upon the com.github.hansen-m.download.VueScan recipe, so be certain you have added his autopkg repo https://github.com/autopkg/hansen-m-recipes.git.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.munki.VueScan</string>
 	<key>Input</key>
