@@ -22,7 +22,7 @@
       		Will have to revisit and test for https at a later date.
 		-->
 		<key>appcast_url</key>
-		<string>http://www.acqualia.com/soulver/appcast/soulver2.xml</string>
+		<string>https://www.acqualia.com/soulver/appcast/soulver2.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>

@@ -39,7 +39,7 @@ http://www.bluem.net/en/mac/pashua/
             <key>Arguments</key>
             <dict>
                 <key>munkiimport_appname</key>
-                <string>%NAME%.app</string>
+                <string>Pashua.app</string>
                 <key>pkg_path</key>
                 <string>%pathname%</string>
                 <key>version_comparison_key</key>

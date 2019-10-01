@@ -1,8 +1,15 @@
 #!/usr/bin/env python
 
-import urllib2
+from __future__ import absolute_import
+
 import xml.etree.ElementTree as ET
+
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.request import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["PathFinderURLProvider"]
 
@@ -27,14 +34,14 @@ class PathFinderURLProvider(Processor):
         """Identify and return the download URL for the latest version of PathFinder"""
         update_url = "%s/%s" % (self.env['UPDATE_XML_HOST'], self.env['UPDATE_XML_PATH'])
         try:
-            f = urllib2.urlopen(update_url) 
-        except BaseException as e:
+            f = urlopen(update_url)
+        except Exception as e:
             raise ProcessorError("Unable to download %s: %s" % (update_url, e))
 
         try:
             xml = f.read()
             doc = ET.fromstring(xml)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Error attempting to parse XML data from update feed at: %s (Error: %s)" % (update_url, e) )
         else:
             self.env["url"] = doc.find('url').text
@@ -69,7 +76,7 @@ if __name__ == '__main__':
 #             <li>Fixed drawing of the Sidebar in shelf modules in Yosemite.</li>
 #             <li>Other minor fixes and performance and stability improvements.</li>
 #         </ul>
-#         </font> 
+#         </font>
 #     ]]>
 #     </notes>
 # </item>
