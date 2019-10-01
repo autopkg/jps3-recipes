@@ -18,13 +18,17 @@
 #    AutoPkg/autopkglib/SparkleUpdateInfoProvider.py
 #
 
-import urllib
+from __future__ import absolute_import
+
 import urllib2
-import platform
-from distutils.version import LooseVersion
+import xml.etree.ElementTree as ET
+
 from autopkglib import Processor, ProcessorError
 
-import xml.etree.ElementTree as ET
+try:
+    from urllib import request as urllib  # For Python 3
+except ImportError:
+    import urllib  # For Python 2
 
 
 __all__ = ["CuraUrlProvider"]
@@ -35,7 +39,7 @@ CURA_EXT = 'dmg'
 
 class CuraUrlProvider(Processor):
     description = """
-    Downloads the developer's update feed (XML or JSON) and returns the 
+    Downloads the developer's update feed (XML or JSON) and returns the
     URL to download their installer file.
     """
     input_variables = {
@@ -54,7 +58,7 @@ class CuraUrlProvider(Processor):
 
     def parse_xml_feed_make_filepath(self, xml_data):
         """
-        Parses the XML feed for the latest (assumedly) stable version, and 
+        Parses the XML feed for the latest (assumedly) stable version, and
         attempts to construct and return a valid URL path for download.
         """
         try:
@@ -91,4 +95,4 @@ class CuraUrlProvider(Processor):
 
 if __name__ == "__main__":
     processor = CuraUrlProvider()
-    processor.execute_shell
+    processor.execute_shell()

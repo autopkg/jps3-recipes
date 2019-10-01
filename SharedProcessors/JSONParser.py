@@ -15,10 +15,16 @@
 # limitations under the License.
 """See docstring for JSONParser class"""
 
+from __future__ import absolute_import
+
 import json
-import urllib2
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.request import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["JSONParser"]
 
@@ -40,7 +46,7 @@ class JSONParser(Processor):
         },
         "format": {
             "required": False,
-            "description": 
+            "description":
                 "If multiple formats are provided, (e.g. pkg/dmg/zip)"
                 "returns that URL, otherwise chooses zip.",
             "default": "zip",
@@ -62,7 +68,7 @@ class JSONParser(Processor):
     def main(self):
         """gimme some main"""
         getit = self.env['product']
-        full_feed = urllib2.urlopen(MASTER_FEED_URL, timeout = 3).read()
+        full_feed = urlopen(MASTER_FEED_URL, timeout = 3).read()
         full_dict = json.loads(full_feed)
         we_want = full_dict.get(getit)
         if we_want:
