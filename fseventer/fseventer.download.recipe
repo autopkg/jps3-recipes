@@ -55,7 +55,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/**/%NAME%.app</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/**/fseventer.app</string>
 			</dict>
 		</dict>
 		<dict>

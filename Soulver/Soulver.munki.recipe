@@ -22,7 +22,7 @@
 			<string>Soulver helps you work things out. It's quicker to use than a spreadsheet, and smarter and clearer than a traditional calculator. Use Soulver to play around with numbers, do "back of the envelope" quick calculations, and solve day-to-day problems.</string>
 			<key>blocking_applications</key>
 			<array>
-				<string>%NAME%.app</string>
+				<string>Soulver.app</string>
 			</array>
 		</dict>
 	</dict>
@@ -38,7 +38,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app/Contents/Info.plist</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Soulver.app/Contents/Info.plist</string>
 			</dict>
 		</dict>
 		<dict>

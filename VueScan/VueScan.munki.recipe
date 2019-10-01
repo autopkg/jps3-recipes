@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>VueScan</string>
         <key>APPNAME</key>
-        <string>%NAME%.app</string>
+        <string>VueScan.app</string>
         <key>repo_subdirectory</key>
         <string>apps/VueScan</string>
 		<key>pkginfo</key>
