@@ -22,7 +22,7 @@
 			Will have to revisit and test for https at a later date.
 		-->
         <key>APPCAST_URL</key>
-        <string>http://updates.binaryage.com/totalterminal.xml</string>
+        <string>https://updates.binaryage.com/totalterminal.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
