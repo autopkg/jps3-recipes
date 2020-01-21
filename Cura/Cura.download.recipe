@@ -2,34 +2,48 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
-	<string>Downloads the latest version of Cura 3D printer software as a dmg. From this it extracts Cura.app from the /Cura/ subfolder and copies to a new dmg file by itself.</string>
-	<key>Identifier</key>
-	<string>com.github.jps3.download.Cura</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
+    <key>Description</key>
+    <string>Downloads the latest version of Cura 3D printer software as a dmg.</string>
+    <key>Identifier</key>
+    <string>com.github.jps3.download.Cura</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
         <string>UltimakerCura</string>
         <key>APP_NAME</key>
         <string>Ultimaker Cura</string><!-- A pox on thy filenames with spaces -->
-		<key>update_url_stub</key>
-		<string>https://software.ultimaker.com</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>1.0.4</string>
-	<key>Process</key>
-	<array>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.4</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>re_pattern</key>
+                <string>&lt;filename&gt;Ultimaker Cura-([\d\.]+)-Darwin.dmg&lt;/filename&gt;</string>
+                <key>result_output_var_name</key>
+                <string>version</string>
+                <key>url</key>
+                <string>https://software.ultimaker.com/latest.xml</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://software.ultimaker.com/current/Ultimaker%20Cura-%version%-Darwin.dmg</string>
+                <key>filename</key>
+                <string>%NAME%-%version%.dmg</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
         <dict>
             <key>Processor</key>
-            <string>CuraUrlProvider</string>
-        </dict>
-		<dict>
-			<key>Processor</key>
-            <string>URLDownloader</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
+            <string>EndOfCheckPhase</string>
         </dict>
         <dict>
             <key>Processor</key>
@@ -46,6 +60,6 @@
                 <true/>
             </dict>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
