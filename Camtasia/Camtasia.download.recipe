@@ -3,17 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Camtasia DMG from the TechSmith web site. It is assumed that the newest version is the only version on the web page for the application.</string>
+	<string>Downloads the latest Camtasia 2020 DMG from the TechSmith web site.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.download.Camtasia</string>
 	<key>Input</key>
 	<dict>
-		<key>APPCAST_URL</key>
-		<string>https://www.techsmith.com/snagitmactudi/?version=19.0.0</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://download.techsmith.com/camtasiamac/releases/Camtasia.dmg</string>
 		<key>NAME</key>
 		<string>Camtasia</string>
-		<key>USER_AGENT</key>
-		<string>Camtasia/2019.0.0 Sparkle/1.16.0</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.4</string>
@@ -22,22 +20,8 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>appcast_request_headers</key>
-				<dict>
-					<key>User-Agent</key>
-					<string>%USER_AGENT%</string>
-				</dict>
-				<key>appcast_url</key>
-				<string>%APPCAST_URL%</string>
-			</dict>
-			<key>Processor</key>
-			<string>SparkleUpdateInfoProvider</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%-%version%.dmg</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -50,7 +34,7 @@
 				<key>input_path</key>
 				<string>%pathname%/Camtasia*</string>
 				<key>requirement</key>
-				<string>identifier "com.techsmith.camtasia2019" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7TQL462TU8"</string>
+				<string>identifier "com.techsmith.camtasia2020" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7TQL462TU8"</string>
 				<key>strict_verification</key>
 				<true/>
 			</dict>
