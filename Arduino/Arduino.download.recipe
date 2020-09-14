@@ -34,7 +34,7 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://downloads.arduino.cc/%filename%</string>
+                <string>https://downloads.arduino.cc/%filename%</string>
             </dict>
 		</dict>
 		<dict>
