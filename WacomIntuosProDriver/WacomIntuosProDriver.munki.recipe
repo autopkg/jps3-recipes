@@ -42,6 +42,41 @@
 				</array>
 				<key>uninstall_method</key>
 				<string>removepackages</string>
+				<key>preinstall_script</key>
+				<string>#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+					
+# run uninstall.pl if it exists; or the Pen Tablet Utility with the --uninstall flag if it doesn't.
+# Because very old versions of this driver will cause newer versions to fail installation.
+
+uninstall_script="/Applications/Pen Tablet.localized/Pen Tablet Utility.app/Contents/Resources/uninstall.pl"
+
+app="/Applications/Pen Tablet.localized/Pen Tablet Utility.app/Contents/MacOS/Pen Tablet Utility"
+
+# Because Wacom's uninstall.pl script will fail when run from Munki
+# (it assumes $HOME and $USER are not empty), we are going to trick
+# the script just enough so that it uninstalls everything, and does
+# not fail or complain. See notes keys in pkginfo file for more
+# information on why we need to use this script.
+
+if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
+    fakeout_user="foo"
+    fakeout_home="$(mktemp -d -t _wacom_uninstall_tmp)"
+    echo "preuninstall_script: Calling Wacom uninstall script: ${uninstall_script}"
+    USER="${fakeout_user}" HOME="${fakeout_home}" "$uninstall_script"
+    echo "preuninstall_script: End of Wacom uninstall script."
+elif [[ -f "${app}" &amp;&amp; -x "${app}" ]]; then
+    echo "preuninstall_script: Calling ${app} --uninstall"
+    "${app}" --uninstall
+    result=$?
+    echo "preuninstall_script: End of Wacom uninstall script."
+    exit $result
+else
+    echo "preuninstall_script MESSAGE: Could not locate $uninstall_script or $app"
+fi
+
+exit 0
+	</string>
 				<key>preuninstall_script</key>
 				<string>#!/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
