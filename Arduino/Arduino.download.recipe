@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>Arduino</string>
         <key>DOWNLOAD_PAGE</key>
-        <string>https://arduino.cc/en/Main/Software</string>
+        <string>https://www.arduino.cc/en/software</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.4</string>
@@ -25,7 +25,7 @@
                 <key>url</key>
                 <string>%DOWNLOAD_PAGE%</string>
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;(https:)?\/\/(?:[^\/]*)arduino\.cc\/(?:download_handler\.php\?f=\/)(?P&lt;filename&gt;/?[^"']+-macosx\.zip))</string>
+                <string>(?P&lt;url&gt;(https:)?\/\/(?:[^\/]*)arduino\.cc\/(?P&lt;filename&gt;/?[^"']+-macosx\.zip))</string>
             </dict>
         </dict>
 		<dict>
