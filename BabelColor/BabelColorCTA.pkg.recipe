@@ -75,10 +75,10 @@
 			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgname</key>
-				<string>%NAME%-%version%</string>
 				<key>pkg_request</key>
 				<dict>
+					<key>pkgname</key>
+					<string>%NAME%-%version%</string>
 					<key>id</key>
 					<string>com.babelcolor.BabelColorCTA</string>
 					<key>options</key>
