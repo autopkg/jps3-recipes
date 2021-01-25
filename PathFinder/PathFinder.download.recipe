@@ -15,7 +15,7 @@
             2016-02-05T12:16:56-0500
             There does not appear to be a valid HTTPS update URL available.
         -->
-        <string>http://sparkle.cocoatech.com</string>
+        <string>https://sparkle.cocoatech.com</string>
         <key>UPDATE_XML_PATH</key>
         <string>PF7.xml</string>
     </dict>
