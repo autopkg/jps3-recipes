@@ -37,13 +37,9 @@
         </dict>
         <dict>
             <key>Processor</key>
-            <string>MunkiImporter</string>
+            <string>MunkiPkginfoMerger</string>
             <key>Arguments</key>
             <dict>
-                <key>repo_subdirectory</key>
-                <string>%MUNKI_REPO_SUBDIRECTORY%</string>
-                <key>pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
                 <key>additional_pkginfo</key>
                 <dict>
                     <key>version</key>
@@ -51,6 +47,17 @@
                     <key>display_name</key>
                     <string>%NAME%</string>
                 </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIRECTORY%</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
             </dict>
         </dict>
 	</array>
