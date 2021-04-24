@@ -10,10 +10,6 @@
 	<dict>
 		<key>NAME</key>
 		<string>Scout-App</string>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps</string>
-        <key>MUNKI_CATEGORY</key>
-        <string>Web Development</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.1</string>

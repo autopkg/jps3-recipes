@@ -8,6 +8,10 @@
     <string>com.github.jps3.munki.Scout-App</string>
     <key>Input</key>
     <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps</string>
+        <key>MUNKI_CATEGORY</key>
+        <string>Web Development</string>
         <key>pkginfo</key>
         <dict>
             <key>name</key>
