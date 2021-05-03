@@ -30,7 +30,7 @@
 		        At least the appcast.xml origin is reasonably verifiable.
 		-->
 		<key>APPCAST_URL</key>
-		<string>https://openscad.github.com/appcast.xml</string>
+		<string>https://openscad.github.io/appcast.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.2</string>
