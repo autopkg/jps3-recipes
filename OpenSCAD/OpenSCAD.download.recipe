@@ -3,34 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest OpenSCAD.
-	Note: Code signature verification for OpenSCAD cannot be done at this time.</string>
+	<string>Downloads the latest OpenSCAD.  Note: Developer does not codesign or notarize this app.</string>
 	<key>Identifier</key>
 	<string>com.github.jps3.download.OpenSCAD</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>OpenSCAD</string>
-        <!-- 2016-02-05T08:42:55-0500 
-		        This is a note regarding security issues with Sparkle updates over http, as
-		        reported at https://vulnsec.com/2016/osx-apps-vulnerabilities/
-
-		        % curl -LI https://www.openscad.org/appcast.xml
-		        curl: (60) SSL certificate problem: Invalid certificate chain
-
-		        It appears that www.openscad.org is using Fastly's CDN, and we are running
-		        into an issue where the SSL cert given is not valid for the domain name
-		        'www.openscad.org'.
-
-		        After a little digging around, I found that I could use 
-		        'https://openscad.github.com/appcast.xml' without error.
-
-		        It then gives an http URL for downloading the file anyway. >:-\
-
-		        At least the appcast.xml origin is reasonably verifiable.
-		-->
 		<key>APPCAST_URL</key>
-		<string>https://openscad.github.io/appcast.xml</string>
+		<string>https://files.openscad.org/appcast.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.2</string>
