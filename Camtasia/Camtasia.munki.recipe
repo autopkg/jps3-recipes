@@ -26,6 +26,9 @@
             <string>%DISPLAY_NAME%</string>
             <key>name</key>
             <string>%NAME%</string>
+            <key>postinstall_script</key>
+            <string>#!/bin/bash
+        /Applications/Camtasia\ 2021.app/Contents/Resources/aceinstaller install</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
