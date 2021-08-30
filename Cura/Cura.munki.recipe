@@ -42,6 +42,15 @@
     <string>com.github.jps3.download.Cura</string>
 	<key>Process</key>
 	<array>
+    	<dict>
+    		<key>Processor</key>
+    		<string>DeprecationWarning</string>
+    		<key>Arguments</key>
+    		<dict>
+    			<key>warning_message</key>
+    			<string>No longer maintained, please feel free to fork and take over if you use this product.</string>
+    		</dict>
+    	</dict>
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
