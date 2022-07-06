@@ -47,6 +47,15 @@
           <string>CFBundleVersion</string>
         </dict>
       </dict>
+      <dict>
+        <key>Processor</key>
+        <string>DeprecationWarning</string>
+        <key>Arguments</key>
+        <dict>
+          <key>warning_message</key>
+          <string>This appears to be abandonware. Last release was 2018-05-10 (See https://slic3r.org/releases/1.3.0/)</string>
+        </dict>
+      </dict>
     </array>
   </dict>
 </plist>
