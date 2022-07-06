@@ -21,7 +21,11 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-	        <string>Slic3r is the tool you need to convert a digital 3D model into printing instructions for your 3D printer. It cuts the model into horizontal slices (layers), generates toolpaths to fill them and calculates the amount of material to be extruded.</string>			
+	        <string>Slic3r is the tool you need to convert a digital 3D model into printing instructions for your 3D printer. It cuts the model into horizontal slices (layers), generates toolpaths to fill them and calculates the amount of material to be extruded.
+
+Slicer v. %version%
+%release_notes%
+			</string>
 			<key>display_name</key>
 			<string>%NAME%</string>
 			<key>name</key>
@@ -37,7 +41,7 @@
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>2.0.0</string>
     <key>ParentRecipe</key>
     <string>com.github.jps3.download.Slic3r</string>
 	<key>Process</key>
