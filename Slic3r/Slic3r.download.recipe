@@ -12,37 +12,26 @@
     <dict>
       <key>NAME</key>
       <string>Slic3r</string>
-      <key>DOWNLOAD_PAGE</key>
-      <string>https://dl.slic3r.org/mac/</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.4</string>
     <key>Process</key>
     <array>
-      <dict>
-        <key>Processor</key>
-        <string>URLTextSearcher</string>
-        <key>Arguments</key>
-        <dict>
-          <key>url</key>
-          <string>%DOWNLOAD_PAGE%</string>
-          <key>re_pattern</key>
-          <string>((https?:)?//dl\.slic3r\.org/mac/)?slic3r-[^"]+\.dmg</string>
-          <key>re_flags</key>
-          <array>
-            <string>IGNORECASE</string>
-          </array>
-        </dict>
-      </dict>
-      <dict>
-        <key>Processor</key>
-        <string>URLDownloader</string>
-        <key>Arguments</key>
-        <dict>
-          <key>url</key>
-          <string>%DOWNLOAD_PAGE%/%match%</string>
-        </dict>
-      </dict>
+	  <dict>
+	    <key>Processor</key>
+		<string>GitHubReleasesInfoProvider</string>
+		<key>Arguments</key>
+		<dict>
+		  <key>github_repo</key>
+		  <string>slic3r/Slic3r</string>
+		  <key>asset_regex</key>
+		  <string>^[Ss]lic3r-.*\.dmg$</string>
+		</dict>
+	  </dict>
+	  <dict>
+	    <key>Processor</key>
+		<string>CURLDownloader</string>
+	  </dict>
       <dict>
         <key>Processor</key>
         <string>EndOfCheckPhase</string>
