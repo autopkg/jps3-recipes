@@ -32,6 +32,11 @@
 					<array>
 						<string>IGNORECASE</string>
 					</array>
+					<key>request_headers</key>
+					<dict>
+						<key>User-Agent</key>
+						<string>Safari</string>
+					</dict>
 				</dict>
 			</dict>
 			<dict>
