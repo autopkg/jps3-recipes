@@ -28,11 +28,43 @@
             <string>%NAME%</string>
             <key>postinstall_script</key>
             <string>#!/bin/bash
-        /Applications/Camtasia\ 2021.app/Contents/Resources/aceinstaller install</string>
+/Applications/Camtasia\ 2023.app/Contents/Resources/aceinstaller install --silent
+            </string>
+            <!--
+                $ "/Applications/Camtasia 2023.app/Contents//Resources/aceinstaller" -h
+                aceinstaller: <action>
+
+                    help
+                        Display this message.
+
+                    install [-s|—silent]
+
+                        Install (or update) the ACE.driver coreaudiod plugin. The version to be installed must be
+                        newer than what is currently installed, and the current system version must be supported.
+                        Installing requires root privileges.
+
+                        -s|—silent    Do not generate an error if the version to be installed is not newer than
+                                       than the version that is currently installed.
+
+                    uninstall [-s|—silent]
+
+                        Uninstall the ACE.driver coreaudiod plugin. There must be a plugin installed for it to be
+                        uninstalled. Uninstalling requires root privileges.
+
+                        —safe         Generate an error and do not uninstall the ACE.driver coreaudiod plugin when
+                                       there are other applications using it. This can be combined with the —silent
+                                       option to prevent generating an error.
+
+                        -s|—silent    Do not generate an error when an uninstall fails.
+
+                    version
+                        Display the installed and installable ACE versions.
+
+              -->
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.4.1</string>
+    <string>2.0.0</string>
     <key>ParentRecipe</key>
     <string>com.github.jps3.download.Camtasia</string>
     <key>Process</key>
