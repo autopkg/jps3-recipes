@@ -26,7 +26,7 @@ To download the Apple Silicon version use "arm64" in the ARCH_TYPE variable.</st
                 <key>github_repo</key>
                 <string>arduino/arduino-ide</string>
                 <key>asset_regex</key>
-                <string>arduino-ide_([0-9]+(\.[0-9]+)+)_macOS_64bit\.dmg$</string>
+                <string>arduino-ide_([0-9]+(\.[0-9]+)+)_macOS_%ARCH_TYPE%\.dmg$</string>
             </dict>
             <key>Processor</key>
             <string>GitHubReleasesInfoProvider</string>
