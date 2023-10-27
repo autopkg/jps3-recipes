@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the pkg that currently supports versions of InDesign after 2018 (v13.x).</string>
+    <!-- 
+        Identified by analyzing (which was extracted from plugin binary using strings command):
+
+        $ strings -4 -a BlurbBookCreator.InDesignPlugin/BlurbBookCreator \
+          | grep -E -i 'https?://'
+
+        …snip…
+        https://software.blurb.com/downloads/indesign/prod-updates-bbc-2.9.0.14.xml 
+        …snip…
+
+        Since for us we currently deploy Adobe InDesign 2023 which is v18.x we look for "Mac CC18" in XML:
+
+        $ curl -sL https://software.blurb.com/downloads/indesign/prod-updates-bbc-2.9.0.14.xml \
+          | xpath -q -e '/BlurbIndesign/Platform[starts-with(@name,"Mac CC18")]/DownloadUrlsR1/*[1]/text()' \
+          | uniq
+
+        https://software.blurb.com/downloads/indesign/Blurb_ID_PlugIn_Installer.pkg
+
+    -->
+    <key>Identifier</key>
+    <string>com.github.jps3.download.BlurbBookCreatorIndesign</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>BlurbBookCreatorIndesign</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://software.blurb.com/downloads/indesign/Blurb_ID_PlugIn_Installer.pkg</string>
+            </dict>
+            <key>Processor</key>
+            <string>CURLDownloader</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%</string>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: Premedia Systems, Inc. (8L9WKD2Z72)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
+                <!--
+                    
+                $ pkgutil ––check-signature Blurb_ID_PlugIn_Installer.pkg
+                Package "Blurb_ID_PlugIn_Installer.pkg":
+                   Status: signed by a developer certificate issued by Apple for distribution
+                   Notarization: trusted by the Apple notary service
+                   Signed with a trusted timestamp on: 2023-10-10 08:56:13 +0000
+                   Certificate Chain:
+                    1. Developer ID Installer: Premedia Systems, Inc. (8L9WKD2Z72)
+                       Expires: 2027-06-25 17:29:58 +0000
+                       SHA256 Fingerprint:
+                           0B 05 AF 76 1A 78 D9 50 49 32 69 D0 E4 9B D7 FE 8B C0 BD 29 9C 82
+                           98 25 DF F4 44 7C 07 8E 31 F1
+                       ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+                    2. Developer ID Certification Authority
+                       Expires: 2031-09-17 00:00:00 +0000
+                       SHA256 Fingerprint:
+                           F1 6C D3 C5 4C 7F 83 CE A4 BF 1A 3E 6A 08 19 C8 AA A8 E4 A1 52 8F
+                           D1 44 71 5F 35 06 43 D2 DF 3A
+                       ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+                    3. Apple Root CA
+                       Expires: 2035-02-09 21:40:36 +0000
+                       SHA256 Fingerprint:
+                           B0 B1 73 0E CB C7 FF 45 05 14 2C 49 F1 29 5E 6E DA 6B CA ED 7E 2C
+                           68 C5 BE 91 B5 A1 10 01 F0 24
+
+                -->
+            </dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+        </dict>
+    </array>
+</dict>
+</plist>
