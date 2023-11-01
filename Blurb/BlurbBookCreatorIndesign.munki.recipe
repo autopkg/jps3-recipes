@@ -48,9 +48,11 @@ exit 1
         <dict>
             <key>Arguments</key>
             <dict>
+                <key>predicate</key>
+                <string>TRUEPREDICATE</string>
             </dict>
             <key>Processor</key>
-            <string></string>
+            <string>StopProcessingIf</string>
         </dict>
     </array>
 </dict>
