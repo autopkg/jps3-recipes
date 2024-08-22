@@ -1,0 +1,41 @@
+---
+Description: "Downloads Topaz Labs’ Sharpen AI"
+Identifier: com.github.jps3-recipes.munki.topaz-sharpen
+ParentRecipe: com.github.markkenny.autopkg.pkg.topaz-sharpen
+MinimumVersion: "2.3"
+Input:
+  NAME: TopazSharpenAI
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+      - testing
+    description: >-
+      Naturally sharpen your images with no artifacts.
+      Get jaw-dropping results in a wide variety of
+      situations with deep learning models trained to
+      shake reduction, focus correction, and blur removal.
+    developer: "Topaz Labs"
+    category: "Design and Media"
+    display_name: "Topaz Sharpen AI"
+    name: '%NAME%'
+    unattended_install: true
+    preuninstall_script: |-
+      #!/bin/bash
+
+      APP_PATH="/Applications/Topaz Photo AI.app"
+      MODELS_PATH="${APP_PATH}/Contents/Resources/models"
+
+      /usr/bin/file --mime-type --separator $'\t' "${MODELS_PATH}"/*  \
+      | /usr/bin/awk -F $'\t'                                         \
+            '$2~/application\/zip/ && $1~/\.tz2?/ { print $1 }'       \
+      | /usr/bin/xargs -I@ /bin/rm -fr "@"
+
+      exit 0
+Process:
+  - Processor: DeprecationWarning
+    Arguments:
+      warning_message: "This application has been deprecated by the developer."
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: '%pkg_path%'
+      repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
