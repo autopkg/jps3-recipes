@@ -37,5 +37,5 @@ Process:
       warning_message: "This application has been deprecated by the developer."
   - Processor: MunkiImporter
     Arguments:
-      pkg_path: '%pkg_path%'
+      pkg_path: '%pathname%'
       repo_subdirectory: '%MUNKI_REPO_SUBDIR%'

@@ -30,5 +30,5 @@ Input:
 Process:
   - Processor: MunkiImporter
     Arguments:
-      pkg_path: '%pkg_path%'
+      pkg_path: "%pathname%"
       repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
