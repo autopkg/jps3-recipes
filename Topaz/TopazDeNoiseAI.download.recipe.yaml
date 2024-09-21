@@ -23,7 +23,6 @@ Process:
     Arguments:
       warning_message: >-
         This application has been deprecated by the developer.
-        %last_modified%
 
   - Processor: EndOfCheckPhase
 
