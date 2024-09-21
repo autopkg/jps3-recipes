@@ -1,9 +1,9 @@
 ---
-Notes: "https://topazlabs.com/d/gigapixel/latest/mac/full"
-Description: "Downloads Topaz Labs’ GigaPixel AI"
-Identifier: com.github.jps3-recipes.munki.topaz-gigapixel
-ParentRecipe: com.github.markkenny.autopkg.pkg.topaz-gigapixel
-MinimumVersion: "2.3"
+Description: "Downloads Topaz Labs’ GigaPixel AI and imports into Munki"
+Identifier: com.github.autopkg.jps3-recipes.munki.TopazGigapixelAI
+ParentRecipe: com.github.autopkg.jps3-recipes.download.TopazGigapixelAI
+MinimumVersion: "2.7.3"
+
 Input:
   NAME: TopazGigapixelAI
   MUNKI_REPO_SUBDIR: apps/%NAME%
