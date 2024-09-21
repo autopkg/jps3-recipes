@@ -1,0 +1,26 @@
+---
+Description: "Downloads Topaz Labs’ Video AI and imports into Munki"
+Identifier: com.github.autopkg.jps3-recipes.munki.TopazVideoAI
+ParentRecipe: com.github.autopkg.jps3-recipes.download.TopazVideoAI
+MinimumVersion: "2.7.3"
+
+Input:
+  NAME: "TopazVideoAI"
+  DISPLAY_NAME: "Topaz Video AI"
+  MUNKI_REPO_SUBDIR: "apps/%NAME%"
+  pkginfo:
+    name: "%NAME%"
+    minimum_os_version: "11.0"
+    display_name: "%DISPLAY_NAME%"
+    description: >-
+      Cinematic superpowers. Ultra smooth. Sharp. Steady.
+    catalogs:
+      - testing
+    unattended_install: true
+    # 🅃🄾🅳🅾: preuninstall_script: …
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: "%pathname%"
+      repo_subdirectory: "%MUNKI_REPO_SUBDIR%"

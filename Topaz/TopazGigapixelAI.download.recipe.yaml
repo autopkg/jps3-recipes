@@ -1,0 +1,45 @@
+---
+Identifier: com.github.autopkg.jps3-recipes.download.TopazGigapixelAI
+Description: "Downloads the latest Topaz GigaPixel AI installer pkg."
+Comment: |
+  See also: https://community.topazlabs.com/c/gigapixel-ai/gigapixel-ai/66
+  Download URL returns a flat package file.
+MinimumVersion: "2.7.3"
+
+Input:
+  NAME: "TopazGigapixelAI"
+
+Process:
+  - Processor: URLDownloader
+    Arguments:
+      url: "https://topazlabs.com/d/gigapixel/latest/mac/full"
+      prefetch_filename: true
+
+  - Processor: EndOfCheckPhase
+
+  - Processor: CodeSignatureVerifier
+    Arguments:
+      input_path: "%pathname%"
+      expected_authority_names:
+        - "Developer ID Installer: Topaz Labs, LLC (3G3JE37ZHF)"
+        - "Developer ID Certification Authority"
+        - "Apple Root CA"
+
+  - Processor: FlatPkgUnpacker
+    Arguments:
+      flat_pkg_path: "%pathname%"
+      destination_path: "%RECIPE_CACHE_DIR%/unpack"
+      purge_destination: true
+
+  - Processor: FileFinder
+    Arguments:
+      pattern: "%RECIPE_CACHE_DIR%/unpack/*/PackageInfo"
+
+  - Processor: com.github.nmcspadden.shared/PackageInfoVersioner
+    Arguments:
+      package_info_path: "%found_filename%"
+
+  - Processor: PathDeleter
+    Arguments:
+      path_list:
+        - "%RECIPE_CACHE_DIR%/unpack"
