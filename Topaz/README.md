@@ -1,16 +1,5 @@
 # Topaz Labs
 
-- `yamllint` used to check validity of YAML recipe files
-
-## Requirements
-
-- Shared Processors:
-	- `com.github.nmcspadden.shared/PackageInfoVersioner`
-
-```shell
-autopkg repo-add nmcspadden-recipes
-```
-
 ## Current App Recipes
 - Topaz Video AI
 	- “Cinematic superpowers. Ultra smooth. Sharp. Steady.”
@@ -29,4 +18,10 @@ autopkg repo-add nmcspadden-recipes
 	- [old product page](https://www.topazlabs.com/sharpen-ai)
 - Additional Information:
 	- [developer legacy apps page](https://docs.topazlabs.com/other-apps/legacy)
-	- [When To Use Denoise Ai Sharpen Ai And Gigapixel Ai](https://docs.topazlabs.com/other-apps/denoise-ai/when-to-use-denoise-ai-sharpen-ai-and-gigapixel-ai)
+	- “[When To Use Denoise Ai Sharpen Ai And Gigapixel Ai](https://docs.topazlabs.com/other-apps/denoise-ai/when-to-use-denoise-ai-sharpen-ai-and-gigapixel-ai)”
+
+- - - 
+
+- `yamllint` used to check validity of YAML recipe files
+- _See also [NOTES.md](./NOTES.md) for technical details and avenues of further invegstigation._
+
