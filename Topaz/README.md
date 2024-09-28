@@ -23,5 +23,5 @@
 - - - 
 
 - `yamllint` used to check validity of YAML recipe files
-- _See also [NOTES.md](./NOTES.md) for technical details and avenues of further invegstigation._
+- _See also [NOTES.md](./NOTES.d/NOTES.md) for technical details and avenues of further invegstigation._
 
