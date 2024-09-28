@@ -46,25 +46,8 @@ _Note: Only those Topaz apps which faculty have requested have recipes, there ar
 
 ## Plugins for Other Apps
 
-### Adobe Photoshop [2024]
+_See also: [plugins.md](./plugins.md)
 
-- `/Applications/${TOPAZ_APP}.app/Contents/Resources/*.plugin`
-- _Deprecated Titles:_
-  - `/Applications/${TOPAZ_DEPRECATED_APP}.app/Contents/Resources/PS_Plugins/*.plugin`
-- `*.plugin/Contents/Info.plist` --> `"CFBundlePackageType": "8BFM"`
-
-### Adobe Lightroom & Lightroom Classic
-
-- `*.lrdevplugin/*`
-
-### Adobe After Effects [2024] ?
-
-- `CFBundlePackageType` --> `eFKT`
-
-### Capture One
-https://www.captureone.com/
-_Unfamiliar with this title_
-- `CFBundlePackageName` --> `BNDL` **and** filename like `*.coplugin`
 
 
 - - - 
