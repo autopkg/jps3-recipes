@@ -1,24 +1,25 @@
 # Plugins
 ## Additional Notes
 
-| plugins                                     | CFBundlePackageType  | CFBundleName               | CFBundleIdentifier                               |
-|:--------------------------------------------|:--------------------:|:---------------------------|:-------------------------------------------------|
-| Topaz Video AI Frame Interpolation.plugin   |        `eFKT`        | -                          | com.topazlabs.Topaz-Video-AI-Frame-Interpolation |
-| Topaz Video AIframeinterpolation.ofx.bundle |        `BNDL`        | -                          | com.topazlabs.Topaz-Video-AI                     |
-| Topaz Video AI.ofx.bundle                   |        `BNDL`        | -                          | com.topazlabs.Topaz-Video-AI                     |
-| Topaz Video AI.plugin                       |        `eFKT`        | -                          | com.topazlabs.Topaz-Video-AI                     |
-| TopazDeNoiseAI.plugin                       |        `8BFM`        | TopazDeNoiseAI             | -                                                |
-| TopazPhotoAI.plugin                         |        `8BFM`        | Topaz Photo AI             | com.topazlabs.TopazPhotoAI                       |
-| TopazPhotoAI.coplugin                       |        `BNDL`        | Topaz Photo AI Plugin      | com.topazlabs.TopazPhotoAI                       |
-| TopazPhotoAIAutomate.plugin                 |        `8BFM`        | Topaz Photo AIAutomate     | com.topazlabs.TopazPhotoAIAutomate               |
-| TopazPhotoAIApply.plugin                    |        `8BFM`        | Topaz Photo AIApply        | com.topazlabs.TopazPhotoAIApply                  |
-| TopazPhotoAIGather.plugin                   |        `8BFM`        | Topaz Photo AIGather       | com.topazlabs.TopazPhotoAIGather                 |
-| TopazGigapixelAI.coplugin                   |        `BNDL`        | Topaz Gigapixel AI Plugin  | com.topazlabs.TopazGigapixelAI                   |
-| TopazGigapixelAIGather.plugin               |        `8BFM`        | Topaz Gigapixel AIGather   | com.topazlabs.TopazGigapixelAIGather             |
-| TopazGigapixelAIAutomate.plugin             |        `8BFM`        | Topaz Gigapixel AIAutomate | com.topazlabs.TopazGigapixelAIAutomate           |
-| TopazGigapixelAIApply.plugin                |        `8BFM`        | Topaz Gigapixel AIApply    | com.topazlabs.TopazGigapixelAIApply              |
-| TopazSharpenAI.plugin                       |        `8BFM`        | TopazSharpenAI             | -                                                |
+| plugins                                     | CFBundlePackageType  | CFBundleName               | CFBundleIdentifier                                 |
+|:--------------------------------------------|:--------------------:|:---------------------------|:---------------------------------------------------|
+| Topaz Video AI Frame Interpolation.plugin   |        `eFKT`        | -                          | `com.topazlabs.Topaz-Video-AI-Frame-Interpolation` |
+| Topaz Video AIframeinterpolation.ofx.bundle |        `BNDL`        | -                          | `com.topazlabs.Topaz-Video-AI`                     |
+| Topaz Video AI.ofx.bundle                   |        `BNDL`        | -                          | `com.topazlabs.Topaz-Video-AI`                     |
+| Topaz Video AI.plugin                       |        `eFKT`        | -                          | `com.topazlabs.Topaz-Video-AI`                     |
+| TopazDeNoiseAI.plugin                       |        `8BFM`        | TopazDeNoiseAI             | -                                                  |
+| TopazPhotoAI.plugin                         |        `8BFM`        | Topaz Photo AI             | `com.topazlabs.TopazPhotoAI`                       |
+| TopazPhotoAI.coplugin                       |        `BNDL`        | Topaz Photo AI Plugin      | `com.topazlabs.TopazPhotoAI`                       |
+| TopazPhotoAIAutomate.plugin                 |        `8BFM`        | Topaz Photo AIAutomate     | `com.topazlabs.TopazPhotoAIAutomate`               |
+| TopazPhotoAIApply.plugin                    |        `8BFM`        | Topaz Photo AIApply        | `com.topazlabs.TopazPhotoAIApply`                  |
+| TopazPhotoAIGather.plugin                   |        `8BFM`        | Topaz Photo AIGather       | `com.topazlabs.TopazPhotoAIGather`                 |
+| TopazGigapixelAI.coplugin                   |        `BNDL`        | Topaz Gigapixel AI Plugin  | `com.topazlabs.TopazGigapixelAI`                   |
+| TopazGigapixelAIGather.plugin               |        `8BFM`        | Topaz Gigapixel AIGather   | `com.topazlabs.TopazGigapixelAIGather`             |
+| TopazGigapixelAIAutomate.plugin             |        `8BFM`        | Topaz Gigapixel AIAutomate | `com.topazlabs.TopazGigapixelAIAutomate`           |
+| TopazGigapixelAIApply.plugin                |        `8BFM`        | Topaz Gigapixel AIApply    | `com.topazlabs.TopazGigapixelAIApply`              |
+| TopazSharpenAI.plugin                       |        `8BFM`        | TopazSharpenAI             | -                                                  |
                                                             
+
 - `8BFM` + `*.plugin` is for Adobe Photoshop
   - example destinations:
     - `/Applications/Adobe Photoshop 2024/Plug-ins`
