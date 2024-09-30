@@ -13,6 +13,7 @@
 #
 
 app_title="Topaz {{APPNAME}} AI"
+app_resources="/Applications/${app_title}.app/Contents/Resources"
 
 # adobe photoshop plugins are bundles with .plugin extension
 adobe_ps_plugins_srcs=(
@@ -37,7 +38,7 @@ done
 
 # ensure correct permissions for models
 chmod -R -v -v 0777 \
-  "/Applications/${app_title}.app/Contents/Resources/models/"
+  "${app_resources}/models/"
 
 exit 0
 
