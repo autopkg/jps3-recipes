@@ -142,3 +142,148 @@ curl            \
         {
             …snip…
 ```
+
+- - - 
+
+[yq](https://mikefarah.gitbook.io/yq) _(like jq but for yaml)_
+
+```shell
+#appnames=( "Gigapixel" "Photo" "Video" )
+appnames=( "Gigapixel" "Photo" )
+for APPNAME in $appnames
+do
+  export APPNAME
+  target="Topaz/Topaz${APPNAME}AI.munki.recipe.yaml"
+  # add '--inplace' arg to yq to change input yaml file
+  if [[ -s "$target" ]]; then
+    yq '
+        .Input.pkginfo.postinstall_script |=
+          (
+            load_str("Topaz/NOTES.d/template--munki-preuninstall_script.zsh")
+            | sub("{{APPNAME}}", env(APPNAME))
+          )
+        |
+        .Input.pkginfo.preuninstall_script |=
+          (
+            load_str("Topaz/NOTES.d/template--munki-preuninstall_script.zsh")
+            | sub("{{APPNAME}}", env(APPNAME))
+          )
+        |
+        .Input.pkginfo.postuninstall_script |=
+          (
+            load_str("Topaz/NOTES.d/template--munki-postuninstall_script.zsh")
+            | sub("{{APPNAME}}", env(APPNAME))
+          )
+      ' \
+      "${target}"
+  fi
+  unset APPNAME
+done
+```
+
+- - - 
+
+_Comments/notes removed from TopazGigapixelAI.munki.recipe.yaml_
+```
+#
+# TODOs:
+#
+#   Note: Munki warning log "Removing non-empty bundle" (*.tz models)
+#
+#   postinstall_script:
+#   ╷
+#   │ ╭─● Create Symlink Plugins
+#   ├─┤
+#   │ │ (sources)
+#   │ ├─┬🡢 /Applications/Topaz Gigapixel AI.app/Contents/Resources/
+#   │ │ │
+#   │ │ ├──🡢 ./TopazGigapixelAI.plugin
+#   │ │ ├──🡢 ./TopazGigapixelAIApply.plugin
+#   │ │ ├──🡢 ./TopazGigapixelAIAuthomate.plugin
+#   │ │ ╰──🡢 ./TopazGigapixelAIGather.plugin
+#   │ │
+#   │ │ (destinations)
+#   │ ╰─┬🡢 /Applications/Adobe Photoshop 2024/Plug-ins/
+#   │   ╰🡢 /Library/Application Support/Adobe/Plug-ins/CC/
+#   │
+#   │   [note: src plugins in ./Content/Resources/]
+#   │
+#   ├─● Adobe Lightroom template(s)
+#   │
+#   ├─● Capture One plugin: TopazGigapixelAI.coplugin
+#   │
+#   ╰─● ... ?
+#
+#
+#   ???  OTHER PACKAGES                       ???
+#   ???  https://github.com/macadmins/outset  ???
+#
+#   _Note: There **is** no TopazGigapixelAI.plugin, so WTF Topaz?_
+#
+#   handle TopazGigapixelAI.plugin for Affinity Photo, Affinity Photo 2
+#      "${HOME}/Library/Application Support/Affinity Photo/Plugins"
+#      "${HOME}/Library/Application Support/Affinity Photo 2/Plugins"
+#
+#   handle Lightroom template files
+#   Lightroom Templates
+#   /Applications/Topaz Gigapixel AI.app/Contents/Resources
+#        ./lrtemplates/
+#              ./export.lrtemplate
+#              ./external editor.lrtemplate
+#   $HOME/Library/Application Support/Adobe/Lightroom/
+#   [WARNING] *.rtemplate _may_ have {{PLACEHOLDER}} req. `sed` edit
+#   ├🡢 ./Export Presets/${EXPORT_PRESET}.lrtemplate
+#   ├🡢 ./External Editor Presets/${EXTERNAL_EDITOR_PRESET}.lrtemplate
+#   Note: change filename to something more meaningful?
+#
+#   handle TopazGigapixelAI.plugin for ON1 Photo RAW
+#      "${HOME}/Library/Application Support/ON1/..."
+#
+#   handle *.coplugin for Capture One
+#      "${HOME}/Library/Application Support/Capture One/..."
+#
+#
+```
+
+_Comments/notes removed from TopazPhotoAI.munki.recipe.yaml_
+```
+#
+# TODOs:
+#
+#   preuninstall_script:
+#   ├─● Delete (symlinks to) plugins
+#   ├─● Note: Munki warning log "Removing non-empty bundle" (*.tz models)
+#   ├─● Remove CC plugins (may be symlinks)
+#   ├─● Remove /etc/paths.d/50/com.topazlabs.photo
+#   ╰─● ... ?
+#
+#   postinstall_script:
+#    ├─● Adobe CC plugins:
+#    │ ├🡢 TopazPhotoAI.plugin
+#    │ ├🡢 TopazPhotoAIApply.plugin
+#    │ ├🡢 TopazPhotoAIAuthomate.plugin
+#    │ ╰🡢 TopazPhotoAIGather.plugin
+#    ├─● Adobe Lightroom plugin: photo.lrdevplugin
+#    ├─● Adobe Lightroom template(s)
+#    ╰─● Capture One plugin: TopazPhotoAI.coplugin
+#
+```
+
+_Comments/notes removed from TopazVideoAI.munki.recipe.yaml_
+```
+#   ╷
+#   │ ╭─● embedded plugin installer scripts
+#   ├─┤
+#   │ ├─┬🡢 /Applications/Topaz Video AI.app/Contents/Resources/
+#   │ │ │
+#   │ │ ├──🡢 ./ae_inst.sh
+#   │ │ ╰──🡢 ./ofx_inst.sh
+#   │ ╰─●
+#   ╰───●
+#
+# TODO: preuninstall_script:
+#       ╰─● if unnecessary then uncomment 'unattended_uninstall: true'
+#
+# unattended_uninstall: true
+#
+```
