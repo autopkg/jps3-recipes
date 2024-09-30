@@ -1,0 +1,33 @@
+---
+Identifier: com.github.jps3.download.TopazVideoAI
+Description: "Downloads the latest version of Topaz Video AI installer DMG."
+Comment: |
+  See also: https://community.topazlabs.com/c/video-ai/video-ai-releases/69
+  Download URL returns a disk image file containing *.app bundle.
+MinimumVersion: "2.7.3"
+
+Input:
+  NAME: "TopazVideoAI"
+
+Process:
+  - Processor: URLDownloader
+    Arguments:
+      url: "https://topazlabs.com/d/tvai/latest/mac/full"
+      prefetch_filename: true
+
+  - Processor: EndOfCheckPhase
+
+  - Processor: CodeSignatureVerifier
+    Arguments:
+      input_path: '%pathname%/Topaz Video AI.app'
+      requirement: >-
+        identifier "com.topazlabs.Topaz-Video-AI"
+        and anchor apple generic
+        and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */
+        and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */
+        and certificate leaf[subject.OU] = "3G3JE37ZHF"
+
+  - Processor: Versioner
+    Arguments:
+      input_plist_path: '%pathname%/Topaz Video AI.app/Contents/Info.plist'
+      plist_version_key: CFBundleShortVersionString

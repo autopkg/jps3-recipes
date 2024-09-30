@@ -1,38 +1,142 @@
 ---
-Notes: "https://topazlabs.com/d/gigapixel/latest/mac/full"
-Description: "Downloads Topaz Labs’ GigaPixel AI"
-Identifier: com.github.jps3-recipes.munki.topaz-gigapixel
-ParentRecipe: com.github.markkenny.autopkg.pkg.topaz-gigapixel
-MinimumVersion: "2.3"
+Description: "Downloads Topaz Labs’ GigaPixel AI and imports into Munki"
+Identifier: com.github.jps3.munki.TopazGigapixelAI
+ParentRecipe: com.github.jps3.download.TopazGigapixelAI
+MinimumVersion: "2.7.3"
 Input:
   NAME: TopazGigapixelAI
-  MUNKI_REPO_SUBDIR: apps/%NAME%
+  DISPLAY_NAME: "Topaz Gigapixel AI"
+  MUNKI_REPO_SUBDIR: "apps/%NAME%"
   pkginfo:
+    name: "%NAME%"
+    # min os ver check performed via Distribution check script
+    minimum_os_version: "11.0"
+    display_name: "%DISPLAY_NAME%"
+    developer: "Topaz Labs"
+    category: "Design and Media"
     catalogs:
       - testing
     description: >-
-        Achieve impeccable image quality.
-        Scale to almost any size.
-        Then, print, display, and share with the world.
-    developer: "Topaz Labs"
-    category: "Design and Media"
-    display_name: "Topaz Gigapixel AI"
-    name: '%NAME%'
+      Achieve impeccable image quality. Scale to almost any size. Then, print, display, and share with the world.
+    blocking_applications:
+      - "Topaz Gigapixel AI"
     unattended_install: true
-    preuninstall_script: |-
-      #!/bin/bash
+    unattended_uninstall: true
+    postinstall_script: |+
+      #!/bin/zsh
+      #
+      # (munki) postinstall_script
+      #
+      #  - supports current, non-deprecated pkg-based installers
+      #      (ex. Gigapixel, Photo)
+      #
+      #  - installer pkg script ('install-psplugin') assumes it
+      #      is being executed within context of user at gui
+      #      console; when installed via munki some aspects "fail"
+      #      silently
+      #
+      #
 
-      APP_PATH="/Applications/Topaz Photo AI.app"
-      MODELS_PATH="${APP_PATH}/Contents/Resources/models"
+      app_title="Topaz Gigapixel AI"
+      app_resources="/Applications/${app_title}.app/Contents/Resources"
 
-      /usr/bin/file --mime-type --separator $'\t' "${MODELS_PATH}"/*  \
-      | /usr/bin/awk -F $'\t'                                         \
-            '$2~/application\/zip/ && $1~/\.tz2?/ { print $1 }'       \
-      | /usr/bin/xargs -I@ /bin/rm -fr "@"
+      # adobe photoshop plugins are bundles with .plugin extension
+      adobe_ps_plugins_srcs=(
+       "${app_resources}"/*.plugin(N)
+      )
+
+      # adobe photoshop plugin destination
+      adobe_ps_plugins_dsts=(
+       "/Applications/Adobe Photoshop 202"[0-9]"/Plug-ins"(N)
+       "/Library/Application Support/Adobe/Plug-ins/CC"(N)
+      )
+
+      # copy *.plugin bundles to destinations
+      for dst in $adobe_ps_plugins_dsts; do
+       if [[ -d "$dst" ]]; then
+         for src in $adobe_ps_plugins_srcs; do
+           printf 'Copying "%s" to "%s" ... ' "$src" "$dst"
+           cp -Rp "${src}" "${dst}/" && print "done." || print "error?"
+         done
+       fi
+      done
+
+      # ensure correct permissions for models
+      chmod -R -v -v 0777 \
+        "${app_resources}/models/"
 
       exit 0
+
+    preuninstall_script: |+
+      #!/bin/zsh
+      #
+      # clean up downloaded models to avoid munki warning
+      #
+
+      app_title="Topaz Gigapixel AI"  # ex "Topaz Gigapixel AI"
+      app_resources="/Applications/${app_title}.app/Contents/Resources"
+
+      find "${app_resources}/models" ! -user 0 -name "*.tz" -delete
+
+      exit 0
+
+    postuninstall_script: |+
+      #!/bin/zsh
+      #
+      # munki postuninstall_script
+      #
+      #  supports current, non-deprecated pkg-based installers
+      #    (ex. Gigapixel, Photo)
+      #
+      #  installer pkg script ('install-psplugin') copies and
+      #    adds items elsewhere in filesystem not reflected
+      #    in pkg bom so must be cleaned up here
+      #
+      #  Note: After inclusion, and before use of this script
+      #    in a specific recipe, be sure to replace Gigapixel
+      #    appropriately.
+      #
+
+      app_title="Topaz Gigapixel AI"      # ex "Topaz Gigapixel AI"
+      apptitle=${app_title// /}             # ex "TopazGigapixelAI"
+      appname=${(L)${:-Gigapixel}//[{}]/} # ex "gigapixel"
+
+      # additional PATH items
+      rm -f /etc/paths.d/50-com.topazlabs.${appname}
+
+      # adobe photoshop plugin destination
+      adobe_ps_plugins_dsts=(
+       "/Applications/Adobe Photoshop 202"[0-9]"/Plug-ins"(N)
+       "/Library/Application Support/Adobe/Plug-ins/CC"(N)
+      )
+
+      for dst in $adobe_ps_plugins_dsts; do
+        rm -fr "${dst}/${apptitle}"*.plugin
+      done
+
+      exit 0
+
 Process:
+  - Processor: FlatPkgUnpacker
+    Arguments:
+      flat_pkg_path: "%pathname%"
+      destination_path: "%RECIPE_CACHE_DIR%/unpacked"
+  - Processor: PkgPayloadUnpacker
+    Arguments:
+      pkg_payload_path: "%RECIPE_CACHE_DIR%/unpacked/Topaz_Gigapixel_AI.pkg/Payload"
+      destination_path: "%RECIPE_CACHE_DIR%/pkgroot"
+  - Processor: MunkiInstallsItemsCreator
+    Arguments:
+      faux_root: "%RECIPE_CACHE_DIR%/pkgroot"
+      installs_item_paths:
+        - "/Applications/Topaz Gigapixel AI.app"
+  - Processor: MunkiPkginfoMerger
   - Processor: MunkiImporter
     Arguments:
-      pkg_path: '%pkg_path%'
-      repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+      pkg_path: "%pathname%"
+      repo_subdirectory: "%MUNKI_REPO_SUBDIR%"
+  - Processor: PathDeleter
+    Arguments:
+      path_list:
+        - "%RECIPE_CACHE_DIR%/unpacked"
+        - "%RECIPE_CACHE_DIR%/pkgroot"

@@ -1,0 +1,42 @@
+---
+Identifier: com.github.jps3.download.TopazSharpenAI
+Description: "Downloads the last version of Topaz Sharpen AI installer dmg."
+Comment: |
+  See also: https://community.topazlabs.com/c/releases/sharpen-ai/64
+  Download URL returns a disk image file containing *.app bundle.
+MinimumVersion: "2.7.3"
+
+Input:
+  DISPLAY_NAME: "Topaz Sharpen AI"
+  NAME: "TopazSharpenAI"
+
+Process:
+  - Processor: URLDownloader
+    Arguments:
+      filename: '%NAME%.dmg'
+      url:
+        "https://downloads.topazlabs.com/deploy/\
+        TopazSharpenAI/latest/\
+        TopazSharpenAI-Full-Installer.dmg"
+
+  - Processor: DeprecationWarning
+    Arguments:
+      warning_message: >-
+        This application has been deprecated by the developer.
+
+  - Processor: EndOfCheckPhase
+
+  - Processor: CodeSignatureVerifier
+    Arguments:
+      input_path: '%pathname%/Topaz Sharpen AI.app'
+      requirement: >-
+        identifier "com.topazlabs.TopazSharpenAI"
+        and anchor apple generic
+        and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */
+        and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */
+        and certificate leaf[subject.OU] = "3G3JE37ZHF"
+
+  - Processor: Versioner
+    Arguments:
+      input_plist_path: '%pathname%/Topaz Sharpen AI.app/Contents/Info.plist'
+      plist_version_key: CFBundleShortVersionString
