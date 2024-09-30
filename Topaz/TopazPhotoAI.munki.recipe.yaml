@@ -1,8 +1,9 @@
 ---
-Description: "Downloads most recent Topaz Labs’ Photo AI and imports into Munki"
-Identifier: com.github.autopkg.jps3-recipes.munki.TopazPhotoAI
-ParentRecipe: com.github.autopkg.jps3-recipes.download.TopazPhotoAI
+Description: "Downloads Topaz Labs’ Photo AI and imports into Munki"
+Identifier: com.github.jps3.munki.TopazPhotoAI
+ParentRecipe: com.github.jps3.download.TopazPhotoAI
 MinimumVersion: "2.7.3"
+
 Input:
   NAME: TopazPhotoAI
   MUNKI_REPO_SUBDIR: apps/%NAME%

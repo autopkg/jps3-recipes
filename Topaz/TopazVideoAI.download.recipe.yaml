@@ -1,5 +1,5 @@
 ---
-Identifier: com.github.autopkg.jps3-recipes.download.TopazVideoAI
+Identifier: com.github.jps3.download.TopazVideoAI
 Description: "Downloads the latest version of Topaz Video AI installer DMG."
 Comment: |
   See also: https://community.topazlabs.com/c/video-ai/video-ai-releases/69

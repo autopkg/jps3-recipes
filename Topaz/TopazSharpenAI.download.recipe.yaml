@@ -1,5 +1,5 @@
 ---
-Identifier: com.github.autopkg.jps3-recipes.download.TopazSharpenAI
+Identifier: com.github.jps3.download.TopazSharpenAI
 Description: "Downloads the last version of Topaz Sharpen AI installer dmg."
 Comment: |
   See also: https://community.topazlabs.com/c/releases/sharpen-ai/64

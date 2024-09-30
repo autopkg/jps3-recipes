@@ -1,9 +1,8 @@
 ---
 Description: "Downloads Topaz Labs’ Video AI and imports into Munki"
-Identifier: com.github.autopkg.jps3-recipes.munki.TopazVideoAI
-ParentRecipe: com.github.autopkg.jps3-recipes.download.TopazVideoAI
+Identifier: com.github.jps3.munki.TopazVideoAI
+ParentRecipe: com.github.jps3.download.TopazVideoAI
 MinimumVersion: "2.7.3"
-
 Input:
   NAME: TopazVideoAI
   DISPLAY_NAME: "Topaz Video AI"

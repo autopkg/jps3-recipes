@@ -1,8 +1,9 @@
 ---
 Description: "Downloads Topaz Labs’ Sharpen AI and imports into Munki"
-Identifier: com.github.autopkg.jps3-recipes.munki.TopazSharpenAI
-ParentRecipe: com.github.autopkg.jps3-recipes.download.TopazSharpenAI
+Identifier: com.github.jps3.munki.TopazSharpenAI
+ParentRecipe: com.github.jps3.download.TopazSharpenAI
 MinimumVersion: "2.7.3"
+
 Input:
   NAME: TopazSharpenAI
   MUNKI_REPO_SUBDIR: apps/%NAME%
