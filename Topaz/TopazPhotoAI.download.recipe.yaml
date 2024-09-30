@@ -1,0 +1,26 @@
+---
+Identifier: com.github.jps3.download.TopazPhotoAI
+Description: "Downloads the latest Topaz Photo AI installer pkg."
+Comment: |
+  See also: https://community.topazlabs.com/c/photo-ai/photo-ai-releases/85
+  Download URL returns a flat package file.
+MinimumVersion: "2.7.3"
+
+Input:
+  NAME: "TopazPhotoAI"
+
+Process:
+  - Processor: URLDownloader
+    Arguments:
+      url: "https://topazlabs.com/d/photo/latest/mac/full"
+      prefetch_filename: true
+
+  - Processor: EndOfCheckPhase
+
+  - Processor: CodeSignatureVerifier
+    Arguments:
+      input_path: "%pathname%"
+      expected_authority_names:
+        - "Developer ID Installer: Topaz Labs, LLC (3G3JE37ZHF)"
+        - "Developer ID Certification Authority"
+        - "Apple Root CA"

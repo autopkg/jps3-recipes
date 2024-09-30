@@ -1,0 +1,78 @@
+---
+Description: "Downloads Topaz Labs’ Video AI and imports into Munki"
+Identifier: com.github.jps3.munki.TopazVideoAI
+ParentRecipe: com.github.jps3.download.TopazVideoAI
+MinimumVersion: "2.7.3"
+
+Input:
+  NAME: TopazVideoAI
+  DISPLAY_NAME: "Topaz Video AI"
+  MUNKI_REPO_SUBDIR: "apps/%NAME%"
+  pkginfo:
+    name: "%NAME%"
+    # min os ver check performed via Distribution check script
+    minimum_os_version: "11.0"
+    display_name: "%DISPLAY_NAME%"
+    developer: "Topaz Labs"
+    category: "Design and Media"
+    catalogs:
+      - testing
+    description: >-
+      Cinematic superpowers. Ultra smooth.
+      Sharp. Steady.
+    blocking_applications:
+      - "Topaz Video AI"
+    unattended_install: true
+    postinstall_script: |
+      #!/bin/zsh
+      #
+      # Topaz Video AI ("tvai") postinstall_script
+      #
+
+      app_title="Topaz Video AI"
+      app_resources="/Applications/${app_title}.app/Contents/Resources"
+
+      tvai_inst_scripts=(
+        "${app_resources}/ae_inst.sh"
+        "${app_resources}/ofx_inst.sh"
+      )
+
+      # TODO: validate scripts unchanged ?
+      for inst_script in $tvai_inst_scripts; do
+        # [[ -s "$inst_script" ]] \
+        #   && /bin/bash "$inst_script"
+        print "[WARN] not implemented yet (${inst_script})" >&2
+      done
+
+      exit 0
+    preuninstall_script: |
+      #!/bin/zsh
+      #
+      # Topaz Video AI ("tvai") postinstall_script
+      #
+
+      app_title="Topaz Video AI"
+      app_resources="/Applications/${app_title}.app/Contents/Resources"
+
+      print "[WARN] not implemented yet" >&2
+
+      exit 0
+
+    postuninstall_script: |
+      #!/bin/zsh
+      #
+      # Topaz Video AI ("tvai") postinstall_script
+      #
+
+      app_title="Topaz Video AI"
+      app_resources="/Applications/${app_title}.app/Contents/Resources"
+
+      print "[WARN] not implemented yet" >&2
+
+      exit 0
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: "%pathname%"
+      repo_subdirectory: "%MUNKI_REPO_SUBDIR%"

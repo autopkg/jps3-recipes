@@ -1,41 +1,48 @@
 ---
-Description: "Downloads Topaz Labs’ Sharpen AI"
-Identifier: com.github.jps3-recipes.munki.topaz-sharpen
-ParentRecipe: com.github.markkenny.autopkg.pkg.topaz-sharpen
-MinimumVersion: "2.3"
+Description: "Downloads Topaz Labs’ Sharpen AI and imports into Munki"
+Identifier: com.github.jps3.munki.TopazSharpenAI
+ParentRecipe: com.github.jps3.download.TopazSharpenAI
+MinimumVersion: "2.7.3"
+
 Input:
   NAME: TopazSharpenAI
-  MUNKI_REPO_SUBDIR: apps/%NAME%
+  DISPLAY_NAME: "Topaz Sharpen AI"
+  MUNKI_REPO_SUBDIR: "apps/%NAME%"
+  LAST_MODIFIED: "%last_modified%"
   pkginfo:
+    name: "%NAME%"
+    minimum_os_version: "11.0"
+    display_name: "%DISPLAY_NAME%"
+    developer: "Topaz Labs"
+    category: "Design and Media"
     catalogs:
       - testing
     description: >-
-      Naturally sharpen your images with no artifacts.
-      Get jaw-dropping results in a wide variety of
-      situations with deep learning models trained to
-      shake reduction, focus correction, and blur removal.
-    developer: "Topaz Labs"
-    category: "Design and Media"
-    display_name: "Topaz Sharpen AI"
-    name: '%NAME%'
+      Naturally sharpen your images with no artifacts. Get jaw-dropping
+      results in a wide variety of situations with deep learning models
+      trained to shake reduction, focus correction, and blur removal.
     unattended_install: true
-    preuninstall_script: |-
-      #!/bin/bash
+    # unattended_uninstall: true
 
-      APP_PATH="/Applications/Topaz Photo AI.app"
-      MODELS_PATH="${APP_PATH}/Contents/Resources/models"
-
-      /usr/bin/file --mime-type --separator $'\t' "${MODELS_PATH}"/*  \
-      | /usr/bin/awk -F $'\t'                                         \
-            '$2~/application\/zip/ && $1~/\.tz2?/ { print $1 }'       \
-      | /usr/bin/xargs -I@ /bin/rm -fr "@"
-
-      exit 0
 Process:
-  - Processor: DeprecationWarning
-    Arguments:
-      warning_message: "This application has been deprecated by the developer."
+  # - Processor: MunkiInstallsItemsCreator ?
   - Processor: MunkiImporter
     Arguments:
-      pkg_path: '%pkg_path%'
+      pkg_path: '%pathname%'
       repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+
+#
+# TODOs:
+#
+#   preuninstall_script:
+#   ├─● Delete (symlinks to) plugins
+#   ╰─● ... ?
+#
+#   postinstall_script
+#   ├─● Adobe CC plugins:
+#   ├──┬╴/Library/Application Support/Adobe/Plug-ins/CC/TopazDeNoiseAI
+#   │  ╰🡢 /Applications/Topaz DeNoise AI.app/Contents/Resources/PS_Plugins
+#   ├──┬🡢 /Applications/Adobe Photoshop 2024/Plug-ins/TopazDeNoiseAI
+#   │  ╰─ /Applications/Topaz DeNoise AI.app/Contents/Resources/PS_Plugins
+#   ╰─● set mode 0777 Topaz Sharpen AI.app/Contents/Resources/local/tgrc
+#
