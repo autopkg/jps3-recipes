@@ -35,7 +35,7 @@ To download the Apple Silicon version use "arm64" in the ARCH_TYPE variable.</st
             <key>Arguments</key>
             <dict>
                 <key>filename</key>
-                <string>%NAME%-%version%.dmg</string>
+                <string>%NAME%-%ARCH_TYPE%-%version%.dmg</string>
             </dict>
             <key>Processor</key>
             <string>URLDownloader</string>
