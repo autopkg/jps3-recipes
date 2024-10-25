@@ -43,6 +43,10 @@ https://www.arduino.cc/en/Guide/HomePage
             <array>
                 <string>Arduino IDE</string>
             </array>
+			<key>category</key>
+			<string>Developer</string>
+			<key>developer</key>
+			<string>arduino.cc</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
