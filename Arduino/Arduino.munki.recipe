@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest Arduino and imports into Munki.
 
-For the SUPPORTED_ARCH variable use x86_64 for Intel or arm64 for Apple Silicon.</string>
+For the ARCH_TYPE variable use 64bit for Intel or arm64 for Apple Silicon.</string>
     <key>Identifier</key>
     <string>com.github.jps3.munki.Arduino</string>
     <key>Input</key>
@@ -14,8 +14,8 @@ For the SUPPORTED_ARCH variable use x86_64 for Intel or arm64 for Apple Silicon.
         <string>Arduino</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/%NAME%</string>
-        <key>SUPPORTED_ARCH</key>
-        <string>x86_64</string>
+        <key>ARCH_TYPE</key>
+        <string>64bit</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -34,15 +34,19 @@ https://www.arduino.cc/en/Guide/HomePage
             <key>display_name</key>
             <string>Arduino IDE</string>
             <key>name</key>
-            <string>%NAME%</string>
+            <string>%NAME%-%ARCH_TYPE%</string>
             <key>supported_architectures</key>
             <array>
-                <string>%SUPPORTED_ARCH%</string>
+                <string>%ARCH_TYPE%</string>
             </array>
             <key>blocking_applications</key>
             <array>
                 <string>Arduino IDE</string>
             </array>
+			<key>category</key>
+			<string>Developer</string>
+			<key>developer</key>
+			<string>arduino.cc</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
