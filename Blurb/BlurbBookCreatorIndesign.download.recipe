@@ -41,7 +41,11 @@
                 <string>https://software.blurb.com/downloads/indesign/Blurb_ID_PlugIn_Installer.pkg</string>
             </dict>
             <key>Processor</key>
-            <string>CURLDownloader</string>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
         </dict>
         <dict>
             <key>Arguments</key>
