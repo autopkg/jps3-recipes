@@ -31,7 +31,7 @@
 /Applications/Camtasia\ 2023.app/Contents/Resources/aceinstaller install --silent
             </string>
             <!--
-                $ "/Applications/Camtasia 2023.app/Contents//Resources/aceinstaller" -h
+                $ "/Applications/Camtasia.app/Contents//Resources/aceinstaller" -h
                 aceinstaller: <action>
 
                     help
