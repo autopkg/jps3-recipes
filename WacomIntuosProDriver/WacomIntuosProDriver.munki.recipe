@@ -5,7 +5,7 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-		<string>Downloads the current release version of Wacom Intuos Pro Driver and imports into Munki.</string>
+		<string>Downloads the current release version of Wacom tablet drivers and imports into Munki.</string>
 		<key>Identifier</key>
 		<string>com.github.jps3.munki.WacomIntuosProTabletDriver</string>
 		<key>Input</key>
@@ -17,7 +17,7 @@
 			<key>WACOM_PKG_NAME</key>
 			<string>Install Wacom Tablet.pkg</string>
 			<key>MUNKI_DESCRIPTION</key>
-			<string>Drivers and support software for the Wacom Intuos Pro tablets.</string>
+			<string>Drivers and support software for Wacom tablets.</string>
 			<key>MUNKI_DISPLAYNAME</key>
 			<string>WacomIntuosProDriver</string>
 			<key>MUNKI_NAME</key>
@@ -26,6 +26,7 @@
             <dict>
                 <key>blocking_applications</key>
                 <array>
+                	<string>Wacom Center.app</string>
                     <string>Wacom Desktop Center.app</string>
                     <string>Wacom Display Settings.app</string>
                     <string>Wacom Tablet Utility.app</string>
@@ -42,71 +43,68 @@
 				</array>
 				<key>uninstall_method</key>
 				<string>removepackages</string>
-				<key>preinstall_script</key>
-				<string>#!/bin/bash
-PATH=/bin:/sbin:/usr/bin:/usr/sbin
-					
-# run uninstall.pl if it exists; or the Pen Tablet Utility with the --uninstall flag if it doesn't.
-# Because very old versions of this driver will cause newer versions to fail installation.
+				<key>postinstall_script</key>
+				<string>#!/bin/zsh --no-rcs
 
-uninstall_script="/Applications/Pen Tablet.localized/Pen Tablet Utility.app/Contents/Resources/uninstall.pl"
+PATH=/bin:/usr/bin:/usr/sbin
 
-app="/Applications/Pen Tablet.localized/Pen Tablet Utility.app/Contents/MacOS/Pen Tablet Utility"
+WACOM_UPDATEHELPER="/Library/LaunchDaemons/com.wacom.UpdateHelper.plist"
+WACOM_DATASTORE="/Library/LaunchAgents/com.wacom.DataStoreMgr.plist"
+WACOM_IOMANAGER="/Library/LaunchAgents/com.wacom.IOManager.plist"
+WACOM_DRIVERS="/Library/LaunchAgents/com.wacom.wacomtablet.plist"
 
-# Because Wacom's uninstall.pl script will fail when run from Munki
-# (it assumes $HOME and $USER are not empty), we are going to trick
-# the script just enough so that it uninstalls everything, and does
-# not fail or complain. See notes keys in pkginfo file for more
-# information on why we need to use this script.
+CONSOLE_USER=""
 
-if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
-    fakeout_user="foo"
-    fakeout_home="$(mktemp -d -t _wacom_uninstall_tmp)"
-    echo "preuninstall_script: Calling Wacom uninstall script: ${uninstall_script}"
-    USER="${fakeout_user}" HOME="${fakeout_home}" "$uninstall_script"
-    echo "preuninstall_script: End of Wacom uninstall script."
-elif [[ -f "${app}" &amp;&amp; -x "${app}" ]]; then
-    echo "preuninstall_script: Calling ${app} --uninstall"
-    "${app}" --uninstall
-    result=$?
-    echo "preuninstall_script: End of Wacom uninstall script."
-    exit $result
-else
-    echo "preuninstall_script MESSAGE: Could not locate $uninstall_script or $app"
+# get console username (if any)
+scutil &lt;&lt;&lt; 'show State:/Users/ConsoleUser' \
+| awk '/Name :/ &amp;&amp; ! /loginwindow/ { print $3 }' \
+| read -r CONSOLE_USER
+
+
+# as root
+
+echo "Launching UpdateHelper" >&amp;2
+launchctl load "$WACOM_UPDATEHELPER"
+if [ $? -eq 0 ]
+then
+	echo "Re-Loading UpdateHelper" >&amp;2
+	launchctl unload "$WACOM_UPDATEHELPER"
+	launchctl load   "$WACOM_UPDATEHELPER"
 fi
 
-exit 0
-	</string>
+
+if [[ -n "$CONSOLE_USER" ]]; then
+
+	# as console user
+
+	echo "Launching PersistentDataStore" >&amp;2
+	sudo -u $CONSOLE_USER launchctl load "$WACOM_DATASTORE"
+	sleep 1
+
+	echo "Launching IOManager" >&amp;2
+	sudo -u $CONSOLE_USER launchctl load "$WACOM_IOMANAGER"
+	sleep 1
+
+	echo "Launching Drivers" >&amp;2
+	sudo -u $CONSOLE_USER launchctl load "$WACOM_DRIVERS"
+	sleep 1
+
+fi
+</string>
 				<key>preuninstall_script</key>
 				<string>#!/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 					
-# run uninstall.pl if it exists; or the Wacom Tablet Utility with the --uninstall flag if it doesn't.
-
-uninstall_script="/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app/Contents/Resources/uninstall.pl"
-
 app="/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app/Contents/MacOS/Wacom Tablet Utility"
 
-# Because Wacom's uninstall.pl script will fail when run from Munki
-# (it assumes $HOME and $USER are not empty), we are going to trick
-# the script just enough so that it uninstalls everything, and does
-# not fail or complain. See notes keys in pkginfo file for more
-# information on why we need to use this script.
-
-if [[ -f "$uninstall_script" &amp;&amp; -x "$uninstall_script" ]]; then
-    fakeout_user="foo"
-    fakeout_home="$(mktemp -d -t _wacom_uninstall_tmp)"
-    echo "preuninstall_script: Calling Wacom uninstall script: ${uninstall_script}"
-    USER="${fakeout_user}" HOME="${fakeout_home}" "$uninstall_script"
-    echo "preuninstall_script: End of Wacom uninstall script."
-elif [[ -f "${app}" &amp;&amp; -x "${app}" ]]; then
+if [[ -f "${app}" &amp;&amp; -x "${app}" ]]; then
     echo "preuninstall_script: Calling ${app} --uninstall"
     "${app}" --uninstall
     result=$?
     echo "preuninstall_script: End of Wacom uninstall script."
     exit $result
 else
-    echo "preuninstall_script ERROR: Could not locate $uninstall_script or $app"
+    echo "preuninstall_script ERROR: Could not locate $app"
     exit 1
 fi
 
@@ -173,14 +171,13 @@ exit 0
 					<string>%RECIPE_CACHE_DIR%/faux_root</string>
 					<key>installs_item_paths</key>
 					<array>
-						<string>/Applications/Wacom Tablet.localized/Wacom Desktop Center.app</string>
+						<string>/Applications/Wacom Tablet.localized/Wacom Center.app</string>
 						<string>/Applications/Wacom Tablet.localized/Wacom Display Settings.app</string>
 						<string>/Applications/Wacom Tablet.localized/Wacom Tablet Utility.app</string>
-						<string>/Library/Application Support/Tablet/WacomTabletDriver.app</string>
-						<string>/Library/Extensions/Wacom Tablet.kext</string>
+						<string>/Library/Frameworks/WacomMultiTouch.framework</string>
+						<string>/Library/PreferencePanes/WacomCenter.prefpane</string>
 						<string>/Library/PreferencePanes/WacomTablet.prefpane</string>
-						<string>/Library/PrivilegedHelperTools/com.wacom.DataStoreMgr.app</string>
-						<string>/Library/PrivilegedHelperTools/com.wacom.UpdateHelper.app</string>
+						<string>/Library/PrivilegedHelperTools/Wacom_IOManager.app</string>
 					</array>
 					<key>version_comparison_key</key>
 					<string>CFBundleVersion</string>
