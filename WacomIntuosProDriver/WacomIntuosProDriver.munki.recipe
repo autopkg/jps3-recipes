@@ -104,8 +104,7 @@ if [[ -f "${app}" &amp;&amp; -x "${app}" ]]; then
     echo "preuninstall_script: End of Wacom uninstall script."
     exit $result
 else
-    echo "preuninstall_script ERROR: Could not locate $app"
-    exit 1
+    echo "preuninstall_script ERROR: Could not locate $app (no worries)"
 fi
 
 exit 0
