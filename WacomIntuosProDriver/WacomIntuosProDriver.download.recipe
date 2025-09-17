@@ -5,7 +5,7 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-		<string>Downloads the latest drivers for the Wacom Intuos Pro tablets.</string>
+		<string>Downloads the latest drivers for Wacom tablets.</string>
 		<key>Identifier</key>
 		<string>com.github.jps3.download.WacomIntuosProTabletDriver</string>
 		<key>Input</key>
