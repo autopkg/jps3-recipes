@@ -31,6 +31,8 @@
                     <string>Wacom Display Settings.app</string>
                     <string>Wacom Tablet Utility.app</string>
                 </array>
+                <key>RestartAction</key>
+                <string>RecommendRestart</string>
 				<key>name</key>
 				<string>%MUNKI_NAME%</string>
 				<key>display_name</key>
@@ -45,51 +47,19 @@
 				<string>removepackages</string>
 				<key>postinstall_script</key>
 				<string>#!/bin/zsh --no-rcs
+WACOM_DEFAULTS_XML="/Library/Preferences/com.wacomtablet.defaults.xml"
 
-PATH=/bin:/usr/bin:/usr/sbin
+# See https://community.jamf.com/general-discussions-2/how-to-disable-auto-launching-wacom-desktop-center-app-during-user-s-first-login-24794
 
-WACOM_UPDATEHELPER="/Library/LaunchDaemons/com.wacom.UpdateHelper.plist"
-WACOM_DATASTORE="/Library/LaunchAgents/com.wacom.DataStoreMgr.plist"
-WACOM_IOMANAGER="/Library/LaunchAgents/com.wacom.IOManager.plist"
-WACOM_DRIVERS="/Library/LaunchAgents/com.wacom.wacomtablet.plist"
+cat &lt;&lt;EOF &gt; "$WACOM_DEFAULTS_XML"
+&lt;?xml version="1.0" encoding="utf-8"?&gt; &lt;!--Author: Wacom Co.,Ltd.--&gt;
+&lt;root&gt;
+  &lt;!-- Set Enterprise Mode --&gt;
+  &lt;OperatingMode&gt;Enterprise&lt;/OperatingMode&gt;
+&lt;/root&gt;
+EOF
 
-CONSOLE_USER=""
-
-# get console username (if any)
-scutil &lt;&lt;&lt; 'show State:/Users/ConsoleUser' \
-| awk '/Name :/ &amp;&amp; ! /loginwindow/ { print $3 }' \
-| read -r CONSOLE_USER
-
-
-# as root
-
-echo "Launching UpdateHelper" >&amp;2
-launchctl load "$WACOM_UPDATEHELPER"
-if [ $? -eq 0 ]
-then
-	echo "Re-Loading UpdateHelper" >&amp;2
-	launchctl unload "$WACOM_UPDATEHELPER"
-	launchctl load   "$WACOM_UPDATEHELPER"
-fi
-
-
-if [[ -n "$CONSOLE_USER" ]]; then
-
-	# as console user
-
-	echo "Launching PersistentDataStore" >&amp;2
-	sudo -u $CONSOLE_USER launchctl load "$WACOM_DATASTORE"
-	sleep 1
-
-	echo "Launching IOManager" >&amp;2
-	sudo -u $CONSOLE_USER launchctl load "$WACOM_IOMANAGER"
-	sleep 1
-
-	echo "Launching Drivers" >&amp;2
-	sudo -u $CONSOLE_USER launchctl load "$WACOM_DRIVERS"
-	sleep 1
-
-fi
+exit 0
 </string>
 				<key>preuninstall_script</key>
 				<string>#!/bin/bash
